@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.11.17)  18 NOV 2021 11:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.11.17)  18 NOV 2021 11:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**E:/Projects/nmast/nmast-semestralni_prace/semestralni_prace.tex
-(e:/Projects/nmast/nmast-semestralni_prace/semestralni_prace.tex
+**E:/Projects/nmast/nmast_sem/output/semestralni_prace.tex
+(e:/Projects/nmast/nmast_sem/output/semestralni_prace.tex
 LaTeX2e <2021-11-15>
 L3 programming layer <2021-11-12> (c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -682,14 +682,14 @@ Package rerunfilecheck Info: File `semestralni_prace.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  13195 strings out of 480331
- 220908 string characters out of 5896206
+ 220880 string characters out of 5896206
  525800 words of memory out of 5000000
  30682 multiletter control sequences out of 15000+600000
  447897 words of font info for 87 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,8n,77p,467b,365s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 75i,8n,77p,460b,365s stack positions out of 5000i,500n,10000p,200000b,80000s
  <c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1000.600pk><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on semestralni_prace.pdf (25 pages, 514241 bytes).
+Output written on semestralni_prace.pdf (25 pages, 514332 bytes).
 PDF statistics:
  547 PDF objects out of 1000 (max. 8388607)
  438 compressed objects within 5 object streams
