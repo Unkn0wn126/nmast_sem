@@ -58,20 +58,33 @@ library("aplpack")
 library(stringi)
 library(Cairo)
 library(MASS)
+library(e1071)
 @
 \label{uvod}
 
 %% Načítání dat start
 
 <<input,echo=FALSE>>=
+data_czech <- read.csv("czechData.csv")
+data_poland <- read.csv("polandData.csv")
+data_germany <- read.csv("germanyData.csv")
+data_slovakia <- read.csv("slovakiaData.csv")
+data_austria <- read.csv("austriaData.csv")
+
+pocetSloupcu = 66
+pocetZaznamu = 576
+
+
+# old data
 dataFromExcel <- read_xlsx("./cnb_kurz_r-pracovni.xlsx")
 POCETMEN=10
 POCETZAZNAMU=100
-mojeData = dataFromExcel[1:1,1:11]
-maticeMen = dataFromExcel[1:101,2:11]
-forVariables = colnames(mojeData)
-for (i in seq(1,length(forVariables),by=1)) {
+mojeData = dataFromExcel[1:1,1:11] # jenom první řádek?
+maticeMen = dataFromExcel[1:101,2:11] # všechna data bez datumu
+forVariables = colnames(mojeData) # jména sloupců
+for (i in seq(1,length(forVariables),by=1)) { # inkrementace od 1 do konce sloupců
    assign(paste(forVariables[i],sep ="_", "vector"),pull(assign(forVariables[i],dataFromExcel[1:101,i])))
+  # to bude rozsegmentování dat do samostatných vektorů podle sloupců...
 }
 @
 
@@ -94,7 +107,7 @@ getmode <- function(v) {
 @
 <<popisna_table, echo=FALSE,results=tex>>=
 POCETUDAJU=9
-myMatrix= matrix(nrow = 9,ncol = 10)
+myMatrix= matrix(nrow = 9,ncol = 10) # vytvoří se matice pro tabulku
 curencies=forVariables[-1]
 maxSkewness=.Machine$double.xmin
 columnMaxSkewness=0
@@ -104,8 +117,8 @@ minMeanHigest=.Machine$integer.max
 minMeanHiger=.Machine$integer.max
 columnHigest=0
 columnHiger=0
-colnames(myMatrix)<-curencies
-rownames(myMatrix)<-c("prumer", "modus","median","max","min","skewness","kurtosis","deviation","interquartile")
+colnames(myMatrix)<-curencies # pojmenování sloupců matice
+rownames(myMatrix)<-c("prumer", "modus","median","max","min","skewness","kurtosis","deviation","interquartile") # pojmenování řádků matice
 #prumer
 for (i in seq(1,length(curencies),by=1)) {
    myMatrix[1,i]<-mean(eval(as.name(paste(curencies[i],sep ="_", "vector"))))

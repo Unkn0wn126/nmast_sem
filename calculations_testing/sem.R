@@ -4,6 +4,12 @@ data_germany <- read.csv("germanyData.csv")
 data_slovakia <- read.csv("slovakiaData.csv")
 data_austria <- read.csv("austriaData.csv")
 
+colnames(data_czech)
+data_czech_useful <- data_czech[1:1, c(7, 8, 13, 14, 21, 22, 60)]
+data_czech_useful_matrix <- data_czech[1:576, c(7, 8, 13, 14, 21, 22, 60)]
+
+forVariablesToLoop <- colnames(data_czech_useful)
+
 min(data_czech$new_cases)
 min(data_czech$new_cases_smoothed)
 min(data_czech$new_cases_per_million)
