@@ -1,2 +1,2 @@
-./output/*.pdf
+*.pdf
 !./output/semestralni_prace.pdf
