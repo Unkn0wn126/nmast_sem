@@ -106,6 +106,19 @@ getmode <- function(v) {
 }
 @
 <<popisna_table, echo=FALSE,results=tex>>=
+numberOfRows = 9
+tableMatrix = matrix(nrow = 9, ncol = 6) # 6 údajů
+colnames(tableMatrix) <- c("Nové případy", "Nové případy smoothed", "Nové případy na milion", "Nové případy na milion smoothed", "Hospitalizovaní pacienti", "Hospitalizovaní pacienti na milion")
+rownames(tableMatrix)<-c("prumer", "modus","median","max","min","skewness","kurtosis","deviation","interquartile")
+
+print(xtable(tableMatrix,
+             caption="Části popisné statistiky aplikované na data",
+             label="table:popisStat"),
+      include.rownames=TRUE,
+      caption.placement="bottom"
+      )
+
+# old
 POCETUDAJU=9
 myMatrix= matrix(nrow = 9,ncol = 10) # vytvoří se matice pro tabulku
 curencies=forVariables[-1]
@@ -172,12 +185,12 @@ for (i in seq(1,length(curencies),by=1)) {
 for (i in seq(1,length(curencies),by=1)) {
    myMatrix[9,i]<-IQR(eval(as.name(paste(curencies[i],sep ="_", "vector"))))
 }
-print(xtable(myMatrix,
-             caption="Části popisné statistiky aplikované na data",
-             label="table:popisStat"),
-      include.rownames=TRUE,
-      caption.placement="bottom"
-      )
+# print(xtable(myMatrix,
+#             caption="Části popisné statistiky aplikované na data",
+#             label="table:popisStat"),
+#      include.rownames=TRUE,
+#      caption.placement="bottom"
+#      )
 @
 \clearpage
 

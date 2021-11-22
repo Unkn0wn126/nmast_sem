@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.11.17)  18 NOV 2021 17:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.11.19)  22 NOV 2021 21:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**E:/Projects/nmast/nmast_sem/output/semestralni_prace.tex
-(e:/Projects/nmast/nmast_sem/output/semestralni_prace.tex
+**D:/stuff/Projects/nmast/nmast_sem/output/semestralni_prace.tex
+(d:/stuff/Projects/nmast/nmast_sem/output/semestralni_prace.tex
 LaTeX2e <2021-11-15>
 L3 programming layer <2021-11-12> (c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -365,7 +365,7 @@ Package graphics Info: Driver file: pdftex.def on input line 107.
 \Gin@req@height=\dimen174
 \Gin@req@width=\dimen175
 ) (c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Package: fancyvrb 2021/10/15 v3.9 verbatim text (tvz,hv)
+Package: fancyvrb 2021/11/18 v4.0 verbatim text (tvz,hv)
 \FV@CodeLineNo=\count288
 \FV@InFile=\read3
 \FV@TabBox=\box99
@@ -534,6 +534,11 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 70.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 70.
+
+Overfull \hbox (241.55588pt too wide) in paragraph at lines 70--85
+ [][] 
+ []
+
 [7
 
 ]
@@ -681,15 +686,15 @@ Package rerunfilecheck Info: File `semestralni_prace.out' has not changed.
 (rerunfilecheck)             Checksum: 6F7A1C14FCBB57E30CCE114FCDFFF011;4572.
  ) 
 Here is how much of TeX's memory you used:
- 13195 strings out of 480331
- 220880 string characters out of 5896206
- 525800 words of memory out of 5000000
- 30682 multiletter control sequences out of 15000+600000
+ 13201 strings out of 480331
+ 221167 string characters out of 5895954
+ 524834 words of memory out of 5000000
+ 30685 multiletter control sequences out of 15000+600000
  447897 words of font info for 87 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,8n,77p,460b,365s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 75i,8n,77p,466b,365s stack positions out of 5000i,500n,10000p,200000b,80000s
  <c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1000.600pk><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on semestralni_prace.pdf (25 pages, 514337 bytes).
+Output written on semestralni_prace.pdf (25 pages, 511166 bytes).
 PDF statistics:
  547 PDF objects out of 1000 (max. 8388607)
  438 compressed objects within 5 object streams
