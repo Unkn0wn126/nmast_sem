@@ -229,10 +229,57 @@ shapiro.test(data_czech$new_tests)
 #ANOVA
 anova <- aov(data_czech$new_tests~data_czech$new_cases+data_czech$new_deaths)
 summary(anova)
-par(mfrow = c(3,2))
 plot(anova, 1)
 plot(anova, 2)
 plot(anova, 3)
 plot(anova, 4)
 plot(anova, 5)
 plot(anova, 6)
+
+#Pearson's Chi-squared Test
+chisq.test(data_czech$new_tests, data_czech$new_cases)
+
+#VARIANCE
+varr <- var(data_czech$new_tests, data_czech$new_cases, na.rm = TRUE)
+summary(varr)
+
+#CORRELATION
+matice <- matrix(data_czech$new_cases, ncol = 24)
+corr <- cor(matice, method = "pearson")
+corr <- cor(matice, method = "kendall")
+corr <- cor(matice, method = "spearman")
+corr
+summary(corr)
+col <- colorRampPalette(c("blue", "white", "red"))(20)
+heatmap(x = corr, col = col, symm = TRUE)
+
+#COVARIANCE
+covv <- cov(matice, method = "pearson")
+covv <- cov(matice, method = "kendall")
+covv <- cov(matice, method = "spearman")
+summary(covv)
+col <- colorRampPalette(c("blue", "white", "red"))(20)
+heatmap(x = covv, col = col, symm = TRUE)
+plot(corr)
+
+library("ggpubr")
+ggqqplot(data_czech$new_cases)
+
+#PAIRS
+df1 <- data.frame(data_czech[1],
+                 data_czech[6],
+                 data_czech[7],
+                 data_czech[9],
+                 data_czech[10],
+                 data_czech[12],
+                 data_czech[13],
+                 data_czech[15],
+                 data_czech[16],
+                 data_czech[18],
+                 data_czech[19],
+                 data_czech[20],
+                 data_czech[21],
+                 data_czech[27],
+                 data_czech[40],)
+
+pairs(df)
