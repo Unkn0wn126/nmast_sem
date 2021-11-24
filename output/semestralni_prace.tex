@@ -64,7 +64,7 @@
 %% Popisná statistika
 \section{Popisná statistika}
 % latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Wed Nov 24 13:36:42 2021
+% Wed Nov 24 17:07:47 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrrr}
@@ -93,20 +93,20 @@ prumer & 2940.58 & 2936.89 & 274.19 & 273.85 & 2370.49 & 221.03 \\
 \centering
 
 \includegraphics[width=10cm]{histogram_new_cases_smoothed.pdf}
-\caption{Histogram nových případů smoothed}
+\caption{Histogram zlog. klouzavý průměr nových případů}
 
 \includegraphics[width=10cm]{histogram_new_cases_per_million.pdf}
-\caption{Histogram nových případů na milión}
+\caption{Histogram zlog. nových případů na milión}
 
 \end{figure}
 \begin{figure}[H]
 \centering
 
 \includegraphics[width=10cm]{histogram_new_cases_smoothed_per_million.pdf}
-\caption{Histogram nových případů na milión smoothed}
+\caption{Histogram zlog. klouzavého průměru nových případů na milión}
 
 \includegraphics[width=10cm]{histogram_hosp_patients.pdf}
-\caption{Histogram: Hospitalizovaní pacienti v ČR}
+\caption{Histogram hospitalizovaných pacientů v ČR}
 
 \end{figure}
 \begin{figure}[H]
@@ -180,211 +180,702 @@ prumer & 2940.58 & 2936.89 & 274.19 & 273.85 & 2370.49 & 221.03 \\
 \subsection{Boxplot}
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm]{boxplot_graf.pdf}
-\caption{Boxplot graf pro první dvě měny}
+
+\includegraphics[width=10cm]{boxplot_new_cases_per_million.pdf}
+\caption{Boxplot graf pro nové případy na milión}
+
+\includegraphics[width=10cm]{boxplot_reproduction_rate.pdf}
+\caption{Boxplot graf pro reprodukční číslo}
 \end{figure}
-\subsection{Hexbin}
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm]{hexbin_graf_max.pdf}
-\caption{Hexbin graf měny s maximální hodnotou šikmosti}
-\centering
-\includegraphics[width=10cm]{hexbin_graf_min.pdf}
-\caption{Hexbin graf měny s minimální hodnotou šikmosti}
+
+\includegraphics[width=10cm]{boxplot_log_new_deaths.pdf}
+\caption{Boxplot graf pro zlogaritmované nové smrti}
 \end{figure}
+
 \subsection{3D graf}
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm]{3D_graf_max.pdf}
-\caption{3D graf graf měny s maximální hodnotou šikmosti}
+
+\includegraphics[width=10cm]{3D_graf_new_cases_new_tests_total_cases.pdf}
+\caption{3D graf počtu případů a počtu testů}
+
+\includegraphics[width=10cm]{3D_graf_log_new_cases_new_tests_total_cases.pdf}
+\caption{3D graf zlogaritmovaných počtu případů a počtu testů}
+
 \end{figure}
 \begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{3D_graf_min.pdf}
-\caption{3D graf graf měny s minimální hodnotou šikmosti}
+
+\includegraphics[width=10cm]{3D_graf_new_cases_new_tests_new_vaccinations.pdf}
+\caption{3D graf počtu případů a počtu nových očkování}
+
+\includegraphics[width=10cm]{3D_graf_new_cases.pdf}
+\caption{3D graf počtu nových případů}
+
 \end{figure}
+\begin{figure}[H]
+
+\includegraphics[width=10cm]{3D_graf_reproduction_rate.pdf}
+\caption{3D graf reprodukčního čísla}
+
+\end{figure}
+
+\subsection{Hexbin}
+\begin{figure}[H]
+\centering
+
+\includegraphics[width=10cm]{hexbin_graf_log_new_cases_new_deaths.pdf}
+\caption{Hexbin graf nových zlog. nových případů a nových úmrtí}
+
+\end{figure}
+\clearpage
+
 \subsection{Chernoff faces}
 \begin{figure}[H]
 \centering
+
 \begin{Schunk}
 \begin{Soutput}
 effect of variables:
- modified item       Var  
- "height of face   " "USD"
- "width of face    " "GBP"
- "structure of face" "CHF"
- "height of mouth  " "EUR"
- "width of mouth   " "BRL"
- "smiling          " "ILS"
- "height of eyes   " "CAD"
- "width of eyes    " "MXN"
- "height of hair   " "BGN"
- "width of hair   "  "RON"
- "style of hair   "  "USD"
- "height of nose  "  "GBP"
- "width of nose   "  "CHF"
- "width of ear    "  "EUR"
- "height of ear   "  "BRL"
+ modified item       Var                      
+ "height of face   " "countriesMeanNewCases"  
+ "width of face    " "countriesMeanTotalCases"
+ "structure of face" "countriesPopulation"    
+ "height of mouth  " "countriesMeanNewCases"  
+ "width of mouth   " "countriesMeanTotalCases"
+ "smiling          " "countriesPopulation"    
+ "height of eyes   " "countriesMeanNewCases"  
+ "width of eyes    " "countriesMeanTotalCases"
+ "height of hair   " "countriesPopulation"    
+ "width of hair   "  "countriesMeanNewCases"  
+ "style of hair   "  "countriesMeanTotalCases"
+ "height of nose  "  "countriesPopulation"    
+ "width of nose   "  "countriesMeanNewCases"  
+ "width of ear    "  "countriesMeanTotalCases"
+ "height of ear   "  "countriesPopulation"    
 \end{Soutput}
 \end{Schunk}
-\includegraphics[width=10cm]{faces_graf.pdf}
+\includegraphics[width=10cm]{faces_graf_covid.pdf}
 \caption{Chernoff faces graf tabulky popisné statistiky}
+\end{figure}
+\clearpage
+
+\subsection{QQPlot}
+\begin{figure}[H]
+\centering
+
+\includegraphics[width=10cm]{qqplot_graph_new_cases_new_deaths.pdf}
+\caption{QQPlot graf nových případů a nových úmrtí}
+
+\includegraphics[width=10cm]{qqplot_graph_new_tests_new_cases.pdf}
+\caption{QQPlot graf nových testů a nových případů}
+
 \end{figure}
 \clearpage
 
 %% Testování statistických hypotéz
 \section{Testování statistických hypotéz}
+
+% old
 \subsection{Jednovýběrový Studentův test vůči střední hodnotě}
 \begin{Schunk}
 \begin{Soutput}
 	One Sample t-test
 
-data:  TestHypCur1
-t = 31.433, df = 100, p-value < 2.2e-16
-alternative hypothesis: true mean is not equal to 20
+data:  data_czech$new_cases
+t = -2.0168, df = 575, p-value = 0.04418
+alternative hypothesis: true mean is not equal to 3300
 95 percent confidence interval:
- 23.08508 23.50076
+ 2590.550 3290.603
 sample estimates:
 mean of x 
- 23.29292 
+ 2940.576 
 \end{Soutput}
 \end{Schunk}
+
+\begin{Schunk}
+\begin{Soutput}
+	One Sample t-test
+
+data:  data_czech$new_cases_smoothed
+t = 18.184, df = 575, p-value < 2.2e-16
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 2619.672 3254.109
+sample estimates:
+mean of x 
+  2936.89 
+\end{Soutput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Soutput}
+	One Sample t-test
+
+data:  data_czech$new_cases_per_million
+t = 16.5, df = 575, p-value < 2.2e-16
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 241.5531 306.8289
+sample estimates:
+mean of x 
+  274.191 
+\end{Soutput}
+\end{Schunk}
+
+\clearpage
+
+\begin{Schunk}
+\begin{Soutput}
+	One Sample t-test
+
+data:  data_czech$new_cases_smoothed_per_million
+t = 18.184, df = 575, p-value < 2.2e-16
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 244.2687 303.4260
+sample estimates:
+mean of x 
+ 273.8474 
+\end{Soutput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Soutput}
+	One Sample t-test
+
+data:  data_czech$hosp_patients
+t = 19.019, df = 568, p-value < 2.2e-16
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 2125.690 2615.294
+sample estimates:
+mean of x 
+ 2370.492 
+\end{Soutput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Soutput}
+	One Sample t-test
+
+data:  data_czech$hosp_patients_per_million
+t = 19.019, df = 568, p-value < 2.2e-16
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 198.2078 243.8604
+sample estimates:
+mean of x 
+ 221.0341 
+\end{Soutput}
+\end{Schunk}
+
+\clearpage
+
 \subsection{Dvouvýběrový Studentův test}
 \begin{Schunk}
 \begin{Soutput}
 	Welch Two Sample t-test
 
-data:  TestHypCur1 and TestHypCur2
-t = -51.224, df = 166.54, p-value < 2.2e-16
+data:  p1 and p2
+t = -4.518, df = 537.03, p-value = 7.683e-06
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -6.549041 -6.062939
+ -2272.4359  -895.1752
 sample estimates:
 mean of x mean of y 
- 23.29292  29.59891 
+ 2148.674  3732.479 
 \end{Soutput}
 \end{Schunk}
+
+\begin{Schunk}
+\begin{Soutput}
+	Welch Two Sample t-test
+
+data:  data_czech$new_cases_per_million and data_slovakia$new_cases_per_million
+t = 7.7283, df = 817.84, p-value = 3.194e-14
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 105.8863 177.9857
+sample estimates:
+mean of x mean of y 
+  274.191   132.255 
+\end{Soutput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Soutput}
+	Two Sample t-test
+
+data:  data_czech$new_cases_per_million and data_germany$new_cases_per_million
+t = 10.844, df = 1150, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 152.3817 219.7075
+sample estimates:
+mean of x mean of y 
+274.19103  88.14644 
+\end{Soutput}
+\end{Schunk}
+
+\clearpage
+
+\begin{Schunk}
+\begin{Soutput}
+	Two Sample t-test
+
+data:  data_czech$new_cases_per_million and data_poland$new_cases_per_million
+t = 7.5404, df = 1150, p-value = 9.477e-14
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ 103.9326 177.0431
+sample estimates:
+mean of x mean of y 
+ 274.1910  133.7032 
+\end{Soutput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Soutput}
+	Two Sample t-test
+
+data:  data_czech$new_cases_per_million and data_austria$new_cases_per_million
+t = 7.2242, df = 1150, p-value = 9.157e-13
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  95.01377 165.86690
+sample estimates:
+mean of x mean of y 
+ 274.1910  143.7507 
+\end{Soutput}
+\end{Schunk}
+
+\subsection{Wilcox test}
+
+\begin{Schunk}
+\begin{Soutput}
+	Wilcoxon rank sum test with continuity correction
+
+data:  data_czech$new_cases_per_million and data_slovakia$new_cases_per_million
+W = 205293, p-value = 2.97e-12
+alternative hypothesis: true location shift is not equal to 0
+\end{Soutput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Soutput}
+	Wilcoxon rank sum test with continuity correction
+
+data:  data_czech$new_cases_per_million and data_germany$new_cases_per_million
+W = 188720, p-value = 5.261e-05
+alternative hypothesis: true location shift is not equal to 0
+\end{Soutput}
+\end{Schunk}
+
+\clearpage
+
 \subsection{Fisherův test}
+
 \begin{Schunk}
 \begin{Soutput}
 	F test to compare two variances
 
-data:  TestHypCur1 and TestHypCur2
-F = 2.6248, num df = 100, denom df = 100, p-value = 2.308e-06
+data:  lm(data_czech$new_cases_per_million ~ 1) and lm(data_slovakia$new_cases_per_million ~ 1)
+F = 4.5141, num df = 575, denom df = 575, p-value < 2.2e-16
 alternative hypothesis: true ratio of variances is not equal to 1
 95 percent confidence interval:
- 1.769629 3.893242
+ 3.832723 5.316656
 sample estimates:
 ratio of variances 
-          2.624803 
+          4.514119 
+\end{Soutput}
+\end{Schunk}
+
+\subsection{Shapiro Wilk test}
+
+\begin{Schunk}
+\begin{Soutput}
+	Shapiro-Wilk normality test
+
+data:  data_czech$new_cases
+W = 0.72003, p-value < 2.2e-16
+\end{Soutput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Soutput}
+	Shapiro-Wilk normality test
+
+data:  data_czech$new_tests
+W = 0.82915, p-value < 2.2e-16
 \end{Soutput}
 \end{Schunk}
 
 %% ANOVA
 \section{ANOVA}
 
+\begin{Schunk}
+\begin{Soutput}
+                       Df    Sum Sq   Mean Sq F value   Pr(>F)    
+data_czech$new_cases    1 6.973e+10 6.973e+10   10.81   0.0011 ** 
+data_czech$new_deaths   1 1.218e+11 1.218e+11   18.88 1.78e-05 ***
+Residuals             391 2.522e+12 6.451e+09                     
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+182 observations deleted due to missingness
+\end{Soutput}
+\end{Schunk}
+
+\begin{figure}[H]
+\centering
+
+\includegraphics[width=10cm]{anova_graph.pdf}
+\caption{Anova graf nových testů, případů a úmrtí}
+\end{figure}
+
+\clearpage
+%% Variance
+\section{Variance}
+\begin{Schunk}
+\begin{Soutput}
+     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+-61749419 -61749419 -61749419 -61749419 -61749419 -61749419 
+\end{Soutput}
+\end{Schunk}
+
 %% Korelace
 \section{Korelace}
 \subsection{Korelační matice}
 \begin{table}[H]
+
 \begin{Schunk}
 \begin{Soutput}
-          USD       GBP       CHF       EUR       BRL       ILS       CAD
-USD 1.0000000 0.9107230 0.9460180 0.9179658 0.6392782 0.9883873 0.9626825
-GBP 0.9107230 1.0000000 0.8948676 0.8658716 0.4673841 0.9088316 0.8908392
-CHF 0.9460180 0.8948676 1.0000000 0.9692083 0.4617732 0.9327882 0.9217226
-EUR 0.9179658 0.8658716 0.9692083 1.0000000 0.5020093 0.9016465 0.9312468
-BRL 0.6392782 0.4673841 0.4617732 0.5020093 1.0000000 0.6334782 0.6587888
-ILS 0.9883873 0.9088316 0.9327882 0.9016465 0.6334782 1.0000000 0.9636070
-CAD 0.9626825 0.8908392 0.9217226 0.9312468 0.6587888 0.9636070 1.0000000
-MXN 0.6587680 0.5420454 0.5987799 0.7068223 0.7230531 0.6424965 0.7797695
-BGN 0.9186576 0.8658093 0.9696949 0.9998681 0.5025878 0.9021541 0.9312349
-RON 0.9480076 0.9012998 0.9807330 0.9928694 0.5247833 0.9318752 0.9408933
-          MXN       BGN       RON
-USD 0.6587680 0.9186576 0.9480076
-GBP 0.5420454 0.8658093 0.9012998
-CHF 0.5987799 0.9696949 0.9807330
-EUR 0.7068223 0.9998681 0.9928694
-BRL 0.7230531 0.5025878 0.5247833
-ILS 0.6424965 0.9021541 0.9318752
-CAD 0.7797695 0.9312349 0.9408933
-MXN 1.0000000 0.7060044 0.6736579
-BGN 0.7060044 1.0000000 0.9931094
-RON 0.6736579 0.9931094 1.0000000
+             [,1]        [,2]         [,3]         [,4]        [,5]        [,6]
+ [1,]  1.00000000 -0.62274409 -0.129186615 -0.285154793  0.66579693  0.57478261
+ [2,] -0.62274409  1.00000000  0.151838159  0.209449286 -0.43366681 -0.44705372
+ [3,] -0.12918662  0.15183816  1.000000000  0.250435635 -0.36067001 -0.33492826
+ [4,] -0.28515479  0.20944929  0.250435635  1.000000000 -0.10668415 -0.03613412
+ [5,]  0.66579693 -0.43366681 -0.360670011 -0.106684148  1.00000000  0.50445750
+ [6,]  0.57478261 -0.44705372 -0.334928261 -0.036134119  0.50445750  1.00000000
+ [7,]  0.05132667 -0.14357190 -0.163185379  0.386541958  0.15705896 -0.13049153
+ [8,]  0.89739130 -0.55838227  0.004784689 -0.171528226  0.57403785  0.69391304
+ [9,]  0.30782609 -0.09088933 -0.482383691  0.227688483  0.39791260  0.43652174
+[10,]  0.72869565 -0.63448577  0.187472832 -0.359599784  0.45966516  0.17739130
+[11,] -0.66869565  0.54794522 -0.131361474  0.079233851 -0.46488368 -0.32956522
+[12,]  0.42782609 -0.34007394  0.016093955  0.404005569  0.37442923  0.02869565
+[13,]  0.38695652 -0.12002610 -0.172683792 -0.201567434  0.10784954  0.64347826
+[14,] -0.27478261  0.13785606 -0.133971305  0.135394108 -0.09306371 -0.34956522
+[15,]  0.61043478 -0.47358122  0.410613349 -0.280365934  0.17612525  0.16434783
+[16,] -0.59304348  0.45749077 -0.321879108  0.026121050 -0.31919983 -0.23913043
+[17,] -0.31652174  0.21743858  0.533710359  0.180235243 -0.17090672 -0.62434783
+[18,] -0.59478261  0.47271147 -0.263157920  0.048323942 -0.32398348 -0.08000000
+[19,] -0.60608696  0.46879758  0.355371934  0.154549544 -0.33529029 -0.68608696
+[20,] -0.34398783  0.31165724  0.099412663 -0.006749405 -0.46889952  0.13089802
+[21,]  0.32347826 -0.23265928 -0.586341943 -0.168916121  0.30876278  0.09043478
+[22,]  0.23483367 -0.11048282  0.382423329 -0.190289684 -0.11439756  0.20656665
+[23,]  0.25701240 -0.24880383 -0.511638037  0.139995729  0.47498913  0.25179387
+[24,]  0.59143293 -0.52522836  0.291929526  0.050729401  0.30230535  0.09088933
+             [,7]         [,8]          [,9]       [,10]        [,11]
+ [1,]  0.05132667  0.897391304  0.3078260870  0.72869565 -0.668695652
+ [2,] -0.14357190 -0.558382270 -0.0908893259 -0.63448577  0.547945218
+ [3,] -0.16318538  0.004784689 -0.4823836907  0.18747283 -0.131361474
+ [4,]  0.38654196 -0.171528226  0.2276884833 -0.35959978  0.079233851
+ [5,]  0.15705896  0.574037848  0.3979125991  0.45966516 -0.464883681
+ [6,] -0.13049153  0.693913043  0.4365217391  0.17739130 -0.329565217
+ [7,]  1.00000000 -0.029578080  0.2801218186 -0.05480644 -0.334058318
+ [8,] -0.02957808  1.000000000  0.3043478261  0.62956522 -0.664347826
+ [9,]  0.28012182  0.304347826  1.0000000000 -0.23304348  0.008695652
+[10,] -0.05480644  0.629565217 -0.2330434783  1.00000000 -0.646086957
+[11,] -0.33405832 -0.664347826  0.0086956522 -0.64608696  1.000000000
+[12,]  0.68595048  0.310434783  0.2269565217  0.28782609 -0.530434783
+[13,] -0.48107878  0.443478261  0.2217391304  0.12000000  0.070434783
+[14,]  0.38190521 -0.340869565  0.3634782609 -0.34260870  0.267826087
+[15,] -0.33014357  0.658260870 -0.2886956522  0.82173913 -0.471304348
+[16,] -0.17964334 -0.653043478  0.1313043478 -0.61739130  0.822608696
+[17,]  0.07655503 -0.414782609 -0.6886956522  0.14695652 -0.069565217
+[18,] -0.32709877 -0.603478261 -0.0008695652 -0.72869565  0.737391304
+[19,]  0.27185735 -0.649565217 -0.5060869565 -0.27565217  0.147826087
+[20,] -0.39373505 -0.147423356 -0.2065666498 -0.38617092  0.286584047
+[21,]  0.39277951  0.199130435  0.4782608696  0.12782609  0.047826087
+[22,] -0.58385905  0.359643409 -0.4431398235  0.50315287 -0.113937815
+[23,]  0.34152709  0.133507287  0.7553816226 -0.08741031  0.153946514
+[24,]  0.15749402  0.499238977  0.0239182437  0.65405524 -0.639704299
+            [,12]        [,13]       [,14]       [,15]        [,16]
+ [1,]  0.42782609  0.386956522 -0.27478261  0.61043478 -0.593043478
+ [2,] -0.34007394 -0.120026095  0.13785606 -0.47358122  0.457490770
+ [3,]  0.01609396 -0.172683792 -0.13397130  0.41061335 -0.321879108
+ [4,]  0.40400557 -0.201567434  0.13539411 -0.28036593  0.026121050
+ [5,]  0.37442923  0.107849535 -0.09306371  0.17612525 -0.319199834
+ [6,]  0.02869565  0.643478261 -0.34956522  0.16434783 -0.239130435
+ [7,]  0.68595048 -0.481078775  0.38190521 -0.33014357 -0.179643340
+ [8,]  0.31043478  0.443478261 -0.34086957  0.65826087 -0.653043478
+ [9,]  0.22695652  0.221739130  0.36347826 -0.28869565  0.131304348
+[10,]  0.28782609  0.120000000 -0.34260870  0.82173913 -0.617391304
+[11,] -0.53043478  0.070434783  0.26782609 -0.47130435  0.822608696
+[12,]  1.00000000 -0.394782609  0.26521739  0.06782609 -0.467826087
+[13,] -0.39478261  1.000000000 -0.48782609  0.35130435  0.007826087
+[14,]  0.26521739 -0.487826087  1.00000000 -0.43130435  0.386086957
+[15,]  0.06782609  0.351304348 -0.43130435  1.00000000 -0.601739130
+[16,] -0.46782609  0.007826087  0.38608696 -0.60173913  1.000000000
+[17,]  0.19130435 -0.588695652 -0.02869565  0.07826087 -0.173043478
+[18,] -0.62347826  0.149565217 -0.10695652 -0.61739130  0.705217391
+[19,]  0.05565217 -0.714782609  0.23130435 -0.38956522  0.089565217
+[20,] -0.54185694  0.380082636 -0.40443576 -0.05044575 -0.036964558
+[21,]  0.24869565  0.028695652  0.33217391 -0.09565217  0.119130435
+[22,] -0.27788650  0.475320733 -0.51880845  0.73407264 -0.301369870
+[23,]  0.26962384  0.076973257  0.49749947 -0.24309633  0.280930644
+[24,]  0.51663406 -0.157860408 -0.22048272  0.50750164 -0.675799103
+              [,17]         [,18]       [,19]         [,20]       [,21]
+ [1,] -0.3165217391 -0.5947826087 -0.60608696 -0.3439878316  0.32347826
+ [2,]  0.2174385787  0.4727114702  0.46879758  0.3116572423 -0.23265928
+ [3,]  0.5337103593 -0.2631579196  0.35537193  0.0994126628 -0.58634194
+ [4,]  0.1802352430  0.0483239420  0.15454954 -0.0067494053 -0.16891612
+ [5,] -0.1709067229 -0.3239834823 -0.33529029 -0.4688995215  0.30876278
+ [6,] -0.6243478261 -0.0800000000 -0.68608696  0.1308980244  0.09043478
+ [7,]  0.0765550312 -0.3270987695  0.27185735 -0.3937350539  0.39277951
+ [8,] -0.4147826087 -0.6034782609 -0.64956522 -0.1474233564  0.19913043
+ [9,] -0.6886956522 -0.0008695652 -0.50608696 -0.2065666498  0.47826087
+[10,]  0.1469565217 -0.7286956522 -0.27565217 -0.3861709158  0.12782609
+[11,] -0.0695652174  0.7373913043  0.14782609  0.2865840468  0.04782609
+[12,]  0.1913043478 -0.6234782609  0.05565217 -0.5418569382  0.24869565
+[13,] -0.5886956522  0.1495652174 -0.71478261  0.3800826356  0.02869565
+[14,] -0.0286956522 -0.1069565217  0.23130435 -0.4044357565  0.33217391
+[15,]  0.0782608696 -0.6173913043 -0.38956522 -0.0504457503 -0.09565217
+[16,] -0.1730434783  0.7052173913  0.08956522 -0.0369645584  0.11913043
+[17,]  1.0000000000 -0.1191304348  0.69826087  0.0008697543 -0.46260870
+[18,] -0.1191304348  1.0000000000  0.12608696  0.4322678945 -0.14434783
+[19,]  0.6982608696  0.1260869565  1.00000000  0.0204392264 -0.33043478
+[20,]  0.0008697543  0.4322678945  0.02043923  1.0000000000 -0.42574474
+[21,] -0.4626086957 -0.1443478261 -0.33043478 -0.4257447372  1.00000000
+[22,]  0.1021961320 -0.2152641930 -0.28614917  0.3166594171 -0.37660362
+[23,] -0.4435747006 -0.0482713645 -0.38008264 -0.4354066986  0.50271799
+[24,]  0.2083061584 -0.5953468286 -0.17308111 -0.2901261418 -0.11176343
+           [,22]       [,23]       [,24]
+ [1,]  0.2348337  0.25701240  0.59143293
+ [2,] -0.1104828 -0.24880383 -0.52522836
+ [3,]  0.3824233 -0.51163804  0.29192953
+ [4,] -0.1902897  0.13999573  0.05072940
+ [5,] -0.1143976  0.47498913  0.30230535
+ [6,]  0.2065666  0.25179387  0.09088933
+ [7,] -0.5838591  0.34152709  0.15749402
+ [8,]  0.3596434  0.13350729  0.49923898
+ [9,] -0.4431398  0.75538162  0.02391824
+[10,]  0.5031529 -0.08741031  0.65405524
+[11,] -0.1139378  0.15394651 -0.63970430
+[12,] -0.2778865  0.26962384  0.51663406
+[13,]  0.4753207  0.07697326 -0.15786041
+[14,] -0.5188084  0.49749947 -0.22048272
+[15,]  0.7340726 -0.24309633  0.50750164
+[16,] -0.3013699  0.28093064 -0.67579910
+[17,]  0.1021961 -0.44357470  0.20830616
+[18,] -0.2152642 -0.04827136 -0.59534683
+[19,] -0.2861492 -0.38008264 -0.17308111
+[20,]  0.3166594 -0.43540670 -0.29012614
+[21,] -0.3766036  0.50271799 -0.11176343
+[22,]  1.0000000 -0.41626794  0.27533710
+[23,] -0.4162679  1.00000000  0.03871248
+[24,]  0.2753371  0.03871248  1.00000000
+\end{Soutput}
+\begin{Soutput}
+       V1                V2                 V3                  V4          
+ Min.   :-0.6687   Min.   :-0.63449   Min.   :-0.586342   Min.   :-0.35960  
+ 1st Qu.:-0.3234   1st Qu.:-0.43701   1st Qu.:-0.277838   1st Qu.:-0.16957  
+ Median : 0.2459   Median :-0.11525   Median :-0.062201   Median : 0.04953  
+ Mean   : 0.1093   Mean   :-0.04194   Mean   : 0.003863   Mean   : 0.06190  
+ 3rd Qu.: 0.5789   3rd Qu.: 0.24099   3rd Qu.: 0.260809   3rd Qu.: 0.18754  
+ Max.   : 1.0000   Max.   : 1.00000   Max.   : 1.000000   Max.   : 1.00000  
+       V5                 V6                 V7                 V8         
+ Min.   :-0.46890   Min.   :-0.68609   Min.   :-0.58386   Min.   :-0.6643  
+ 1st Qu.:-0.32040   1st Qu.:-0.26174   1st Qu.:-0.21651   1st Qu.:-0.3593  
+ Median : 0.13245   Median : 0.09066   Median : 0.01087   Median : 0.1663  
+ Mean   : 0.09632   Mean   : 0.07237   Mean   : 0.04299   Mean   : 0.1031  
+ 3rd Qu.: 0.41335   3rd Qu.: 0.29798   3rd Qu.: 0.29547   3rd Qu.: 0.5179  
+ Max.   : 1.00000   Max.   : 1.00000   Max.   : 1.00000   Max.   : 1.0000  
+       V9                V10               V11                V12         
+ Min.   :-0.68870   Min.   :-0.7287   Min.   :-0.66870   Min.   :-0.6235  
+ 1st Qu.:-0.21319   1st Qu.:-0.3469   1st Qu.:-0.46649   1st Qu.:-0.2934  
+ Median : 0.17652   Median : 0.1239   Median :-0.03043   Median : 0.2091  
+ Mean   : 0.09266   Mean   : 0.0616   Mean   :-0.03723   Mean   : 0.0917  
+ 3rd Qu.: 0.32174   3rd Qu.: 0.4705   3rd Qu.: 0.18242   3rd Qu.: 0.3264  
+ Max.   : 1.00000   Max.   : 1.0000   Max.   : 1.00000   Max.   : 1.0000  
+      V13                V14                V15                V16          
+ Min.   :-0.71478   Min.   :-0.51881   Min.   :-0.61739   Min.   :-0.67580  
+ 1st Qu.:-0.17990   1st Qu.:-0.34130   1st Qu.:-0.34500   1st Qu.:-0.35837  
+ Median : 0.07370   Median :-0.06088   Median : 0.00869   Median :-0.10500  
+ Mean   : 0.04768   Mean   : 0.01106   Mean   : 0.05447   Mean   :-0.04807  
+ 3rd Qu.: 0.35850   3rd Qu.: 0.28391   3rd Qu.: 0.43484   3rd Qu.: 0.16871  
+ Max.   : 1.00000   Max.   : 1.00000   Max.   : 1.00000   Max.   : 1.00000  
+      V17                V18               V19                V20          
+ Min.   :-0.68870   Min.   :-0.7287   Min.   :-0.71478   Min.   :-0.54186  
+ 1st Qu.:-0.34109   1st Qu.:-0.3940   1st Qu.:-0.38245   1st Qu.:-0.38806  
+ Median :-0.01391   Median :-0.1130   Median :-0.07632   Median :-0.04371  
+ Mean   :-0.02777   Mean   :-0.0717   Mean   :-0.07138   Mean   :-0.04832  
+ 3rd Qu.: 0.18300   3rd Qu.: 0.1320   3rd Qu.: 0.17374   3rd Qu.: 0.16982  
+ Max.   : 1.00000   Max.   : 1.0000   Max.   : 1.00000   Max.   : 1.00000  
+      V21                V22                V23                V24          
+ Min.   :-0.58634   Min.   :-0.58386   Min.   :-0.51164   Min.   :-0.67580  
+ 1st Qu.:-0.18485   1st Qu.:-0.28995   1st Qu.:-0.24452   1st Qu.:-0.18493  
+ Median : 0.06913   Median :-0.11221   Median : 0.13675   Median : 0.07081  
+ Mean   : 0.05270   Mean   : 0.02674   Mean   : 0.09834   Mean   : 0.07580  
+ 3rd Qu.: 0.31244   3rd Qu.: 0.32741   3rd Qu.: 0.29608   3rd Qu.: 0.35154  
+ Max.   : 1.00000   Max.   : 1.00000   Max.   : 1.00000   Max.   : 1.00000  
+\end{Soutput}
+\begin{Soutput}
+      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13]
+ [1,]    1  307   86  111   31   75  294  239 1674  8617  9252  6305  5304
+ [2,]   12  200   79   61   83   51  278  133 2136  4631 12089  4464  3383
+ [3,]    0  350   52   74   53  119  203  258 3123  3105 15731  2665  7891
+ [4,]   10  233   41   33   33  129  125  367 2107  4311 13229  1074 10898
+ [5,]   50  381   59   59   40  105  101  403 2044  8326 11552  3575 14149
+ [6,]    3  115   75   77   47   82  208  218  984  9543  7723  5176  4402
+ [7,]   47  235  103   65   51  114  278  608 1474  9720  3608  4568  2706
+ [8,]   48  195   55   47  118   59  243  317 2394 11102  2353  4621  3030
+ [9,]   64  295   18   48  126   64  202  273 2306  8715 12699  4743  3741
+[10,]   45  257   26   36   42  103  329  251 2910  5058  8925  1773 10862
+[11,]   98  163   38   54   50  134  175  499 2944  8077  7870  2654 16420
+[12,]   68   99   77   56   25  137  118  656 1976 11984  7355     0 17039
+[13,]  230  160   78   34  127  130  141  679 1303 14969  4199  4237 13361
+[14,]  139   68   57   38  127  113  289  797 1286 14150  1887  5857  3447
+[15,]  162   52   46   34   93   90  292  503 1960 15258  5407  6406  5012
+[16,]  125  105   18   62  168  153  326  404 2920 12474  4246  5872  6233
+[17,]  116  217   28   74  260  226  292  560 3492  7300  5515  6217 12921
+[18,]  158  116   53   56  305  246  198 1161 3796 10273  6471  3657 17332
+[19,]  260   57   45   35  202  230  121 1159 2554 15663  5808  2000 17773
+[20,]  271  140   48   38  149  281  190 1377 1841 12980  3187  5172 14861
+[21,]  354  154   82   61   92  131  281 1447 3120 13055  1513  7897 13115
+[22,]  352  133   55   69  132  112  315 1541 4456 13605  4375  8256  8449
+[23,]  186   99   49   54  141  192  247  787 5338 11429  5896  7602  4289
+[24,]  184   55   20   73  121  283  506 1034 5397  6542  2681  8830  9345
+      [,14] [,15] [,16] [,17] [,18] [,19] [,20] [,21] [,22] [,23] [,24]
+ [1,] 10801  8635 12191  7946   830  1280   154   172   200   221   421
+ [2,] 10922  4863 16816  7714  3319  1231    90   148    69   299   451
+ [3,]  8083  2430 15230  4008  3831  1060   391   173   138   212   253
+ [4,]  9301  7727 14714  1743  2971   602   384   188   217   175   136
+ [5,]  5253 10283 13162  6896  2629   259   267   139   253   174   487
+ [6,]  2693  9537  9167  8664  2607  1120   190   105   202   134   555
+ [7,]  7651  9014  3960  7285  1315  1195   183   130   210   107   524
+ [8,]  9628  8883 10524  6248   823   788    75   107   147   210   554
+ [9,]  8228  5160 15380  3869  2571   672    41   342   118   254   443
+[10,]  7488  2851 14529  2162  3256   684   189   272    75   248   304
+[11,]  8514  8794 11274  1924  2503   335   199   291   157   213   182
+[12,]  4256 12668 15110  1425  2222   199   134   169   257   187   487
+[13,]  2387 10930  6970  5532  2174   686   158   145   227   131   597
+[14,]  6942 11705  3342  7071  1182   655   143   249   167    82   525
+[15,]  9209 11364 10542  5305   505   547    64   328   149   245   484
+[16,]  8505  6838 14029  4819  2217   501    57   275   180   287   496
+[17,]  7982  4021 12028  2217  2412   454   110   235   104   262   411
+[18,]  8072 11311 10677   995  1872   224   133   240   169   308   256
+[19,]  4060 15861  9710  3853  1576   113   196   204   271   308   668
+[20,]  2555 13816 10141  5087  1639   508   165   118   225   205   470
+[21,]  7185 14612 -2214  3723   726   476   135   227   193   138   731
+[22,]  9143 14815  8205  3256   387   352    69   313   212   394   923
+[23,]  9695  7885 10972  3238  1533   432    57   248   142   590   822
+[24,]  8125  4571  8851  1540  1686   323   168   207    75   373   556
 \end{Soutput}
 \end{Schunk}
-\caption{Korelační matice}
 \end{table}
-\subsection{Bodové grafy hodnot z korelační matice}
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm]{cor_max.pdf}
-\caption{Bodový graf maximální hodnoty v korelační matici}
+
+\includegraphics[width=10cm]{cor_matrix.pdf}
+\caption{Heatmap graf korelační matice}
 \end{figure}
+
+%% Kovariance
+\section{Kovariance}
+\subsection{Kovarianční matice}
+\begin{table}[H]
+
+\begin{Schunk}
+\begin{Soutput}
+       V1                V2                V3                 V4         
+ Min.   :-33.435   Min.   :-31.717   Min.   :-29.3043   Min.   :-17.957  
+ 1st Qu.:-16.168   1st Qu.:-21.842   1st Qu.:-13.8859   1st Qu.: -8.467  
+ Median : 12.293   Median : -5.761   Median : -3.1087   Median :  2.473  
+ Mean   :  5.465   Mean   : -2.097   Mean   :  0.1916   Mean   :  3.088  
+ 3rd Qu.: 28.946   3rd Qu.: 12.046   3rd Qu.: 13.0217   3rd Qu.:  9.364  
+ Max.   : 50.000   Max.   : 49.978   Max.   : 49.9565   Max.   : 49.870  
+       V5                V6                V7                 V8         
+ Min.   :-23.435   Min.   :-34.304   Min.   :-29.1739   Min.   :-33.217  
+ 1st Qu.:-16.016   1st Qu.:-13.087   1st Qu.:-10.8207   1st Qu.:-17.967  
+ Median :  6.620   Median :  4.533   Median :  0.5435   Median :  8.315  
+ Mean   :  4.815   Mean   :  3.619   Mean   :  2.1472   Mean   :  5.156  
+ 3rd Qu.: 20.663   3rd Qu.: 14.897   3rd Qu.: 14.7663   3rd Qu.: 25.891  
+ Max.   : 49.978   Max.   : 50.000   Max.   : 49.9565   Max.   : 50.000  
+       V9               V10               V11               V12         
+ Min.   :-34.435   Min.   :-36.435   Min.   :-33.435   Min.   :-31.174  
+ 1st Qu.:-10.658   1st Qu.:-17.337   1st Qu.:-23.321   1st Qu.:-14.668  
+ Median :  8.826   Median :  6.196   Median : -1.522   Median : 10.457  
+ Mean   :  4.632   Mean   :  3.081   Mean   : -1.861   Mean   :  4.583  
+ 3rd Qu.: 16.087   3rd Qu.: 23.522   3rd Qu.:  9.120   3rd Qu.: 16.321  
+ Max.   : 50.000   Max.   : 50.000   Max.   : 50.000   Max.   : 50.000  
+      V13               V14                V15                V16         
+ Min.   :-35.739   Min.   :-25.9348   Min.   :-30.8696   Min.   :-33.783  
+ 1st Qu.: -8.989   1st Qu.:-17.0652   1st Qu.:-17.2446   1st Qu.:-17.913  
+ Median :  3.685   Median : -3.0435   Median :  0.4348   Median : -5.250  
+ Mean   :  2.385   Mean   :  0.5525   Mean   :  2.7237   Mean   : -2.403  
+ 3rd Qu.: 17.924   3rd Qu.: 14.1957   3rd Qu.: 21.7337   3rd Qu.:  8.435  
+ Max.   : 50.000   Max.   : 50.0000   Max.   : 50.0000   Max.   : 50.000  
+      V17                V18               V19               V20         
+ Min.   :-34.4348   Min.   :-36.435   Min.   :-35.739   Min.   :-27.087  
+ 1st Qu.:-17.0543   1st Qu.:-19.696   1st Qu.:-19.120   1st Qu.:-19.397  
+ Median : -0.6956   Median : -5.652   Median : -3.815   Median : -2.185  
+ Mean   : -1.3895   Mean   : -3.584   Mean   : -3.570   Mean   : -2.415  
+ 3rd Qu.:  9.1413   3rd Qu.:  6.598   3rd Qu.:  8.679   3rd Qu.:  8.489  
+ Max.   : 50.0000   Max.   : 50.000   Max.   : 50.000   Max.   : 49.978  
+      V21               V22               V23               V24         
+ Min.   :-29.304   Min.   :-29.174   Min.   :-25.565   Min.   :-33.783  
+ 1st Qu.: -9.234   1st Qu.:-14.495   1st Qu.:-12.223   1st Qu.: -9.245  
+ Median :  3.457   Median : -5.609   Median :  6.832   Median :  3.538  
+ Mean   :  2.636   Mean   :  1.337   Mean   :  4.915   Mean   :  3.788  
+ 3rd Qu.: 15.620   3rd Qu.: 16.364   3rd Qu.: 14.799   3rd Qu.: 17.571  
+ Max.   : 50.000   Max.   : 49.978   Max.   : 49.978   Max.   : 49.978  
+\end{Soutput}
+\end{Schunk}
+\end{table}
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm]{cor_min.pdf}
-\caption{Bodový graf minimální hodnoty v korelační matici}
+
+\includegraphics[width=10cm]{cov_matrix_graph_heatmap.pdf}
+\caption{Heatmap graf korelační matice}
+
+\includegraphics[width=10cm]{cov_matrix_grap.pdf}
+\caption{Graf korelační matice}
 \end{figure}
-\clearpage
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=10cm]{cov_matrix_graph_ggqqplot}
+\caption{GGQQPlot graf korelační matice}
+
+\end{figure}
 
 %% Testování v kontingenčních tabulkách
 \section{Testování v kontingenčních tabulkách}
-\subsection{Chí kvadrát test}
-\begin{Schunk}
-\begin{Soutput}
-	Chi-squared test for given probabilities
+\subsection{Pearsonův Chí-kvadrát test}
 
-data:  smoke.freq
-X-squared = 24.076, df = 3, p-value = 2.408e-05
-\end{Soutput}
+\begin{Schunk}
 \begin{Soutput}
 	Pearson's Chi-squared test
 
-data:  kontTab
-X-squared = 13.062, df = 6, p-value = 0.04206
-\end{Soutput}
-\begin{Soutput}
-	Pearson's Chi-squared test
-
-data:  kontTabSpojena
-X-squared = 9.7686, df = 3, p-value = 0.02064
+data:  data_czech$new_tests and data_czech$new_cases
+X-squared = 147356, df = 146982, p-value = 0.245
 \end{Soutput}
 \end{Schunk}
-\section{Lineární regrese}
-\begin{Schunk}
-\begin{Soutput}
-Call:
-lm(formula = DATALregrese$lRegreseCur2 ~ DATALregrese$lRegreseCur1)
 
-Coefficients:
-              (Intercept)  DATALregrese$lRegreseCur1  
-                 0.007772                   0.510974  
-\end{Soutput}
-\begin{Soutput}
-Call:
-lm(formula = DATALregrese$lRegreseCur2 ~ DATALregrese$lRegreseCur1)
+%% Páry
+\section{Pairs}
 
-Residuals:
-       Min         1Q     Median         3Q        Max 
--0.0292594 -0.0001743  0.0003621  0.0011365  0.0035889 
-
-Coefficients:
-                           Estimate Std. Error t value Pr(>|t|)    
-(Intercept)               0.0077722  0.0222232    0.35    0.727    
-DATALregrese$lRegreseCur1 0.5109742  0.0008342  612.52   <2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.003296 on 99 degrees of freedom
-Multiple R-squared:  0.9997,	Adjusted R-squared:  0.9997 
-F-statistic: 3.752e+05 on 1 and 99 DF,  p-value: < 2.2e-16
-\end{Soutput}
-\end{Schunk}
 \begin{figure}[H]
-\includegraphics[width=10cm]{lregresePlot.pdf}
-\caption{Graf lineární regrese}
+\centering
+\includegraphics[width=10cm]{pairs_graph.pdf}
+\caption{Grafy párů}
 \end{figure}
+
 \clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

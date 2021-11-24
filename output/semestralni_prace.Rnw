@@ -59,6 +59,8 @@ library(stringi)
 library(Cairo)
 library(MASS)
 library(e1071)
+library("plot3D")
+library("ggpubr")
 @
 \label{uvod}
 
@@ -195,80 +197,6 @@ print(xtable(tableMatrix,
       include.rownames=TRUE,
       caption.placement="bottom"
       )
-
-# old
-POCETUDAJU=9
-myMatrix= matrix(nrow = 9,ncol = 10) # vytvoří se matice pro tabulku
-curencies=forVariables[-1]
-maxSkewness=.Machine$double.xmin
-columnMaxSkewness=0
-minSkewness=.Machine$integer.max
-columnMinSkewness=0
-minMeanHigest=.Machine$integer.max
-minMeanHiger=.Machine$integer.max
-columnHigest=0
-columnHiger=0
-colnames(myMatrix)<-curencies # pojmenování sloupců matice
-rownames(myMatrix)<-c("prumer", "modus","median","max","min","skewness","kurtosis","deviation","interquartile") # pojmenování řádků matice
-#prumer
-for (i in seq(1,length(curencies),by=1)) {
-   myMatrix[1,i]<-mean(eval(as.name(paste(curencies[i],sep ="_", "vector"))))
-   if (minMeanHigest>mean(eval(as.name(paste(curencies[i],sep ="_", "vector"))))) {
-      minMeanHigest<-mean(eval(as.name(paste(curencies[i],sep ="_", "vector"))))
-      columnHigest<-i
-   }else{
-      if (minMeanHiger>mean(eval(as.name(paste(curencies[i],sep ="_", "vector"))))) {
-            minMeanHiger<-mean(eval(as.name(paste(curencies[i],sep ="_", "vector"))))
-            columnHiger<-i 
-      }
-   }
-}
-#modus
-for (i in seq(1,length(curencies),by=1)) {
-   myMatrix[2,i]<-getmode(eval(as.name(paste(curencies[i],sep ="_", "vector"))))
-}
-#median
-for (i in seq(1,length(curencies),by=1)) {
-   myMatrix[3,i]<-median(eval(as.name(paste(curencies[i],sep ="_", "vector"))))
-}
-#max
-for (i in seq(1,length(curencies),by=1)) {
-   myMatrix[4,i]<-max(eval(as.name(paste(curencies[i],sep ="_", "vector"))))
-}
-#min
-for (i in seq(1,length(curencies),by=1)) {
-   myMatrix[5,i]<-min(eval(as.name(paste(curencies[i],sep ="_", "vector"))))
-}
-#rozdeleni sikmost
-for (i in seq(1,length(curencies),by=1)) {
-   myMatrix[6,i]<-skewness(eval(as.name(paste(curencies[i],sep ="_", "vector"))))
-   if (maxSkewness<skewness(eval(as.name(paste(curencies[i],sep ="_", "vector"))))) {
-   maxSkewness<-skewness(eval(as.name(paste(curencies[i],sep ="_", "vector"))))
-   columnMaxSkewness<-i
-}
-   if (minSkewness>skewness(eval(as.name(paste(curencies[i],sep ="_", "vector"))))) {
-   minSkewness<-skewness(eval(as.name(paste(curencies[i],sep ="_", "vector"))))
-   columnMinSkewness<-i
-}
-}
-#rozdeleni spicatost
-for (i in seq(1,length(curencies),by=1)) {
-   myMatrix[7,i]<-kurtosis(eval(as.name(paste(curencies[i],sep ="_", "vector"))))
-}
-#smerodatna odchylka
-for (i in seq(1,length(curencies),by=1)) {
-   myMatrix[8,i]<-sd(eval(as.name(paste(curencies[i],sep ="_", "vector"))))
-}
-#interkvartilní rozsah
-for (i in seq(1,length(curencies),by=1)) {
-   myMatrix[9,i]<-IQR(eval(as.name(paste(curencies[i],sep ="_", "vector"))))
-}
-# print(xtable(myMatrix,
-#             caption="Části popisné statistiky aplikované na data",
-#             label="table:popisStat"),
-#      include.rownames=TRUE,
-#      caption.placement="bottom"
-#      )
 @
 \clearpage
 
@@ -280,17 +208,17 @@ for (i in seq(1,length(curencies),by=1)) {
 
 <<histogram_new_cases_smoothed, echo=FALSE,results=hide>>=
 CairoPDF("histogram_new_cases_smoothed.pdf")
-hist(data_czech$new_cases_smoothed, main = "Histogram new cases smoothed", xlab="New cases smoothed", ylab="Frekvence", col = "#57ADC3", border = "black")
+hist(log1p(data_czech$new_cases_smoothed), main = "Histogram zlog. klouzavého průměru nových případů", xlab="Zlog. klouzavý průměr nových případů", ylab="Frekvence", xlim = c(0,10), ylim = c(0,400), col = "#57ADC3", border = "black")
 @
 \includegraphics[width=10cm]{histogram_new_cases_smoothed.pdf}
-\caption{Histogram nových případů smoothed}
+\caption{Histogram zlog. klouzavý průměr nových případů}
 
 <<histogram_new_cases_per_million, echo=FALSE,results=hide>>=
 CairoPDF("histogram_new_cases_per_million.pdf")
-hist(data_czech$new_cases_smoothed, main = "Histogram nových případů na milión", xlab="Nové případy na milión", ylab="Frekvence", col = "#57ADC3", border = "black")
+hist(log1p(data_czech$new_cases_smoothed), main = "Histogram zlog. nových případů na milión", xlab="Zlog. nové případy na milión", ylab="Frekvence", xlim = c(0,10), ylim = c(0,400), col = "#57ADC3", border = "black")
 @
 \includegraphics[width=10cm]{histogram_new_cases_per_million.pdf}
-\caption{Histogram nových případů na milión}
+\caption{Histogram zlog. nových případů na milión}
 
 \end{figure}
 \begin{figure}[H]
@@ -298,17 +226,17 @@ hist(data_czech$new_cases_smoothed, main = "Histogram nových případů na mili
 
 <<histogram_new_cases_smoothed_per_million, echo=FALSE,results=hide>>=
 CairoPDF("histogram_new_cases_smoothed_per_million.pdf")
-hist(data_czech$new_cases_smoothed_per_million, main = "Histogram nových případů na milión smoothed", xlab="Nové případy na milión", ylab="Frekvence", col = "#57ADC3", border = "black")
+hist(log1p(data_czech$new_cases_smoothed_per_million), main = "Histogram zlog. klouzavého průměru nových případů na milión", xlab="Zlog. klouzavý průměr nových případů na milión", ylab="Frekvence", xlim = c(0,10), ylim = c(0,400), col = "#57ADC3", border = "black")
 @
 \includegraphics[width=10cm]{histogram_new_cases_smoothed_per_million.pdf}
-\caption{Histogram nových případů na milión smoothed}
+\caption{Histogram zlog. klouzavého průměru nových případů na milión}
 
 <<histogram_new_cases, echo=FALSE,results=hide>>=
 CairoPDF("histogram_hosp_patients.pdf")
-hist(data_czech$hosp_patients, main = "Histogram: Hospitalizovaní pacienti v ČR", xlab="Hospitalizovaní v ČR", ylab="Frekvence", col = "#57ADC3", border = "black",xlim = c(0,16000), las = 1, breaks = 8)
+hist(log1p(data_czech$hosp_patients), main = "Histogram hospitalizovaných pacientů v ČR", xlab="Hospitalizovaní pacienti v ČR", ylab="Frekvence", col = "#57ADC3", border = "black", xlim = c(0,10), ylim = c(0,400),, las = 1, breaks = 8)
 @
 \includegraphics[width=10cm]{histogram_hosp_patients.pdf}
-\caption{Histogram: Hospitalizovaní pacienti v ČR}
+\caption{Histogram hospitalizovaných pacientů v ČR}
 
 \end{figure}
 \begin{figure}[H]
@@ -354,8 +282,8 @@ histGerNewCases <- hist(log1p(data_austria$new_tests),
                         xlab = "Logaritmus z poctu novych testu")
 CairoPDF("histogram_new_cases_cz_de.pdf")
 
-plot(histCzNewCases, main = "Nové testy: Česko vs Německo", xlab = "Logaritmus z počtu nových testů", ylab = "Frekvence", col = rgb(0,0,1,1/4), ylim = c(0,220), xlim = c(7,15))  # first histogram
-plot(histGerNewCases, col = rgb(1,0,0,1/4),ylim = c(0,220), xlim = c(7,15), add = TRUE)
+plot(histCzNewCases, main = "Nové testy: Česko vs Německo", xlab = "Logaritmus z počtu nových testů", ylab = "Frekvence", col = rgb(0,0,1,1/4), ylim = c(0,220), xlim = c(7,16))  # first histogram
+plot(histGerNewCases, col = rgb(1,0,0,1/4),ylim = c(0,220), xlim = c(7,16), add = TRUE)
 legend("topright",
        legend = c("Česko", "Německo"),
        fill = c(rgb(0,0,1,1/4),rgb(1,0,0,1/4)),       # Color of the squares
@@ -432,7 +360,7 @@ plot(data_czech$weekly_hosp_admissions, pch = 4, main="Bodový graf vývoje týd
 
 <<bodovy_positive_rate, echo=FALSE,results=hide>>=
 CairoPDF("bodovy_positive_rate.pdf")
-plot(data_czech$positive_rate, pch = 4, main="Bodový graf vývoje pozitivity testů v čase", ylab="Pozitivita testů", xlab="Počet dnů od 7. 3. 2020")
+plot(data_czech$positive_rate, pch = 4, main="Bodový graf vývoje pozitivity testů v čase", ylab="Pozitivita testů", xlab="Počet dnů od 7. 3. 2020", xlim=c(150, 650))
 @
 \includegraphics[width=10cm]{bodovy_positive_rate.pdf}
 \caption{Bodový graf pozitivity testů}
@@ -443,7 +371,7 @@ plot(data_czech$positive_rate, pch = 4, main="Bodový graf vývoje pozitivity te
 
 <<bodovy_new_vaccinations, echo=FALSE,results=hide>>=
 CairoPDF("bodovy_new_vaccinations.pdf")
-plot(data_czech$new_vaccinations, pch = 4, main="Bodový graf vývoje nových očkování v čase", ylab="Nově očkovaní", xlab="Počet dnů od 7. 3. 2020")
+plot(data_czech$new_vaccinations, pch = 4, main="Bodový graf vývoje nových očkování v čase", ylab="Nově očkovaní", xlab="Počet dnů od 7. 3. 2020", xlim=c(280, 650))
 @
 \includegraphics[width=10cm]{bodovy_new_vaccinations.pdf}
 \caption{Bodový graf nových očkování}
@@ -459,200 +387,378 @@ plot(data_czech$excess_mortality, pch = 4, main="Bodový graf vývoje smrtnosti 
 \subsection{Boxplot}
 \begin{figure}[H]
 \centering
-<<boxplot_graf, echo=FALSE,results=hide>>=
-pomocnaBox1=eval(as.name(paste(curencies[1],sep ="_", "vector")))
-pomocnaBox2=eval(as.name(paste(curencies[2],sep ="_", "vector")))
-CairoPDF("boxplot_graf.pdf")
-boxplot(pomocnaBox1,pomocnaBox2, main = paste("Boxplot pro srovnání kvartilů měn", curencies[1], "a", curencies[2]),names=c(curencies[1],curencies[2]), col=(c("orange","lightblue")))
+
+<<boxplot_new_cases_per_million, echo=FALSE,results=hide>>=
+CairoPDF("boxplot_new_cases_per_million.pdf")
+boxplot(data_czech$new_cases_per_million, main="Nové případy na milión", col="#57ADC3")
 @
-\includegraphics[width=10cm]{boxplot_graf.pdf}
-\caption{Boxplot graf pro první dvě měny}
+\includegraphics[width=10cm]{boxplot_new_cases_per_million.pdf}
+\caption{Boxplot graf pro nové případy na milión}
+
+<<boxplot_reproduction_rate, echo=FALSE,results=hide>>=
+CairoPDF("boxplot_reproduction_rate.pdf")
+boxplot(data_czech$reproduction_rate, main="Reprodukční číslo", col="#57ADC3")
+@
+\includegraphics[width=10cm]{boxplot_reproduction_rate.pdf}
+\caption{Boxplot graf pro reprodukční číslo}
 \end{figure}
-\subsection{Hexbin}
+
 \begin{figure}[H]
 \centering
-<<hexbin_graf_max, echo=FALSE,results=hide>>=
-pomocnaHexMax=as.name(paste(curencies[columnMaxSkewness],sep ="_", "vector"))
-dataHexbinF <- data.frame(y = c(rnorm(101)),x = c(eval(pomocnaHexMax)))
-rf <- colorRampPalette(rev(brewer.pal(12, 'Set3')))
-CairoPDF("hexbin_graf_max.pdf")
-hexbinplot(y ~ x, dataHexbinF, colramp=rf, main=paste("Graf kurzů, které jsou stejné pro měnu ", curencies[columnMaxSkewness]), xlab="Cena vůči koruně", ylab="")
+
+<<boxplot_log_new_deaths, echo=FALSE,results=hide>>=
+CairoPDF("boxplot_log_new_deaths.pdf")
+boxplot(log1p(data_czech$new_deaths), main="Česko zlogaritmované nové smrti", col="#57ADC3")
 @
-\includegraphics[width=10cm]{hexbin_graf_max.pdf}
-\caption{Hexbin graf měny s maximální hodnotou šikmosti}
-\centering
-<<hexbin_graf_min, echo=FALSE,results=hide>>=
-pomocnaHexMin=as.name(paste(curencies[columnMinSkewness],sep ="_", "vector"))
-dataHexbinF <- data.frame(y = c(rnorm(101)),x = c(eval(pomocnaHexMin)))
-rf <- colorRampPalette(rev(brewer.pal(12, 'Set3')))
-CairoPDF("hexbin_graf_min.pdf")
-hexbinplot(y ~ x, dataHexbinF, colramp=rf, main=paste("Graf kurzů, které jsou stejné pro měnu ", curencies[columnMinSkewness]), xlab="Cena vůči koruně", ylab="")
-@
-\includegraphics[width=10cm]{hexbin_graf_min.pdf}
-\caption{Hexbin graf měny s minimální hodnotou šikmosti}
+\includegraphics[width=10cm]{boxplot_log_new_deaths.pdf}
+\caption{Boxplot graf pro zlogaritmované nové smrti}
 \end{figure}
+
 \subsection{3D graf}
 \begin{figure}[H]
 \centering
-<<3D_graf_max, echo=FALSE,results=hide>>=
-z <- eval(as.name(paste(curencies[columnMaxSkewness],sep ="_", "vector")))
-x <- cos(z)
-y <- sin(z)
-CairoPDF("3D_graf_max.pdf")
-scatterplot3d(x, y, z, highlight.3d=TRUE, col.axis="blue",
-col.grid="lightblue", main=paste("Vývoj ceny",curencies[columnMaxSkewness]), pch=20,xlab="",ylab="",zlab="Cena vůči koruně")
+
+<<3D_graf_new_cases_new_tests_total_cases, echo=FALSE,results=hide>>=
+CairoPDF("3D_graf_new_cases_new_tests_total_cases.pdf")
+scatter3D(data_czech$new_cases, data_czech$new_tests, data_czech$total_cases, xlab="Nové případy", ylab="Nové testy", zlab="Celkové případy", main="Graf počtu případů a počtu testů", pch=4)
 @
-\includegraphics[width=10cm]{3D_graf_max.pdf}
-\caption{3D graf graf měny s maximální hodnotou šikmosti}
+\includegraphics[width=10cm]{3D_graf_new_cases_new_tests_total_cases.pdf}
+\caption{3D graf počtu případů a počtu testů}
+
+<<3D_graf_log_new_cases_new_tests_total_cases, echo=FALSE,results=hide>>=
+CairoPDF("3D_graf_log_new_cases_new_tests_total_cases.pdf")
+scatter3D(log1p(data_czech$new_cases), log1p(data_czech$new_tests), log1p(data_czech$total_cases), xlab="Zlog. nové případy", ylab="Zlog. nové testy", zlab="Zlog. celkové případy", main="Graf zlogaritmovaného počtu případů a počtu testů", pch=4)
+@
+\includegraphics[width=10cm]{3D_graf_log_new_cases_new_tests_total_cases.pdf}
+\caption{3D graf zlogaritmovaných počtu případů a počtu testů}
+
 \end{figure}
 \begin{figure}[H]
-\centering
-<<3D_graf_min, echo=FALSE,results=hide>>=
-z <- eval(as.name(paste(curencies[columnMinSkewness],sep ="_", "vector")))
-x <- cos(z)
-y <- sin(z)
-CairoPDF("3D_graf_min.pdf")
-scatterplot3d(x, y, z, highlight.3d=TRUE, col.axis="blue",
-col.grid="lightblue", main=paste("Vývoj ceny",curencies[columnMinSkewness]), pch=20,xlab="",ylab="",zlab="Cena vůči koruně")
+
+<<3D_graf_new_cases_new_tests_new_vaccinations, echo=FALSE,results=hide>>=
+CairoPDF("3D_graf_new_cases_new_tests_new_vaccinations.pdf")
+scatter3D(data_czech$new_cases, data_czech$new_tests, data_czech$new_vaccinations, xlab="Nové případy", ylab="Nové testy", zlab="Nová očkování", main="Graf počtu případů a počtu očkování", pch=4)
 @
-\includegraphics[width=10cm]{3D_graf_min.pdf}
-\caption{3D graf graf měny s minimální hodnotou šikmosti}
+\includegraphics[width=10cm]{3D_graf_new_cases_new_tests_new_vaccinations.pdf}
+\caption{3D graf počtu případů a počtu nových očkování}
+
+<<3D_graf_new_cases, echo=FALSE,results=hide>>=
+CairoPDF("3D_graf_new_cases.pdf")
+scatter3D(c(1:576), c(1:576), log1p(data_czech$total_cases), xlab="", ylab="", zlab="Zlog. nové případy", main="Graf počtu nových případů", pch=4)
+@
+\includegraphics[width=10cm]{3D_graf_new_cases.pdf}
+\caption{3D graf počtu nových případů}
+
 \end{figure}
+\begin{figure}[H]
+
+<<3D_graf_reproduction_rate, echo=FALSE,results=hide>>=
+CairoPDF("3D_graf_reproduction_rate.pdf")
+scatter3D(c(1:576), c(1:576), (data_czech$reproduction_rate), xlab="", ylab="", zlab="Reprodukční číslo", main="Graf vývoje reprodukčního čísla", pch=4)
+@
+\includegraphics[width=10cm]{3D_graf_reproduction_rate.pdf}
+\caption{3D graf reprodukčního čísla}
+
+\end{figure}
+
+\subsection{Hexbin}
+\begin{figure}[H]
+\centering
+
+<<hexbin_graf_log_new_cases_new_deaths, echo=FALSE,results=hide>>=
+bin <- hexbin(log1p(data_czech$new_cases), data_czech$new_deaths, xbins = 40)
+my_colors = colorRampPalette(rev(brewer.pal(11,'Spectral')))
+CairoPDF("hexbin_graf_log_new_cases_new_deaths.pdf")
+plot(bin, main = "Graf zlog. nových případů a nových úmrtí", colramp=my_colors, legend = F, xlab="Zlog. nové případy", ylab="Nová úmrtí")
+@
+\includegraphics[width=10cm]{hexbin_graf_log_new_cases_new_deaths.pdf}
+\caption{Hexbin graf nových zlog. nových případů a nových úmrtí}
+
+\end{figure}
+\clearpage
+
 \subsection{Chernoff faces}
 \begin{figure}[H]
 \centering
-<<faces_graf, echo=FALSE>>=
-CairoPDF("faces_graf")
-faces(myMatrix[,1:10])
+
+<<faces_graf_covid, echo=FALSE>>=
+countries <- c("Czechia", "Slovakia", "Germany", "Poland", "Austria")
+countriesMeanNewCases <- c(mean(data_czech$new_cases),
+                             mean(data_slovakia$new_cases),
+                             mean(data_germany$new_cases),
+                             mean(data_poland$new_cases),
+                             mean(data_austria$new_cases))
+
+countriesMeanTotalCases <- c(mean(data_czech$total_cases),
+                             mean(data_slovakia$total_cases),
+                             mean(data_germany$total_cases),
+                             mean(data_poland$total_cases),
+                             mean(data_austria$total_cases))
+
+countriesPopulation <- c(mean(data_czech$population),
+                             mean(data_slovakia$population),
+                             mean(data_germany$population),
+                             mean(data_poland$population),
+                             mean(data_austria$population))
+CairoPDF("faces_graf_covid.pdf")
+tabulka <- data.frame(countries, countriesMeanNewCases, countriesMeanTotalCases, countriesPopulation)
+
+faces(tabulka[,-1], labels = tabulka[,1])
 @
-\includegraphics[width=10cm]{faces_graf.pdf}
+\includegraphics[width=10cm]{faces_graf_covid.pdf}
 \caption{Chernoff faces graf tabulky popisné statistiky}
+\end{figure}
+\clearpage
+
+\subsection{QQPlot}
+\begin{figure}[H]
+\centering
+
+<<qqplot_graph_new_cases_new_deaths, echo=FALSE>>=
+CairoPDF("qqplot_graph_new_cases_new_deaths.pdf")
+qqplot(data_czech$new_cases,data_czech$new_deaths, pch=4, main="Graf nových případů a nových úmrtí", xlab="Nové případy", ylab="Nová úmrtí")
+@
+\includegraphics[width=10cm]{qqplot_graph_new_cases_new_deaths.pdf}
+\caption{QQPlot graf nových případů a nových úmrtí}
+
+<<qqplot_graph_new_tests_new_cases, echo=FALSE>>=
+CairoPDF("qqplot_graph_new_tests_new_cases.pdf")
+qqplot(data_czech$new_tests,data_czech$new_cases, pch=4, main="Graf nových testů a nových případů", xlab="Nové testy", ylab="Nové případy")
+@
+\includegraphics[width=10cm]{qqplot_graph_new_tests_new_cases.pdf}
+\caption{QQPlot graf nových testů a nových případů}
+
 \end{figure}
 \clearpage
 
 %% Testování statistických hypotéz
 \section{Testování statistických hypotéz}
+
+% old
 <<testHypVar, echo=FALSE,results=hide>>=
-TestHypCur1 = eval(as.name(paste(curencies[1],sep ="_", "vector")))
-TestHypCur2 = eval(as.name(paste(curencies[2],sep ="_", "vector")))
+p1 = data_czech$new_cases[1:288]
+p2 = data_czech$new_cases[289:576]
 @
 \subsection{Jednovýběrový Studentův test vůči střední hodnotě}
-<<testStrH, echo=FALSE>>=
-t.test(TestHypCur1, mu=20)
+<<testStrH_new_cases, echo=FALSE>>=
+t.test(data_czech$new_cases, mu = 3300)
 @
+
+<<testStrH_new_cases_smoothed, echo=FALSE>>=
+t.test(data_czech$new_cases_smoothed)
+@
+
+<<testStrH_new_cases_per_million, echo=FALSE>>=
+t.test(data_czech$new_cases_per_million)
+@
+
+\clearpage
+
+<<testStrH_new_cases_smoothed_per_million, echo=FALSE>>=
+t.test(data_czech$new_cases_smoothed_per_million)
+@
+
+<<testStrH_hosp_patients, echo=FALSE>>=
+t.test(data_czech$hosp_patients)
+@
+
+<<testStrH_hosp_patients_per_million, echo=FALSE>>=
+t.test(data_czech$hosp_patients_per_million)
+@
+
+\clearpage
+
 \subsection{Dvouvýběrový Studentův test}
-<<testDvouVyber, echo=FALSE>>=
-t.test(TestHypCur1,TestHypCur2)
+<<testDvouVyber_new_cases, echo=FALSE>>=
+t.test(p1,p2)
 @
+
+<<testDvouVyber_czechia_slovakia_new_cases_per_million, echo=FALSE>>=
+t.test(data_czech$new_cases_per_million, data_slovakia$new_cases_per_million, var.equal = FALSE)
+@
+
+<<testDvouVyber_czechia_germany_new_cases_per_million, echo=FALSE>>=
+t.test(data_czech$new_cases_per_million, data_germany$new_cases_per_million, var.equal = TRUE)
+@
+
+\clearpage
+
+<<testDvouVyber_czechia_poland_new_cases_per_million, echo=FALSE>>=
+t.test(data_czech$new_cases_per_million, data_poland$new_cases_per_million, var.equal = TRUE)
+@
+
+<<testDvouVyber_czechia_austria_new_cases_per_million, echo=FALSE>>=
+t.test(data_czech$new_cases_per_million, data_austria$new_cases_per_million, var.equal = TRUE)
+@
+
+\subsection{Wilcox test}
+
+<<testWilcox_czechia_slovakia_new_cases_per_million, echo=FALSE>>=
+wilcox.test(data_czech$new_cases_per_million, data_slovakia$new_cases_per_million)
+@
+
+<<testWilcox_czechia_germany_new_cases_per_million, echo=FALSE>>=
+wilcox.test(data_czech$new_cases_per_million, data_germany$new_cases_per_million)
+@
+
+\clearpage
+
 \subsection{Fisherův test}
-<<testFis, echo=FALSE>>=
-var.test(TestHypCur1,TestHypCur2)
+
+<<testFis_czechia_slovakia_new_cases_per_million, echo=FALSE>>=
+var.test(lm(data_czech$new_cases_per_million ~ 1), lm(data_slovakia$new_cases_per_million ~ 1))
+@
+
+\subsection{Shapiro Wilk test}
+
+<<testShapiroWilk_new_cases, echo=FALSE>>=
+shapiro.test(data_czech$new_cases)
+@
+
+<<testShapiroWilk_new_tests, echo=FALSE>>=
+shapiro.test(data_czech$new_tests)
 @
 
 %% ANOVA
 \section{ANOVA}
 
+<<anova, echo=FALSE>>=
+anova <- aov(data_czech$new_tests~data_czech$new_cases+data_czech$new_deaths)
+summary(anova)
+@
+
+\begin{figure}[H]
+\centering
+
+<<anova_graph, echo=FALSE>>=
+CairoPDF("anova_graph.pdf")
+plot(anova, 1, pch=4)
+plot(anova, 2)
+plot(anova, 3)
+plot(anova, 4)
+plot(anova, 5)
+plot(anova, 6)
+@
+\includegraphics[width=10cm]{anova_graph.pdf}
+\caption{Anova graf nových testů, případů a úmrtí}
+\end{figure}
+
+\clearpage
+%% Variance
+\section{Variance}
+<<variance, echo=FALSE>>=
+varr <- var(data_czech$new_tests, data_czech$new_cases, na.rm = TRUE)
+summary(varr)
+@
+
 %% Korelace
 \section{Korelace}
 \subsection{Korelační matice}
 \begin{table}[H]
-<<cor_matice, echo=FALSE>>=
-corMatice<-cor(maticeMen)
-corMaxValue=-1
-corMinValue=1
-iCorMaxValue=0
-jCorMaxValue=0
-iCorMinValue=0
-jCorMinValue=0
-for (i in 1:10) {
-  for (j in 1:10) {
-   if (corMaxValue<corMatice[i,j]&&corMatice[i,j]!=1) {
-         corMaxValue<-corMatice[j,i]
-         iCorMaxValue=i
-         jCorMaxValue=j
-   }
-   if (corMinValue>corMatice[i,j]) {
-         corMinValue<-corMatice[i,j]
-         iCorMinValue=i
-         jCorMinValue=j
-   }
-  }
-}
-print(corMatice)
+
+<<cor_matrix, echo=FALSE>>=
+matice <- matrix(data_czech$new_cases, ncol = 24)
+corr <- cor(matice, method = "pearson")
+corr <- cor(matice, method = "kendall")
+corr <- cor(matice, method = "spearman")
+corr
+summary(corr)
+col <- colorRampPalette(c("blue", "white", "red"))(20)
+print(matice)
 @
-\caption{Korelační matice}
 \end{table}
-\subsection{Bodové grafy hodnot z korelační matice}
+
 \begin{figure}[H]
 \centering
-<<cor_max, echo=FALSE,results=hide>>=
-CairoPDF("cor_max.pdf")
-corXMax=as.name(paste(curencies[iCorMaxValue],sep ="_", "vector"))
-corYMas=as.name(paste(curencies[jCorMaxValue],sep ="_", "vector"))
-plot(eval(corXMax),eval(corYMas), main = paste("Graf závislosti ceny",curencies[jCorMaxValue], "na ceně", curencies[iCorMaxValue]),xlab=curencies[iCorMaxValue],ylab=curencies[jCorMaxValue])
-mtext(paste("Hodnota korelace pro tento graf je:", corMaxValue), adj=1, line=3, font=2)
+
+<<cor_matrix_graph_heatmap, echo=FALSE>>=
+CairoPDF("cor_matrix_gaph_heatmap.pdf")
+heatmap(x = corr, col = col, symm = TRUE)
 @
-\includegraphics[width=10cm]{cor_max.pdf}
-\caption{Bodový graf maximální hodnoty v korelační matici}
+\includegraphics[width=10cm]{cor_matrix.pdf}
+\caption{Heatmap graf korelační matice}
 \end{figure}
+
+%% Kovariance
+\section{Kovariance}
+\subsection{Kovarianční matice}
+\begin{table}[H]
+
+<<cov_matrix, echo=FALSE>>=
+covv <- cov(matice, method = "pearson")
+covv <- cov(matice, method = "kendall")
+covv <- cov(matice, method = "spearman")
+summary(covv)
+col <- colorRampPalette(c("blue", "white", "red"))(20)
+@
+\end{table}
+
 \begin{figure}[H]
 \centering
-<<cor_min, echo=FALSE,results=hide>>=
-CairoPDF("cor_min.pdf")
-corXMax=as.name(paste(curencies[iCorMinValue],sep ="_", "vector"))
-corYMas=as.name(paste(curencies[jCorMinValue],sep ="_", "vector"))
-plot(eval(corXMax),eval(corYMas), main = paste("Graf závislosti ceny",curencies[jCorMinValue], "na ceně", curencies[iCorMinValue]),xlab=curencies[iCorMinValue],ylab=curencies[jCorMinValue])
-mtext(paste("Hodnota korelace pro tento graf je:", corMinValue), adj=1, line=3, font=2)
+
+<<cov_matrix_graph_heatmap, echo=FALSE>>=
+CairoPDF("cov_matrix_graph_heatmap.pdf")
+heatmap(x = covv, col = col, symm = TRUE)
 @
-\includegraphics[width=10cm]{cor_min.pdf}
-\caption{Bodový graf minimální hodnoty v korelační matici}
+\includegraphics[width=10cm]{cov_matrix_graph_heatmap.pdf}
+\caption{Heatmap graf korelační matice}
+
+<<cov_matrix_graph, echo=FALSE>>=
+CairoPDF("cov_matrix_grap.pdf")
+plot(corr, pch=4)
+@
+\includegraphics[width=10cm]{cov_matrix_grap.pdf}
+\caption{Graf korelační matice}
 \end{figure}
-\clearpage
+
+\begin{figure}[H]
+\centering
+<<cov_matrix_graph_ggqqplot, echo=FALSE>>=
+CairoPDF("cov_matrix_graph_ggqqplot.pdf")
+ggqqplot(data_czech$new_cases)
+@
+\includegraphics[width=10cm]{cov_matrix_graph_ggqqplot}
+\caption{GGQQPlot graf korelační matice}
+
+\end{figure}
 
 %% Testování v kontingenčních tabulkách
 \section{Testování v kontingenčních tabulkách}
-\subsection{Chí kvadrát test}
-<<kontTabulka, echo=FALSE,results=hide>>=
-levels(survey$Smoke)
-smoke.freq=c(51, 120, 20, 30)
-smoke.prob=c(.125,.65,.1,.125)
-kontTab=table(survey$Smoke,survey$Exer)
-kontTab[1,]<-c(40,6,5)
-kontTab[2,]<-c(70,22,28)
-kontTab[3,]<-c(15,2,3)
-kontTab[4,]<-c(15,10,5)
-kontTabSpojena=cbind(kontTab[,"Freq"],kontTab[,"None"]+kontTab[,"Some"])
+\subsection{Pearsonův Chí-kvadrát test}
+
+<<testPearsonChiSquared_new_tests_new_cases, echo=FALSE>>=
+chisq.test(data_czech$new_tests, data_czech$new_cases)
 @
-<<prvniTabTests, echo=FALSE>>=
-chisq.test(smoke.freq,p=smoke.prob)
-chisq.test(kontTab)
-chisq.test(kontTabSpojena)
-@
-\section{Lineární regrese}
-<<lregreseCount, echo=FALSE,results=hide>>=
-lRegreseCur1Val = eval(as.name(paste(curencies[iCorMaxValue],sep ="_", "vector")))
-lRegreseCur2Val = eval(as.name(paste(curencies[jCorMaxValue],sep ="_", "vector")))
-DATALregrese <- data.frame("lRegreseCur1" = lRegreseCur1Val, "lRegreseCur2" = lRegreseCur2Val)
-lregrese <- lm(DATALregrese$lRegreseCur2~DATALregrese$lRegreseCur1)
-predicate_int <- predict(lregrese, interval = "prediction", level=0.95)
-pass_reliability <- predict(lregrese, interval = "confidence", level = 0.95)
-@
-<<lregreseText, echo=FALSE>>=
-lregrese
-summary(lregrese)
-@
+
+%% Páry
+\section{Pairs}
+
 \begin{figure}[H]
-<<lregresePlot, echo=FALSE,results=hide>>=
-CairoPDF("lregresePlot.pdf")
-lregrese
-plot(DATALregrese)
-abline(lregrese)
-lines(DATALregrese[,1], pass_reliability[,2], type = "l", col="red")
-lines(DATALregrese[,1], pass_reliability[,3], type = "l", col="green")
+\centering
+<<pairs_graph, echo=FALSE>>=
+df1 <- data.frame(data_czech[1],
+                 data_czech[6],
+                 data_czech[7],
+                 data_czech[9],
+                 data_czech[10],
+                 data_czech[12],
+                 data_czech[13],
+                 data_czech[15],
+                 data_czech[16],
+                 data_czech[18],
+                 data_czech[19],
+                 data_czech[20],
+                 data_czech[21],
+                 data_czech[27],
+                 data_czech[40])
+
+CairoPDF("pairs_graph.pdf")
+pairs(df1)
 @
-\includegraphics[width=10cm]{lregresePlot.pdf}
-\caption{Graf lineární regrese}
+\includegraphics[width=10cm]{pairs_graph.pdf}
+\caption{Grafy párů}
 \end{figure}
+
 \clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

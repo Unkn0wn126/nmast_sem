@@ -32,13 +32,6 @@ mean(data_czech$new_cases_smoothed_per_million)
 mean(data_czech$hosp_patients, na.rm = TRUE)
 mean(data_czech$hosp_patients_per_million, na.rm = TRUE)
 
-getmode(data_czech$new_cases)
-getmode(data_czech$new_cases_smoothed)
-getmode(data_czech$new_cases_per_million)
-getmode(data_czech$new_cases_smoothed_per_million)
-getmode(data_czech$hosp_patients, na.rm = TRUE)
-getmode(data_czech$hosp_patients_per_million, na.rm = TRUE)
-
 median(data_czech$new_cases)
 median(data_czech$new_cases_smoothed)
 median(data_czech$new_cases_per_million)
@@ -89,10 +82,10 @@ hist(data_czech$new_cases_smoothed)
 hist(data_czech$new_cases_per_million)
 hist(data_czech$new_cases_smoothed_per_million)
 hist(data_czech$hosp_patients_per_million)
-hist(data_czech$hosp_patients, main = "Histogram: Hospitalizovaní pacienti v ČR",
-     ,xlab = "Hospitalizovaní v ČR", border = "red", col = "yellow",xlim = c(0,16000), las = 1, breaks = 8)
+hist(data_czech$new_cases, main = "Histogram: Hospitalizov?ni pacienti v ?R",
+     ,xlab = "Hospitalizovan? v CR", border = "red", col = "yellow",xlim = c(0,16000), las = 1, breaks = 8)
 
-#Histogram nově nakažených
+#Histogram nov? naka?en?ch
 histNewTests <- hist(log1p(data_czech$new_tests),
                      main = "Nove testovani v Cesku",
                      xlab = "Logaritmus z poctu nove testovanych",
