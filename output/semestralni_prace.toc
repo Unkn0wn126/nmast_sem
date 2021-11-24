@@ -1,0 +1,30 @@
+\babel@toc {czech}{}\relax 
+\babel@toc {czech}{}\relax 
+\babel@toc {czech}{}\relax 
+\contentsline {section}{Seznam obr\'azk\r {u}}{3}{section*.3}%
+\contentsline {section}{Seznam tabulek}{4}{section*.4}%
+\contentsline {section}{Úvod}{5}{section*.5}%
+\contentsline {section}{\numberline {1}Popis dat}{6}{section.1}%
+\contentsline {section}{\numberline {2}Popisná statistika}{7}{section.2}%
+\contentsline {section}{\numberline {3}Základní grafy}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Histogram}{9}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Bodový graf}{13}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Boxplot}{18}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Hexbin}{19}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}3D graf}{20}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Chernoff faces}{21}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Testování statistických hypotéz}{22}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Jednovýběrový Studentův test vůči střední hodnotě}{22}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Dvouvýběrový Studentův test}{22}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Fisherův test}{22}{subsection.4.3}%
+\contentsline {section}{\numberline {5}ANOVA}{23}{section.5}%
+\contentsline {section}{\numberline {6}Korelace}{24}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Korelační matice}{24}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Bodové grafy hodnot z korelační matice}{25}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Testování v kontingenčních tabulkách}{26}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Chí kvadrát test}{26}{subsection.7.1}%
+\contentsline {section}{\numberline {8}Lineární regrese}{27}{section.8}%
+\contentsline {section}{Závěr}{29}{section*.25}%
+\contentsline {section}{Použitá literatura}{30}{section*.26}%
+\contentsline {section}{Seznam příloh}{31}{section*.27}%
+\contentsline {section}{Příloha~A}{32}{section*.28}%

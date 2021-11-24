@@ -64,22 +64,22 @@
 %% Popisná statistika
 \section{Popisná statistika}
 % latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Mon Nov 22 21:08:37 2021
+% Wed Nov 24 13:36:42 2021
 \begin{table}[ht]
 \centering
-\begin{tabular}{rllllll}
+\begin{tabular}{rrrrrrr}
   \hline
- & Nové případy & Nové případy smoothed & Nové případy na milion & Nové případy na milion smoothed & Hospitalizovaní pacienti & Hospitalizovaní pacienti na milion \\ 
+ & n\_p & n\_p\_s & n\_p\_n\_m & n\_p\_n\_m\_s & h\_p & h\_p\_n\_m \\ 
   \hline
-prumer &  &  &  &  &  &  \\ 
-  modus &  &  &  &  &  &  \\ 
-  median &  &  &  &  &  &  \\ 
-  max &  &  &  &  &  &  \\ 
-  min &  &  &  &  &  &  \\ 
-  skewness &  &  &  &  &  &  \\ 
-  kurtosis &  &  &  &  &  &  \\ 
-  deviation &  &  &  &  &  &  \\ 
-  interquartile &  &  &  &  &  &  \\ 
+prumer & 2940.58 & 2936.89 & 274.19 & 273.85 & 2370.49 & 221.03 \\ 
+  modus & 75.00 & 57.57 & 6.99 & 5.37 & 69.00 & 6.43 \\ 
+  median & 416.00 & 422.29 & 38.79 & 39.38 & 339.00 & 31.61 \\ 
+  max & 17773.00 & 12954.86 & 1657.22 & 1207.96 & 9509.00 & 886.66 \\ 
+  min & -2214.00 & 2.71 & -206.44 & 0.25 & 0.00 & 0.00 \\ 
+  skewness & 1.55 & 1.16 & 1.55 & 1.16 & 0.86 & 0.86 \\ 
+  kurtosis & 1.38 & -0.07 & 1.38 & -0.07 & -0.86 & -0.86 \\ 
+  deviation & 4277.10 & 3876.20 & 398.81 & 361.43 & 2973.01 & 277.22 \\ 
+  var & 18293577.15 & 15024928.55 & 159052.40 & 130633.34 & 8838793.84 & 76848.36 \\ 
    \hline
 \end{tabular}
 \caption{Části popisné statistiky aplikované na data} 
@@ -91,24 +91,97 @@ prumer &  &  &  &  &  &  \\
 \subsection{Histogram}
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm]{histogram_max.pdf}
-\caption{Histogram měny s maximální hodnotou šikmosti}
-\includegraphics[width=10cm]{histogram_min.pdf}
-\caption{Histogram měny s minimální hodnotou šikmosti}
+
+\includegraphics[width=10cm]{histogram_new_cases_smoothed.pdf}
+\caption{Histogram nových případů smoothed}
+
+\includegraphics[width=10cm]{histogram_new_cases_per_million.pdf}
+\caption{Histogram nových případů na milión}
+
+\end{figure}
+\begin{figure}[H]
+\centering
+
+\includegraphics[width=10cm]{histogram_new_cases_smoothed_per_million.pdf}
+\caption{Histogram nových případů na milión smoothed}
+
+\includegraphics[width=10cm]{histogram_hosp_patients.pdf}
+\caption{Histogram: Hospitalizovaní pacienti v ČR}
+
+\end{figure}
+\begin{figure}[H]
+\centering
+
+\includegraphics[width=10cm]{histogram_new_tests.pdf}
+\caption{Nove testovani v Cesku}
+
+\includegraphics[width=10cm]{histogram_new_cases.pdf}
+\caption{Nove pripady v Cesku}
+
+\end{figure}
+\begin{figure}[H]
+\centering
+
+\includegraphics[width=10cm]{histogram_new_cases_cz_de.pdf}
+\caption{Nové testy pro Česko a Německo}
+
+\end{figure}
+\subsection{Bodový graf}
+\begin{figure}[H]
+\centering
+
+\includegraphics[width=10cm]{bodovy_nove_pripady_log.pdf}
+\caption{Bodový graf zlogaritmovaných nových případů}
+
+\includegraphics[width=10cm]{bodovy_nove_testy.pdf}
+\caption{Bodový graf nových testů}
+
+\end{figure}
+\begin{figure}[H]
+\centering
+
+\includegraphics[width=10cm]{bodovy_reprodukcni_cislo.pdf}
+\caption{Bodový graf reprodukčního čísla}
+
+\includegraphics[width=10cm]{bodovy_icu_patients.pdf}
+\caption{Bodový graf pacientů na icu}
+
+\end{figure}
+\begin{figure}[H]
+\centering
+
+\includegraphics[width=10cm]{bodovy_hosp_patients.pdf}
+\caption{Bodový graf hospitalizovaných pacientů}
+
+\includegraphics[width=10cm]{bodovy_weekly_icu_admissions.pdf}
+\caption{Bodový graf týdenních přírůstků na icu}
+
+\end{figure}
+\begin{figure}[H]
+\centering
+
+\includegraphics[width=10cm]{bodovy_weekly_hosp_admissions.pdf}
+\caption{Bodový graf týdenních hospitalizací}
+
+\includegraphics[width=10cm]{bodovy_positive_rate.pdf}
+\caption{Bodový graf pozitivity testů}
+
+\end{figure}
+\begin{figure}[H]
+\centering
+
+\includegraphics[width=10cm]{bodovy_new_vaccinations.pdf}
+\caption{Bodový graf nových očkování}
+
+\includegraphics[width=10cm]{bodovy_excess_mortality.pdf}
+\caption{Bodový graf smrtnosti}
+
 \end{figure}
 \subsection{Boxplot}
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm]{boxplot_graf.pdf}
 \caption{Boxplot graf pro první dvě měny}
-\end{figure}
-\subsection{Bodový graf}
-\begin{figure}[H]
-\centering
-\includegraphics[width=10cm]{bodovy_max.pdf}
-\caption{Bodový graf měny s maximální hodnotou šikmosti}
-\includegraphics[width=10cm]{bodovy_min.pdf}
-\caption{Bodový graf měny s minimální hodnotou šikmosti}
 \end{figure}
 \subsection{Hexbin}
 \begin{figure}[H]

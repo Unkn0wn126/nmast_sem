@@ -108,8 +108,86 @@ getmode <- function(v) {
 <<popisna_table, echo=FALSE,results=tex>>=
 numberOfRows = 9
 tableMatrix = matrix(nrow = 9, ncol = 6) # 6 údajů
-colnames(tableMatrix) <- c("Nové případy", "Nové případy smoothed", "Nové případy na milion", "Nové případy na milion smoothed", "Hospitalizovaní pacienti", "Hospitalizovaní pacienti na milion")
-rownames(tableMatrix)<-c("prumer", "modus","median","max","min","skewness","kurtosis","deviation","interquartile")
+maxSkewness=.Machine$double.xmin
+columnMaxSkewness=0
+minSkewness=.Machine$integer.max
+columnMinSkewness=0
+minMeanHigest=.Machine$integer.max
+minMeanHiger=.Machine$integer.max
+columnHigest=0
+columnHiger=0
+# "Nové případy", "Nové případy smoothed", "Nové případy na milion", "Nové případy na milion smoothed", "Hospitalizovaní pacienti", "Hospitalizovaní pacienti na milion" 
+colnames(tableMatrix) <- c("n_p", "n_p_s", "n_p_n_m", "n_p_n_m_s", "h_p", "h_p_n_m")
+rownames(tableMatrix)<-c("prumer", "modus","median","max","min","skewness","kurtosis","deviation","var")
+tableMatrix[1,1]<-mean(data_czech$new_cases)
+tableMatrix[1,2]<-mean(data_czech$new_cases_smoothed)
+tableMatrix[1,3]<-mean(data_czech$new_cases_per_million)
+tableMatrix[1,4]<-mean(data_czech$new_cases_smoothed_per_million)
+tableMatrix[1,5]<-mean(data_czech$hosp_patients, na.rm = TRUE)
+tableMatrix[1,6]<-mean(data_czech$hosp_patients_per_million, na.rm = TRUE)
+
+tableMatrix[2,1]<-getmode(data_czech$new_cases)
+tableMatrix[2,2]<-getmode(data_czech$new_cases_smoothed)
+tableMatrix[2,3]<-getmode(data_czech$new_cases_per_million)
+tableMatrix[2,4]<-getmode(data_czech$new_cases_smoothed_per_million)
+tableMatrix[2,5]<-getmode(data_czech$hosp_patients)
+tableMatrix[2,6]<-getmode(data_czech$hosp_patients_per_million)
+  
+tableMatrix[3,1]<-median(data_czech$new_cases)
+tableMatrix[3,2]<-median(data_czech$new_cases_smoothed)
+tableMatrix[3,3]<-median(data_czech$new_cases_per_million)
+tableMatrix[3,4]<-median(data_czech$new_cases_smoothed_per_million)
+tableMatrix[3,5]<-median(data_czech$hosp_patients, na.rm = TRUE)
+tableMatrix[3,6]<-median(data_czech$hosp_patients_per_million, na.rm = TRUE)
+
+tableMatrix[4,1]<-max(data_czech$new_cases)
+tableMatrix[4,2]<-max(data_czech$new_cases_smoothed)
+tableMatrix[4,3]<-max(data_czech$new_cases_per_million)
+tableMatrix[4,4]<-max(data_czech$new_cases_smoothed_per_million)
+tableMatrix[4,5]<-max(data_czech$hosp_patients, na.rm = TRUE)
+tableMatrix[4,6]<-max(data_czech$hosp_patients_per_million, na.rm = TRUE)
+
+tableMatrix[5,1]<-min(data_czech$new_cases)
+tableMatrix[5,2]<-min(data_czech$new_cases_smoothed)
+tableMatrix[5,3]<-min(data_czech$new_cases_per_million)
+tableMatrix[5,4]<-min(data_czech$new_cases_smoothed_per_million)
+tableMatrix[5,5]<-min(data_czech$hosp_patients, na.rm = TRUE)
+tableMatrix[5,6]<-min(data_czech$hosp_patients_per_million, na.rm = TRUE)
+
+tableMatrix[6,1]<-skewness(data_czech$new_cases)
+tableMatrix[6,2]<-skewness(data_czech$new_cases_smoothed)
+tableMatrix[6,3]<-skewness(data_czech$new_cases_per_million)
+tableMatrix[6,4]<-skewness(data_czech$new_cases_smoothed_per_million)
+tableMatrix[6,5]<-skewness(data_czech$hosp_patients, na.rm = TRUE)
+tableMatrix[6,6]<-skewness(data_czech$hosp_patients_per_million, na.rm = TRUE)
+
+tableMatrix[7,1]<-kurtosis(data_czech$new_cases)
+tableMatrix[7,2]<-kurtosis(data_czech$new_cases_smoothed)
+tableMatrix[7,3]<-kurtosis(data_czech$new_cases_per_million)
+tableMatrix[7,4]<-kurtosis(data_czech$new_cases_smoothed_per_million)
+tableMatrix[7,5]<-kurtosis(data_czech$hosp_patients, na.rm = TRUE)
+tableMatrix[7,6]<-kurtosis(data_czech$hosp_patients_per_million, na.rm = TRUE)
+
+tableMatrix[8,1]<-sd(data_czech$new_cases)
+tableMatrix[8,2]<-sd(data_czech$new_cases_smoothed)
+tableMatrix[8,3]<-sd(data_czech$new_cases_per_million)
+tableMatrix[8,4]<-sd(data_czech$new_cases_smoothed_per_million)
+tableMatrix[8,5]<-sd(data_czech$hosp_patients, na.rm = TRUE)
+tableMatrix[8,6]<-sd(data_czech$hosp_patients_per_million, na.rm = TRUE)
+
+tableMatrix[9,1]<-var(data_czech$new_cases)
+tableMatrix[9,2]<-var(data_czech$new_cases_smoothed)
+tableMatrix[9,3]<-var(data_czech$new_cases_per_million)
+tableMatrix[9,4]<-var(data_czech$new_cases_smoothed_per_million)
+tableMatrix[9,5]<-var(data_czech$hosp_patients, na.rm = TRUE)
+tableMatrix[9,6]<-var(data_czech$hosp_patients_per_million, na.rm = TRUE)
+
+#tableMatrix[10,1]<-quantile(data_czech$new_cases)
+#tableMatrix[10,2]<-quantile(data_czech$new_cases_smoothed)
+#tableMatrix[10,3]<-quantile(data_czech$new_cases_per_million)
+#tableMatrix[10,4]<-quantile(data_czech$new_cases_smoothed_per_million)
+#tableMatrix[10,5]<-quantile(data_czech$hosp_patients, na.rm = TRUE)
+#tableMatrix[10,6]<-quantile(data_czech$hosp_patients_per_million, na.rm = TRUE)
 
 print(xtable(tableMatrix,
              caption="Části popisné statistiky aplikované na data",
@@ -199,22 +277,184 @@ for (i in seq(1,length(curencies),by=1)) {
 \subsection{Histogram}
 \begin{figure}[H]
 \centering
-<<histogram_max, echo=FALSE,results=hide>>=
-pomocnaMax=eval(as.name(paste(curencies[columnMaxSkewness],sep ="_", "vector")))
-CairoPDF("histogram_max.pdf")
-hist(pomocnaMax, main = paste("Histogram pro hodnoty měny", curencies[columnMaxSkewness]),xlab = "Četnost ceny vůči koruně", ylab = "Vývoj ceny vůči koruně",ylim = c(0,40),xlim = c(min(eval(as.name(paste(curencies[columnMaxSkewness],sep ="_", "vector")))),max(eval(as.name(paste(curencies[columnMaxSkewness],sep ="_", "vector"))))), col = "orange", border = "blue")
-invisible(dev.off())
+
+<<histogram_new_cases_smoothed, echo=FALSE,results=hide>>=
+CairoPDF("histogram_new_cases_smoothed.pdf")
+hist(data_czech$new_cases_smoothed, main = "Histogram new cases smoothed", xlab="New cases smoothed", ylab="Frekvence", col = "#57ADC3", border = "black")
 @
-\includegraphics[width=10cm]{histogram_max.pdf}
-\caption{Histogram měny s maximální hodnotou šikmosti}
-<<histogram_min, echo=FALSE,results=hide>>=
-pomocnaMin=eval(as.name(paste(curencies[columnMinSkewness],sep ="_", "vector")))
-CairoPDF("histogram_min.pdf")
-print(hist(pomocnaMin, main = paste("Histogram pro hodnoty měny", curencies[columnMinSkewness]), xlab = "Četnost ceny vůči koruně", ylab = "Vývoj ceny vůči koruně",ylim = c(0,40),xlim = c(min(eval(as.name(paste(curencies[columnMinSkewness],sep ="_", "vector")))),max(eval(as.name(paste(curencies[columnMinSkewness],sep ="_", "vector"))))), col = "orange", border = "blue"),justify = "none")
-invisible(dev.off())
+\includegraphics[width=10cm]{histogram_new_cases_smoothed.pdf}
+\caption{Histogram nových případů smoothed}
+
+<<histogram_new_cases_per_million, echo=FALSE,results=hide>>=
+CairoPDF("histogram_new_cases_per_million.pdf")
+hist(data_czech$new_cases_smoothed, main = "Histogram nových případů na milión", xlab="Nové případy na milión", ylab="Frekvence", col = "#57ADC3", border = "black")
 @
-\includegraphics[width=10cm]{histogram_min.pdf}
-\caption{Histogram měny s minimální hodnotou šikmosti}
+\includegraphics[width=10cm]{histogram_new_cases_per_million.pdf}
+\caption{Histogram nových případů na milión}
+
+\end{figure}
+\begin{figure}[H]
+\centering
+
+<<histogram_new_cases_smoothed_per_million, echo=FALSE,results=hide>>=
+CairoPDF("histogram_new_cases_smoothed_per_million.pdf")
+hist(data_czech$new_cases_smoothed_per_million, main = "Histogram nových případů na milión smoothed", xlab="Nové případy na milión", ylab="Frekvence", col = "#57ADC3", border = "black")
+@
+\includegraphics[width=10cm]{histogram_new_cases_smoothed_per_million.pdf}
+\caption{Histogram nových případů na milión smoothed}
+
+<<histogram_new_cases, echo=FALSE,results=hide>>=
+CairoPDF("histogram_hosp_patients.pdf")
+hist(data_czech$hosp_patients, main = "Histogram: Hospitalizovaní pacienti v ČR", xlab="Hospitalizovaní v ČR", ylab="Frekvence", col = "#57ADC3", border = "black",xlim = c(0,16000), las = 1, breaks = 8)
+@
+\includegraphics[width=10cm]{histogram_hosp_patients.pdf}
+\caption{Histogram: Hospitalizovaní pacienti v ČR}
+
+\end{figure}
+\begin{figure}[H]
+\centering
+
+<<histogram_new_tests, echo=FALSE,results=hide>>=
+CairoPDF("histogram_new_tests.pdf")
+hist(log1p(data_czech$new_tests),
+                     main = "Nove testovani v Cesku",
+                     xlab = "Logaritmus z poctu nove testovanych",
+                     col = "#57ADC3",
+                     border = "black",
+                     breaks = 10)
+@
+\includegraphics[width=10cm]{histogram_new_tests.pdf}
+\caption{Nove testovani v Cesku}
+
+<<histogram_new_tests, echo=FALSE,results=hide>>=
+CairoPDF("histogram_new_cases.pdf")
+hist(log1p(data_czech$new_cases),
+                     main = "Nove pripady v Cesku",
+                     xlab = "Logaritmus z poctu novych pripadu",
+                     col = "#57ADC3",
+                     border = "black",
+                     breaks = 10)
+@
+\includegraphics[width=10cm]{histogram_new_cases.pdf}
+\caption{Nove pripady v Cesku}
+
+\end{figure}
+\begin{figure}[H]
+\centering
+
+<<histogram_new_tests, echo=FALSE,results=hide>>=
+histCzNewCases <- hist(log1p(data_czech$new_tests),
+                       main = "Cesko: nove testy",
+                       col = "limegreen",
+                       xlab = "Logaritmus z poctu novych testu")
+
+histGerNewCases <- hist(log1p(data_austria$new_tests),
+                        main = "Nemecko: nove testy",
+                        col = "lightblue",
+                        xlab = "Logaritmus z poctu novych testu")
+CairoPDF("histogram_new_cases_cz_de.pdf")
+
+plot(histCzNewCases, main = "Nové testy: Česko vs Německo", xlab = "Logaritmus z počtu nových testů", ylab = "Frekvence", col = rgb(0,0,1,1/4), ylim = c(0,220), xlim = c(7,15))  # first histogram
+plot(histGerNewCases, col = rgb(1,0,0,1/4),ylim = c(0,220), xlim = c(7,15), add = TRUE)
+legend("topright",
+       legend = c("Česko", "Německo"),
+       fill = c(rgb(0,0,1,1/4),rgb(1,0,0,1/4)),       # Color of the squares
+       border = "black") # Color of the border of the squares
+@
+\includegraphics[width=10cm]{histogram_new_cases_cz_de.pdf}
+\caption{Nové testy pro Česko a Německo}
+
+\end{figure}
+\subsection{Bodový graf}
+\begin{figure}[H]
+\centering
+
+<<bodovy_nove_pripady_log, echo=FALSE,results=hide>>=
+CairoPDF("bodovy_nove_pripady_log.pdf")
+plot(log1p(data_czech$new_cases), pch = 4, main="Bodový graf vývoje nových případů v čase", ylab="Nové případy", xlab="Počet dnů od 7. 3. 2020")
+@
+\includegraphics[width=10cm]{bodovy_nove_pripady_log.pdf}
+\caption{Bodový graf zlogaritmovaných nových případů}
+
+<<bodovy_nove_testy, echo=FALSE,results=hide>>=
+CairoPDF("bodovy_nove_testy.pdf")
+plot(data_czech$new_tests, xlim = c(180,600),pch = 4, main="Bodový graf vývoje nových testů v čase", ylab="Nové testy", xlab="Počet dnů od 7. 3. 2020")
+@
+\includegraphics[width=10cm]{bodovy_nove_testy.pdf}
+\caption{Bodový graf nových testů}
+
+\end{figure}
+\begin{figure}[H]
+\centering
+
+<<bodovy_reprodukcni_cislo, echo=FALSE,results=hide>>=
+CairoPDF("bodovy_reprodukcni_cislo.pdf")
+plot(data_czech$reproduction_rate, pch = 4, main="Bodový graf vývoje reprodukčního čísla v čase", ylab="Nové testy", xlab="Počet dnů od 7. 3. 2020")
+@
+\includegraphics[width=10cm]{bodovy_reprodukcni_cislo.pdf}
+\caption{Bodový graf reprodukčního čísla}
+
+<<bodovy_icu_patients, echo=FALSE,results=hide>>=
+CairoPDF("bodovy_icu_patients.pdf")
+plot(data_czech$icu_patients, pch = 4, main="Bodový graf vývoje pacientů na icu v čase", ylab="Pacienti na icu", xlab="Počet dnů od 7. 3. 2020")
+@
+\includegraphics[width=10cm]{bodovy_icu_patients.pdf}
+\caption{Bodový graf pacientů na icu}
+
+\end{figure}
+\begin{figure}[H]
+\centering
+
+<<bodovy_hosp_patients, echo=FALSE,results=hide>>=
+CairoPDF("bodovy_hosp_patients.pdf")
+plot(data_czech$hosp_patients, pch = 4, main="Bodový graf vývoje hospitalizovaných pacientů v čase", ylab="Hospitalizovaní pacienti", xlab="Počet dnů od 7. 3. 2020")
+@
+\includegraphics[width=10cm]{bodovy_hosp_patients.pdf}
+\caption{Bodový graf hospitalizovaných pacientů}
+
+<<bodovy_weekly_icu_admissions, echo=FALSE,results=hide>>=
+CairoPDF("bodovy_weekly_icu_admissions.pdf")
+plot(data_czech$weekly_icu_admissions, pch = 4, main="Bodový graf vývoje týdenních přírůstků na icu v čase", ylab="Týdenní přírůstky na icu", xlab="Počet dnů od 7. 3. 2020")
+@
+\includegraphics[width=10cm]{bodovy_weekly_icu_admissions.pdf}
+\caption{Bodový graf týdenních přírůstků na icu}
+
+\end{figure}
+\begin{figure}[H]
+\centering
+
+<<bodovy_weekly_hosp_admissions, echo=FALSE,results=hide>>=
+CairoPDF("bodovy_weekly_hosp_admissions.pdf")
+plot(data_czech$weekly_hosp_admissions, pch = 4, main="Bodový graf vývoje týdenních hospitalizací v čase", ylab="Týdenní hospitalizace", xlab="Počet dnů od 7. 3. 2020")
+@
+\includegraphics[width=10cm]{bodovy_weekly_hosp_admissions.pdf}
+\caption{Bodový graf týdenních hospitalizací}
+
+<<bodovy_positive_rate, echo=FALSE,results=hide>>=
+CairoPDF("bodovy_positive_rate.pdf")
+plot(data_czech$positive_rate, pch = 4, main="Bodový graf vývoje pozitivity testů v čase", ylab="Pozitivita testů", xlab="Počet dnů od 7. 3. 2020")
+@
+\includegraphics[width=10cm]{bodovy_positive_rate.pdf}
+\caption{Bodový graf pozitivity testů}
+
+\end{figure}
+\begin{figure}[H]
+\centering
+
+<<bodovy_new_vaccinations, echo=FALSE,results=hide>>=
+CairoPDF("bodovy_new_vaccinations.pdf")
+plot(data_czech$new_vaccinations, pch = 4, main="Bodový graf vývoje nových očkování v čase", ylab="Nově očkovaní", xlab="Počet dnů od 7. 3. 2020")
+@
+\includegraphics[width=10cm]{bodovy_new_vaccinations.pdf}
+\caption{Bodový graf nových očkování}
+
+<<bodovy_excess_mortality, echo=FALSE,results=hide>>=
+CairoPDF("bodovy_excess_mortality.pdf")
+plot(data_czech$excess_mortality, pch = 4, main="Bodový graf vývoje smrtnosti v čase", ylab="Smrtnost", xlab="Počet dnů od 7. 3. 2020")
+@
+\includegraphics[width=10cm]{bodovy_excess_mortality.pdf}
+\caption{Bodový graf smrtnosti}
+
 \end{figure}
 \subsection{Boxplot}
 \begin{figure}[H]
@@ -227,22 +467,6 @@ boxplot(pomocnaBox1,pomocnaBox2, main = paste("Boxplot pro srovnání kvartilů 
 @
 \includegraphics[width=10cm]{boxplot_graf.pdf}
 \caption{Boxplot graf pro první dvě měny}
-\end{figure}
-\subsection{Bodový graf}
-\begin{figure}[H]
-\centering
-<<bodovy_max, echo=FALSE,results=hide>>=
-CairoPDF("bodovy_max.pdf")
-plot(pomocnaMax, main = paste("Bodový graf vývoje ceny v čase pro hodnoty měny", curencies[columnMaxSkewness]),ylab= "Vývoj ceny", xlab="Uplynulé dny dostupných kurzů")
-@
-\includegraphics[width=10cm]{bodovy_max.pdf}
-\caption{Bodový graf měny s maximální hodnotou šikmosti}
-<<bodovy_min, echo=FALSE,results=hide>>=
-CairoPDF("bodovy_min.pdf")
-plot(pomocnaMin, main = paste("Bodový graf vývoje ceny v čase pro hodnoty měny", curencies[columnMinSkewness]), ylab= "Vývoj ceny",xlab="Uplynulé dny dostupných kurzů")
-@
-\includegraphics[width=10cm]{bodovy_min.pdf}
-\caption{Bodový graf měny s minimální hodnotou šikmosti}
 \end{figure}
 \subsection{Hexbin}
 \begin{figure}[H]
