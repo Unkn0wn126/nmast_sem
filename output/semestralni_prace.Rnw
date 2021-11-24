@@ -208,14 +208,14 @@ print(xtable(tableMatrix,
 
 <<histogram_new_cases_smoothed, echo=FALSE,results=hide>>=
 CairoPDF("histogram_new_cases_smoothed.pdf")
-hist(log1p(data_czech$new_cases_smoothed), main = "Histogram zlog. klouzavého průměru nových případů", xlab="Zlog. klouzavý průměr nových případů", ylab="Frekvence", xlim = c(0,10), ylim = c(0,400), col = "#57ADC3", border = "black")
+hist(log1p(data_czech$new_cases_smoothed), main = "Histogram zlog. klouzavého průměru nových případů", xlab="Zlog. klouzavý průměr nových případů", ylab="Frekvence", xlim = c(0,10), ylim = c(0,200), col = "#57ADC3", border = "black")
 @
 \includegraphics[width=10cm]{histogram_new_cases_smoothed.pdf}
 \caption{Histogram zlog. klouzavý průměr nových případů}
 
 <<histogram_new_cases_per_million, echo=FALSE,results=hide>>=
 CairoPDF("histogram_new_cases_per_million.pdf")
-hist(log1p(data_czech$new_cases_smoothed), main = "Histogram zlog. nových případů na milión", xlab="Zlog. nové případy na milión", ylab="Frekvence", xlim = c(0,10), ylim = c(0,400), col = "#57ADC3", border = "black")
+hist(log1p(data_czech$new_cases_smoothed), main = "Histogram zlog. nových případů na milión", xlab="Zlog. nové případy na milión", ylab="Frekvence", xlim = c(0,10), ylim = c(0,200), col = "#57ADC3", border = "black")
 @
 \includegraphics[width=10cm]{histogram_new_cases_per_million.pdf}
 \caption{Histogram zlog. nových případů na milión}
@@ -226,14 +226,14 @@ hist(log1p(data_czech$new_cases_smoothed), main = "Histogram zlog. nových pří
 
 <<histogram_new_cases_smoothed_per_million, echo=FALSE,results=hide>>=
 CairoPDF("histogram_new_cases_smoothed_per_million.pdf")
-hist(log1p(data_czech$new_cases_smoothed_per_million), main = "Histogram zlog. klouzavého průměru nových případů na milión", xlab="Zlog. klouzavý průměr nových případů na milión", ylab="Frekvence", xlim = c(0,10), ylim = c(0,400), col = "#57ADC3", border = "black")
+hist(log1p(data_czech$new_cases_smoothed_per_million), main = "Histogram zlog. klouzavého průměru nových případů na milión", xlab="Zlog. klouzavý průměr nových případů na milión", ylab="Frekvence", xlim = c(0,10), ylim = c(0,150), col = "#57ADC3", border = "black")
 @
 \includegraphics[width=10cm]{histogram_new_cases_smoothed_per_million.pdf}
 \caption{Histogram zlog. klouzavého průměru nových případů na milión}
 
 <<histogram_new_cases, echo=FALSE,results=hide>>=
 CairoPDF("histogram_hosp_patients.pdf")
-hist(log1p(data_czech$hosp_patients), main = "Histogram hospitalizovaných pacientů v ČR", xlab="Hospitalizovaní pacienti v ČR", ylab="Frekvence", col = "#57ADC3", border = "black", xlim = c(0,10), ylim = c(0,400),, las = 1, breaks = 8)
+hist(log1p(data_czech$hosp_patients), main = "Histogram hospitalizovaných pacientů v ČR", xlab="Hospitalizovaní pacienti v ČR", ylab="Frekvence", col = "#57ADC3", border = "black", xlim = c(0,10), ylim = c(0,200),, las = 1, breaks = 8)
 @
 \includegraphics[width=10cm]{histogram_hosp_patients.pdf}
 \caption{Histogram hospitalizovaných pacientů v ČR}
@@ -259,6 +259,7 @@ CairoPDF("histogram_new_cases.pdf")
 hist(log1p(data_czech$new_cases),
                      main = "Nove pripady v Cesku",
                      xlab = "Logaritmus z poctu novych pripadu",
+                     ylim = c(0,150),
                      col = "#57ADC3",
                      border = "black",
                      breaks = 10)
