@@ -631,17 +631,63 @@ summary(anova)
 \begin{figure}[H]
 \centering
 
-<<anova_graph, echo=FALSE>>=
-CairoPDF("anova_graph.pdf")
+<<anova_graph_1, echo=FALSE>>=
+CairoPDF("anova_graph_1.pdf")
 plot(anova, 1, pch=4)
-plot(anova, 2)
-plot(anova, 3)
-plot(anova, 4)
-plot(anova, 5)
-plot(anova, 6)
 @
-\includegraphics[width=10cm]{anova_graph.pdf}
+\includegraphics[width=10cm]{anova_graph_1.pdf}
 \caption{Anova graf nových testů, případů a úmrtí}
+
+\end{figure}
+
+\begin{figure}[H]
+\centering
+
+<<anova_graph_2, echo=FALSE>>=
+CairoPDF("anova_graph_2.pdf")
+plot(anova, 2, pch=4)
+@
+\includegraphics[width=10cm]{anova_graph_2.pdf}
+\caption{Anova graf nových testů, případů a úmrtí}
+
+<<anova_graph_3, echo=FALSE>>=
+CairoPDF("anova_graph_3.pdf")
+plot(anova, 3, pch=4)
+@
+\includegraphics[width=10cm]{anova_graph_3.pdf}
+\caption{Anova graf nových testů, případů a úmrtí}
+
+\end{figure}
+
+\begin{figure}[H]
+\centering
+
+<<anova_graph_4, echo=FALSE>>=
+CairoPDF("anova_graph_4.pdf")
+plot(anova, 4, pch=4)
+@
+\includegraphics[width=10cm]{anova_graph_4.pdf}
+\caption{Anova graf nových testů, případů a úmrtí}
+
+<<anova_graph_5, echo=FALSE>>=
+CairoPDF("anova_graph_5.pdf")
+plot(anova, 5, pch=4)
+@
+\includegraphics[width=10cm]{anova_graph_5.pdf}
+\caption{Anova graf nových testů, případů a úmrtí}
+
+\end{figure}
+
+\begin{figure}[H]
+\centering
+
+<<anova_graph_6, echo=FALSE>>=
+CairoPDF("anova_graph_6.pdf")
+plot(anova, 6, pch=4)
+@
+\includegraphics[width=10cm]{anova_graph_6.pdf}
+\caption{Anova graf nových testů, případů a úmrtí}
+
 \end{figure}
 
 \clearpage
