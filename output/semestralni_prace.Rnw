@@ -75,19 +75,6 @@ data_austria <- read.csv("austriaData.csv")
 
 pocetSloupcu = 66
 pocetZaznamu = 576
-
-
-# old data
-dataFromExcel <- read_xlsx("./cnb_kurz_r-pracovni.xlsx")
-POCETMEN=10
-POCETZAZNAMU=100
-mojeData = dataFromExcel[1:1,1:11] # jenom první řádek?
-maticeMen = dataFromExcel[1:101,2:11] # všechna data bez datumu
-forVariables = colnames(mojeData) # jména sloupců
-for (i in seq(1,length(forVariables),by=1)) { # inkrementace od 1 do konce sloupců
-   assign(paste(forVariables[i],sep ="_", "vector"),pull(assign(forVariables[i],dataFromExcel[1:101,i])))
-  # to bude rozsegmentování dat do samostatných vektorů podle sloupců...
-}
 @
 
 %% Načítání dat end
@@ -535,7 +522,6 @@ qqplot(data_czech$new_tests,data_czech$new_cases, pch=4, main="Graf nových test
 %% Testování statistických hypotéz
 \section{Testování statistických hypotéz}
 
-% old
 <<testHypVar, echo=FALSE,results=hide>>=
 p1 = data_czech$new_cases[1:288]
 p2 = data_czech$new_cases[289:576]

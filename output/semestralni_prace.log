@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.11.24)  24 NOV 2021 17:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.11.24)  2 DEC 2021 09:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -759,30 +759,30 @@ pdfTeX warning: pdflatex.exe (file ./qqplot_graph_new_tests_new_cases.pdf): PDF 
 ] [31
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+aett on input line 526.
+LaTeX Font Info:    Trying to load font information for TS1+aett on input line 525.
 (c:/Users/Lukas/Documents/R/R-4.1.1/share/texmf/tex/latex/ts1aett.fd
 File: ts1aett.fd 
 )
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 526.
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 525.
 (c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `TS1/aett/m/n' in size <10> not available
-(Font)              Font shape `TS1/cmtt/m/n' tried instead on input line 526.
+(Font)              Font shape `TS1/cmtt/m/n' tried instead on input line 525.
 <anova_graph_1.pdf, id=851, 433.62pt x 433.62pt>
 File: anova_graph_1.pdf Graphic file (type pdf)
 <use anova_graph_1.pdf>
-Package pdftex.def Info: anova_graph_1.pdf  used on input line 534.
+Package pdftex.def Info: anova_graph_1.pdf  used on input line 533.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 <anova_graph_2.pdf, id=852, 433.62pt x 433.62pt>
 File: anova_graph_2.pdf Graphic file (type pdf)
 <use anova_graph_2.pdf>
-Package pdftex.def Info: anova_graph_2.pdf  used on input line 542.
+Package pdftex.def Info: anova_graph_2.pdf  used on input line 541.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 <anova_graph_3.pdf, id=853, 433.62pt x 433.62pt>
 File: anova_graph_3.pdf Graphic file (type pdf)
 <use anova_graph_3.pdf>
-Package pdftex.def Info: anova_graph_3.pdf  used on input line 545.
+Package pdftex.def Info: anova_graph_3.pdf  used on input line 544.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [32
 
@@ -790,12 +790,12 @@ Package pdftex.def Info: anova_graph_3.pdf  used on input line 545.
 <anova_graph_4.pdf, id=868, 433.62pt x 433.62pt>
 File: anova_graph_4.pdf Graphic file (type pdf)
 <use anova_graph_4.pdf>
-Package pdftex.def Info: anova_graph_4.pdf  used on input line 553.
+Package pdftex.def Info: anova_graph_4.pdf  used on input line 552.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 <anova_graph_5.pdf, id=869, 433.62pt x 433.62pt>
 File: anova_graph_5.pdf Graphic file (type pdf)
 <use anova_graph_5.pdf>
-Package pdftex.def Info: anova_graph_5.pdf  used on input line 556.
+Package pdftex.def Info: anova_graph_5.pdf  used on input line 555.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [33 <./anova_graph_2.pdf> <./anova_graph_3.pdf
 
@@ -804,7 +804,7 @@ pdfTeX warning: pdflatex.exe (file ./anova_graph_3.pdf): PDF inclusion: multiple
 <anova_graph_6.pdf, id=891, 433.62pt x 433.62pt>
 File: anova_graph_6.pdf Graphic file (type pdf)
 <use anova_graph_6.pdf>
-Package pdftex.def Info: anova_graph_6.pdf  used on input line 564.
+Package pdftex.def Info: anova_graph_6.pdf  used on input line 563.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [34 <./anova_graph_4.pdf> <./anova_graph_5.pdf
 
@@ -821,7 +821,7 @@ Overfull \vbox (3311.89386pt too high) has occurred while \output is active []
 <cor_matrix.pdf, id=947, 433.62pt x 433.62pt>
 File: cor_matrix.pdf Graphic file (type pdf)
 <use cor_matrix.pdf>
-Package pdftex.def Info: cor_matrix.pdf  used on input line 814.
+Package pdftex.def Info: cor_matrix.pdf  used on input line 813.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [39 <./cor_matrix.pdf>] [40
 
@@ -832,17 +832,17 @@ Overfull \vbox (139.68404pt too high) has occurred while \output is active []
 <cov_matrix_graph_heatmap.pdf, id=970, 433.62pt x 433.62pt>
 File: cov_matrix_graph_heatmap.pdf Graphic file (type pdf)
 <use cov_matrix_graph_heatmap.pdf>
-Package pdftex.def Info: cov_matrix_graph_heatmap.pdf  used on input line 874.
+Package pdftex.def Info: cov_matrix_graph_heatmap.pdf  used on input line 873.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 <cov_matrix_grap.pdf, id=971, 433.62pt x 433.62pt>
 File: cov_matrix_grap.pdf Graphic file (type pdf)
 <use cov_matrix_grap.pdf>
-Package pdftex.def Info: cov_matrix_grap.pdf  used on input line 877.
+Package pdftex.def Info: cov_matrix_grap.pdf  used on input line 876.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 <cov_matrix_graph_ggqqplot.pdf, id=972, 433.62pt x 433.62pt>
 File: cov_matrix_graph_ggqqplot.pdf Graphic file (type pdf)
 <use cov_matrix_graph_ggqqplot.pdf>
-Package pdftex.def Info: cov_matrix_graph_ggqqplot.pdf  used on input line 883.
+Package pdftex.def Info: cov_matrix_graph_ggqqplot.pdf  used on input line 882.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [42 <./cov_matrix_graph_heatmap.pdf> <./cov_matrix_grap.pdf
 
@@ -853,7 +853,7 @@ pdfTeX warning: pdflatex.exe (file ./cov_matrix_grap.pdf): PDF inclusion: multip
 <pairs_graph.pdf, id=1013, 433.62pt x 433.62pt>
 File: pairs_graph.pdf Graphic file (type pdf)
 <use pairs_graph.pdf>
-Package pdftex.def Info: pairs_graph.pdf  used on input line 906.
+Package pdftex.def Info: pairs_graph.pdf  used on input line 905.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [45
 
@@ -866,7 +866,7 @@ Package pdftex.def Info: pairs_graph.pdf  used on input line 906.
 
 ]
 
-LaTeX Warning: Reference `1' on page 48 undefined on input line 942.
+LaTeX Warning: Reference `1' on page 48 undefined on input line 941.
 
 [48
 
