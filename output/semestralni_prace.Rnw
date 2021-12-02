@@ -2,7 +2,7 @@
 % autor: Lukáš Milar, Tomáš Prudký
 % název: Zpracování dat pro předmět NMAST
 % !TEX encoding = UTF-8 Unicode
-\documentclass[a4paper]{ article}
+\documentclass[a4paper, 12pt]{article}
 
 \usepackage{cmap}
 \usepackage[utf8]{inputenc}
@@ -64,6 +64,9 @@ library("ggpubr")
 @
 \label{uvod}
 
+V této semestrální práci jsou analyzována data týkající se vývoje pandemie
+nemoci Covid-19. Použitá data čerpají ze zdroje~\cite{1}.
+
 %% Načítání dat start
 
 <<input,echo=FALSE>>=
@@ -85,6 +88,14 @@ pocetZaznamu = 576
 
 %% Popis dat
 \section{Popis dat}
+Data použitá v této práci se zabývají veličinami ohledně nemoci Covid-19 a pochází
+od společnosti Our World in Data. Tato data jsou denně aktualizována a obsahují
+například informace o očkování, testech, hospitalizacích, nových případech,
+nových úmrtích či reprodukčním čísle. Veškeré hodnoty jsou pozorovány napříč
+mnoha státy. Pro bližší popis těchto dat vizte zdroj~\cite{1}.
+
+Vzhledem k velkému množství dat jsou v této práci použity zpravidla údaje pro
+Českou republiku, ze kterých je dále využit užší výčet dostupných veličin.
 
 %% Popisná statistika
 \section{Popisná statistika}
@@ -94,9 +105,21 @@ getmode <- function(v) {
    uniqv[which.max(tabulate(match(v, uniqv)))]
 }
 @
+
+V tabulkách níže jsou zobrazeny hodnoty popisné statistiky pro veličiny nových případů,
+7denního klouzavého průměru nových případů, nových případů na milion, 7denního klouzavého průměru nových případů na milion,
+hospitalizovaných pacientů a hospitalizovaných pacientů na milion v České republice. Hodnoty 7denního klouzavého průměru
+lépe zachycují tyto veličiny v rámci dlouhodobých trendů, jelikož je eliminováno zkreslení v podobě menšího počtu uskutečněných
+testů například během víkendů.
+
 <<popisna_table, echo=FALSE,results=tex>>=
 numberOfRows = 9
 tableMatrix = matrix(nrow = 9, ncol = 6) # 6 údajů
+
+casesTableMatrix = matrix(nrow = 9, ncol = 2)
+casesPerMillionTableMatrix = matrix(nrow = 9, ncol = 2)
+hospitalizedTableMatrix = matrix(nrow = 9, ncol = 2)
+
 maxSkewness=.Machine$double.xmin
 columnMaxSkewness=0
 minSkewness=.Machine$integer.max
@@ -105,71 +128,106 @@ minMeanHigest=.Machine$integer.max
 minMeanHiger=.Machine$integer.max
 columnHigest=0
 columnHiger=0
-# "Nové případy", "Nové případy smoothed", "Nové případy na milion", "Nové případy na milion smoothed", "Hospitalizovaní pacienti", "Hospitalizovaní pacienti na milion" 
-colnames(tableMatrix) <- c("n_p", "n_p_s", "n_p_n_m", "n_p_n_m_s", "h_p", "h_p_n_m")
-rownames(tableMatrix)<-c("prumer", "modus","median","max","min","skewness","kurtosis","deviation","var")
-tableMatrix[1,1]<-mean(data_czech$new_cases)
-tableMatrix[1,2]<-mean(data_czech$new_cases_smoothed)
-tableMatrix[1,3]<-mean(data_czech$new_cases_per_million)
-tableMatrix[1,4]<-mean(data_czech$new_cases_smoothed_per_million)
-tableMatrix[1,5]<-mean(data_czech$hosp_patients, na.rm = TRUE)
-tableMatrix[1,6]<-mean(data_czech$hosp_patients_per_million, na.rm = TRUE)
 
-tableMatrix[2,1]<-getmode(data_czech$new_cases)
-tableMatrix[2,2]<-getmode(data_czech$new_cases_smoothed)
-tableMatrix[2,3]<-getmode(data_czech$new_cases_per_million)
-tableMatrix[2,4]<-getmode(data_czech$new_cases_smoothed_per_million)
-tableMatrix[2,5]<-getmode(data_czech$hosp_patients)
-tableMatrix[2,6]<-getmode(data_czech$hosp_patients_per_million)
+generalRowNames <- c("průměr", "modus","medián","max","min","šikmost","špičatost","odchylka","variance")
+
+colnames(casesTableMatrix) <- c("Nové případy", "7denní klouzavý průměr nových případů")
+rownames(casesTableMatrix)<-generalRowNames
+
+colnames(casesPerMillionTableMatrix) <- c("Nové případy na milión", "7denní klouzavý průměr nových případů na milión")
+rownames(casesPerMillionTableMatrix)<-generalRowNames
+
+colnames(hospitalizedTableMatrix) <- c("Hospitalizovaní pacienti", "Hospitalizovaní pacienti na milión")
+rownames(hospitalizedTableMatrix)<-generalRowNames
+
+casesTableMatrix[1,1]<-mean(data_czech$new_cases)
+casesTableMatrix[1,2]<-mean(data_czech$new_cases_smoothed)
+
+casesPerMillionTableMatrix[1,1]<-mean(data_czech$new_cases_per_million)
+casesPerMillionTableMatrix[1,2]<-mean(data_czech$new_cases_smoothed_per_million)
+
+hospitalizedTableMatrix[1,1]<-mean(data_czech$hosp_patients, na.rm = TRUE)
+hospitalizedTableMatrix[1,2]<-mean(data_czech$hosp_patients_per_million, na.rm = TRUE)
+
+
+casesTableMatrix[2,1]<-getmode(data_czech$new_cases)
+casesTableMatrix[2,2]<-getmode(data_czech$new_cases_smoothed)
+
+casesPerMillionTableMatrix[2,1]<-getmode(data_czech$new_cases_per_million)
+casesPerMillionTableMatrix[2,2]<-getmode(data_czech$new_cases_smoothed_per_million)
+
+hospitalizedTableMatrix[2,1]<-getmode(data_czech$hosp_patients)
+hospitalizedTableMatrix[2,2]<-getmode(data_czech$hosp_patients_per_million)
+
+
+casesTableMatrix[3,1]<-median(data_czech$new_cases)
+casesTableMatrix[3,2]<-median(data_czech$new_cases_smoothed)
   
-tableMatrix[3,1]<-median(data_czech$new_cases)
-tableMatrix[3,2]<-median(data_czech$new_cases_smoothed)
-tableMatrix[3,3]<-median(data_czech$new_cases_per_million)
-tableMatrix[3,4]<-median(data_czech$new_cases_smoothed_per_million)
-tableMatrix[3,5]<-median(data_czech$hosp_patients, na.rm = TRUE)
-tableMatrix[3,6]<-median(data_czech$hosp_patients_per_million, na.rm = TRUE)
+casesPerMillionTableMatrix[3,1]<-median(data_czech$new_cases_per_million)
+casesPerMillionTableMatrix[3,2]<-median(data_czech$new_cases_smoothed_per_million)
 
-tableMatrix[4,1]<-max(data_czech$new_cases)
-tableMatrix[4,2]<-max(data_czech$new_cases_smoothed)
-tableMatrix[4,3]<-max(data_czech$new_cases_per_million)
-tableMatrix[4,4]<-max(data_czech$new_cases_smoothed_per_million)
-tableMatrix[4,5]<-max(data_czech$hosp_patients, na.rm = TRUE)
-tableMatrix[4,6]<-max(data_czech$hosp_patients_per_million, na.rm = TRUE)
+hospitalizedTableMatrix[3,1]<-median(data_czech$hosp_patients, na.rm = TRUE)
+hospitalizedTableMatrix[3,2]<-median(data_czech$hosp_patients_per_million, na.rm = TRUE)
 
-tableMatrix[5,1]<-min(data_czech$new_cases)
-tableMatrix[5,2]<-min(data_czech$new_cases_smoothed)
-tableMatrix[5,3]<-min(data_czech$new_cases_per_million)
-tableMatrix[5,4]<-min(data_czech$new_cases_smoothed_per_million)
-tableMatrix[5,5]<-min(data_czech$hosp_patients, na.rm = TRUE)
-tableMatrix[5,6]<-min(data_czech$hosp_patients_per_million, na.rm = TRUE)
 
-tableMatrix[6,1]<-skewness(data_czech$new_cases)
-tableMatrix[6,2]<-skewness(data_czech$new_cases_smoothed)
-tableMatrix[6,3]<-skewness(data_czech$new_cases_per_million)
-tableMatrix[6,4]<-skewness(data_czech$new_cases_smoothed_per_million)
-tableMatrix[6,5]<-skewness(data_czech$hosp_patients, na.rm = TRUE)
-tableMatrix[6,6]<-skewness(data_czech$hosp_patients_per_million, na.rm = TRUE)
+casesTableMatrix[4,1]<-max(data_czech$new_cases)
+casesTableMatrix[4,2]<-max(data_czech$new_cases_smoothed)
 
-tableMatrix[7,1]<-kurtosis(data_czech$new_cases)
-tableMatrix[7,2]<-kurtosis(data_czech$new_cases_smoothed)
-tableMatrix[7,3]<-kurtosis(data_czech$new_cases_per_million)
-tableMatrix[7,4]<-kurtosis(data_czech$new_cases_smoothed_per_million)
-tableMatrix[7,5]<-kurtosis(data_czech$hosp_patients, na.rm = TRUE)
-tableMatrix[7,6]<-kurtosis(data_czech$hosp_patients_per_million, na.rm = TRUE)
+casesPerMillionTableMatrix[4,1]<-max(data_czech$new_cases_per_million)
+casesPerMillionTableMatrix[4,2]<-max(data_czech$new_cases_smoothed_per_million)
 
-tableMatrix[8,1]<-sd(data_czech$new_cases)
-tableMatrix[8,2]<-sd(data_czech$new_cases_smoothed)
-tableMatrix[8,3]<-sd(data_czech$new_cases_per_million)
-tableMatrix[8,4]<-sd(data_czech$new_cases_smoothed_per_million)
-tableMatrix[8,5]<-sd(data_czech$hosp_patients, na.rm = TRUE)
-tableMatrix[8,6]<-sd(data_czech$hosp_patients_per_million, na.rm = TRUE)
+hospitalizedTableMatrix[4,1]<-max(data_czech$hosp_patients, na.rm = TRUE)
+hospitalizedTableMatrix[4,2]<-max(data_czech$hosp_patients_per_million, na.rm = TRUE)
 
-tableMatrix[9,1]<-var(data_czech$new_cases)
-tableMatrix[9,2]<-var(data_czech$new_cases_smoothed)
-tableMatrix[9,3]<-var(data_czech$new_cases_per_million)
-tableMatrix[9,4]<-var(data_czech$new_cases_smoothed_per_million)
-tableMatrix[9,5]<-var(data_czech$hosp_patients, na.rm = TRUE)
-tableMatrix[9,6]<-var(data_czech$hosp_patients_per_million, na.rm = TRUE)
+
+casesTableMatrix[5,1]<-min(data_czech$new_cases)
+casesTableMatrix[5,2]<-min(data_czech$new_cases_smoothed)
+
+casesPerMillionTableMatrix[5,1]<-min(data_czech$new_cases_per_million)
+casesPerMillionTableMatrix[5,2]<-min(data_czech$new_cases_smoothed_per_million)
+
+hospitalizedTableMatrix[5,1]<-min(data_czech$hosp_patients, na.rm = TRUE)
+hospitalizedTableMatrix[5,2]<-min(data_czech$hosp_patients_per_million, na.rm = TRUE)
+
+
+casesTableMatrix[6,1]<-skewness(data_czech$new_cases)
+casesTableMatrix[6,2]<-skewness(data_czech$new_cases_smoothed)
+
+casesPerMillionTableMatrix[6,1]<-skewness(data_czech$new_cases_per_million)
+casesPerMillionTableMatrix[6,2]<-skewness(data_czech$new_cases_smoothed_per_million)
+
+hospitalizedTableMatrix[6,1]<-skewness(data_czech$hosp_patients, na.rm = TRUE)
+hospitalizedTableMatrix[6,2]<-skewness(data_czech$hosp_patients_per_million, na.rm = TRUE)
+
+
+casesTableMatrix[7,1]<-kurtosis(data_czech$new_cases)
+casesTableMatrix[7,2]<-kurtosis(data_czech$new_cases_smoothed)
+
+casesPerMillionTableMatrix[7,1]<-kurtosis(data_czech$new_cases_per_million)
+casesPerMillionTableMatrix[7,2]<-kurtosis(data_czech$new_cases_smoothed_per_million)
+
+hospitalizedTableMatrix[7,1]<-kurtosis(data_czech$hosp_patients, na.rm = TRUE)
+hospitalizedTableMatrix[7,2]<-kurtosis(data_czech$hosp_patients_per_million, na.rm = TRUE)
+
+
+casesTableMatrix[8,1]<-sd(data_czech$new_cases)
+casesTableMatrix[8,2]<-sd(data_czech$new_cases_smoothed)
+
+casesPerMillionTableMatrix[8,1]<-sd(data_czech$new_cases_per_million)
+casesPerMillionTableMatrix[8,2]<-sd(data_czech$new_cases_smoothed_per_million)
+
+hospitalizedTableMatrix[8,1]<-sd(data_czech$hosp_patients, na.rm = TRUE)
+hospitalizedTableMatrix[8,2]<-sd(data_czech$hosp_patients_per_million, na.rm = TRUE)
+
+
+casesTableMatrix[9,1]<-var(data_czech$new_cases)
+casesTableMatrix[9,2]<-var(data_czech$new_cases_smoothed)
+
+casesPerMillionTableMatrix[9,1]<-var(data_czech$new_cases_per_million)
+casesPerMillionTableMatrix[9,2]<-var(data_czech$new_cases_smoothed_per_million)
+
+hospitalizedTableMatrix[9,1]<-var(data_czech$hosp_patients, na.rm = TRUE)
+hospitalizedTableMatrix[9,2]<-var(data_czech$hosp_patients_per_million, na.rm = TRUE)
 
 #tableMatrix[10,1]<-quantile(data_czech$new_cases)
 #tableMatrix[10,2]<-quantile(data_czech$new_cases_smoothed)
@@ -178,28 +236,50 @@ tableMatrix[9,6]<-var(data_czech$hosp_patients_per_million, na.rm = TRUE)
 #tableMatrix[10,5]<-quantile(data_czech$hosp_patients, na.rm = TRUE)
 #tableMatrix[10,6]<-quantile(data_czech$hosp_patients_per_million, na.rm = TRUE)
 
-print(xtable(tableMatrix,
-             caption="Části popisné statistiky aplikované na data",
+print(xtable(casesTableMatrix,
+             caption="Části popisné statistiky aplikované na data nových případů a jejich 7denního klouzavého průměru v ČR od 7. 3. 2020",
+             label="table:popisStat"),
+      include.rownames=TRUE,
+      caption.placement="bottom"
+      )
+
+print(xtable(casesPerMillionTableMatrix,
+             caption="Části popisné statistiky aplikované na data nových případů na milión a jejich 7denního klouzavého průměru v ČR od 7. 3. 2020",
+             label="table:popisStat"),
+      include.rownames=TRUE,
+      caption.placement="bottom"
+      )
+
+print(xtable(hospitalizedTableMatrix,
+             caption="Části popisné statistiky aplikované na data nových hospitalizací a nových hospitalizací na milión v ČR od 7. 3. 2020",
              label="table:popisStat"),
       include.rownames=TRUE,
       caption.placement="bottom"
       )
 @
-\clearpage
+
+
 
 %% Základní grafy
 \section{Základní grafy}
 \subsection{Histogram}
+
+Následující histogram zobrazuje četnost hodnot klouzavého průměru nových případů v ČR od 7. 3. 2020.
+Hodnoty jsou rozděleny do 10 skupin od hodnoty 2,714 do hodnoty 12954,857 při intervalu
+1295,2143 hodnot pro každou skupinu.
+
 \begin{figure}[H]
 \centering
-
 <<histogram_new_cases_smoothed, echo=FALSE,results=hide>>=
 CairoPDF("histogram_new_cases_smoothed.pdf")
 hist(log1p(data_czech$new_cases_smoothed), main = "Histogram zlog. klouzavého průměru nových případů", xlab="Zlog. klouzavý průměr nových případů", ylab="Frekvence", xlim = c(0,10), ylim = c(0,200), col = "#57ADC3", border = "black")
 @
 \includegraphics[width=10cm]{histogram_new_cases_smoothed.pdf}
-\caption{Histogram zlog. klouzavý průměr nových případů}
+\caption{Histogram zlog. klouzavý průměr nových případů v ČR od 7. 3. 2020}
+\end{figure}
 
+\begin{figure}[H]
+\centering
 <<histogram_new_cases_per_million, echo=FALSE,results=hide>>=
 CairoPDF("histogram_new_cases_per_million.pdf")
 hist(log1p(data_czech$new_cases_smoothed), main = "Histogram zlog. nových případů na milión", xlab="Zlog. nové případy na milión", ylab="Frekvence", xlim = c(0,10), ylim = c(0,200), col = "#57ADC3", border = "black")
@@ -467,6 +547,7 @@ plot(bin, main = "Graf zlog. nových případů a nových úmrtí", colramp=my_c
 
 \subsection{Chernoff faces}
 \begin{figure}[H]
+\small
 \centering
 
 <<faces_graf_covid, echo=FALSE>>=
@@ -527,8 +608,11 @@ p1 = data_czech$new_cases[1:288]
 p2 = data_czech$new_cases[289:576]
 @
 \subsection{Jednovýběrový Studentův test vůči střední hodnotě}
-<<testStrH_new_cases, echo=FALSE>>=
-t.test(data_czech$new_cases, mu = 3300)
+Následující test testuje zda se střední hodnota nových případů v ČR rovná
+hodnotě 3300 s hladinou významnosti $\alpha$ = 0.05. Testová statistika nabývá hodnoty -2.0168 při 575 stupních volnosti. Vzhledem k tomu, že hodnota p-value je nižší než hladina významnosti, tuto hypotézu zamítáme ve prospěch hypotézy alternativní, tudíž že se střední hodnota
+nových případů v ČR nerovná hodnotě 3300.
+<<testStrH_new_cases, size="huge", echo=FALSE>>=
+t.test(data_czech$new_cases, mu = 3300, conf.level = 0.95)
 @
 
 <<testStrH_new_cases_smoothed, echo=FALSE>>=
@@ -688,7 +772,7 @@ summary(varr)
 \section{Korelace}
 \subsection{Korelační matice}
 \begin{table}[H]
-
+\small
 <<cor_matrix, echo=FALSE>>=
 matice <- matrix(data_czech$new_cases, ncol = 24)
 corr <- cor(matice, method = "pearson")
@@ -716,7 +800,7 @@ heatmap(x = corr, col = col, symm = TRUE)
 \section{Kovariance}
 \subsection{Kovarianční matice}
 \begin{table}[H]
-
+\small
 <<cov_matrix, echo=FALSE>>=
 covv <- cov(matice, method = "pearson")
 covv <- cov(matice, method = "kendall")

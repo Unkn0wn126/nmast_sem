@@ -2,7 +2,7 @@
 % autor: Lukáš Milar, Tomáš Prudký
 % název: Zpracování dat pro předmět NMAST
 % !TEX encoding = UTF-8 Unicode
-\documentclass[a4paper]{ article}
+\documentclass[a4paper, 12pt]{article}
 
 \usepackage{cmap}
 \usepackage[utf8]{inputenc}
@@ -49,6 +49,9 @@
 \section*{Úvod}
 \label{uvod}
 
+V této semestrální práci jsou analyzována data týkající se vývoje pandemie
+nemoci Covid-19. Použitá data čerpají ze zdroje~\cite{1}.
+
 %% Načítání dat start
 
 
@@ -60,41 +63,106 @@
 
 %% Popis dat
 \section{Popis dat}
+Data použitá v této práci se zabývají veličinami ohledně nemoci Covid-19 a pochází
+od společnosti Our World in Data. Tato data jsou denně aktualizována a obsahují
+například informace o očkování, testech, hospitalizacích, nových případech,
+nových úmrtích či reprodukčním čísle. Veškeré hodnoty jsou pozorovány napříč
+mnoha státy. Pro bližší popis těchto dat vizte zdroj~\cite{1}.
+
+Vzhledem k velkému množství dat jsou v této práci použity zpravidla údaje pro
+Českou republiku, ze kterých je dále využit užší výčet dostupných veličin.
 
 %% Popisná statistika
 \section{Popisná statistika}
+
+V tabulkách níže jsou zobrazeny hodnoty popisné statistiky pro veličiny nových případů,
+7denního klouzavého průměru nových případů, nových případů na milion, 7denního klouzavého průměru nových případů na milion,
+hospitalizovaných pacientů a hospitalizovaných pacientů na milion v České republice. Hodnoty 7denního klouzavého průměru
+lépe zachycují tyto veličiny v rámci dlouhodobých trendů, jelikož je eliminováno zkreslení v podobě menšího počtu uskutečněných
+testů například během víkendů.
+
 % latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Thu Dec 02 09:32:36 2021
+% Thu Dec 02 15:32:12 2021
 \begin{table}[ht]
 \centering
-\begin{tabular}{rrrrrrr}
+\begin{tabular}{rrr}
   \hline
- & n\_p & n\_p\_s & n\_p\_n\_m & n\_p\_n\_m\_s & h\_p & h\_p\_n\_m \\ 
+ & Nové případy & 7denní klouzavý průměr nových případů \\ 
   \hline
-prumer & 2940.58 & 2936.89 & 274.19 & 273.85 & 2370.49 & 221.03 \\ 
-  modus & 75.00 & 57.57 & 6.99 & 5.37 & 69.00 & 6.43 \\ 
-  median & 416.00 & 422.29 & 38.79 & 39.38 & 339.00 & 31.61 \\ 
-  max & 17773.00 & 12954.86 & 1657.22 & 1207.96 & 9509.00 & 886.66 \\ 
-  min & -2214.00 & 2.71 & -206.44 & 0.25 & 0.00 & 0.00 \\ 
-  skewness & 1.55 & 1.16 & 1.55 & 1.16 & 0.86 & 0.86 \\ 
-  kurtosis & 1.38 & -0.07 & 1.38 & -0.07 & -0.86 & -0.86 \\ 
-  deviation & 4277.10 & 3876.20 & 398.81 & 361.43 & 2973.01 & 277.22 \\ 
-  var & 18293577.15 & 15024928.55 & 159052.40 & 130633.34 & 8838793.84 & 76848.36 \\ 
+průměr & 2940.58 & 2936.89 \\ 
+  modus & 75.00 & 57.57 \\ 
+  medián & 416.00 & 422.29 \\ 
+  max & 17773.00 & 12954.86 \\ 
+  min & -2214.00 & 2.71 \\ 
+  šikmost & 1.55 & 1.16 \\ 
+  špičatost & 1.38 & -0.07 \\ 
+  odchylka & 4277.10 & 3876.20 \\ 
+  variance & 18293577.15 & 15024928.55 \\ 
    \hline
 \end{tabular}
-\caption{Části popisné statistiky aplikované na data} 
+\caption{Části popisné statistiky aplikované na data nových případů a jejich 7denního klouzavého průměru v ČR od 7. 3. 2020} 
 \label{table:popisStat}
-\end{table}\clearpage
+\end{table}% latex table generated in R 4.1.1 by xtable 1.8-4 package
+% Thu Dec 02 15:32:12 2021
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrr}
+  \hline
+ & Nové případy na milión & 7denní klouzavý průměr nových případů na milión \\ 
+  \hline
+průměr & 274.19 & 273.85 \\ 
+  modus & 6.99 & 5.37 \\ 
+  medián & 38.79 & 39.38 \\ 
+  max & 1657.22 & 1207.96 \\ 
+  min & -206.44 & 0.25 \\ 
+  šikmost & 1.55 & 1.16 \\ 
+  špičatost & 1.38 & -0.07 \\ 
+  odchylka & 398.81 & 361.43 \\ 
+  variance & 159052.40 & 130633.34 \\ 
+   \hline
+\end{tabular}
+\caption{Části popisné statistiky aplikované na data nových případů na milión a jejich 7denního klouzavého průměru v ČR od 7. 3. 2020} 
+\label{table:popisStat}
+\end{table}% latex table generated in R 4.1.1 by xtable 1.8-4 package
+% Thu Dec 02 15:32:12 2021
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrr}
+  \hline
+ & Hospitalizovaní pacienti & Hospitalizovaní pacienti na milión \\ 
+  \hline
+průměr & 2370.49 & 221.03 \\ 
+  modus & 69.00 & 6.43 \\ 
+  medián & 339.00 & 31.61 \\ 
+  max & 9509.00 & 886.66 \\ 
+  min & 0.00 & 0.00 \\ 
+  šikmost & 0.86 & 0.86 \\ 
+  špičatost & -0.86 & -0.86 \\ 
+  odchylka & 2973.01 & 277.22 \\ 
+  variance & 8838793.84 & 76848.36 \\ 
+   \hline
+\end{tabular}
+\caption{Části popisné statistiky aplikované na data nových hospitalizací a nových hospitalizací na milión v ČR od 7. 3. 2020} 
+\label{table:popisStat}
+\end{table}
+
 
 %% Základní grafy
 \section{Základní grafy}
 \subsection{Histogram}
+
+Následující histogram zobrazuje četnost hodnot klouzavého průměru nových případů v ČR od 7. 3. 2020.
+Hodnoty jsou rozděleny do 10 skupin od hodnoty 2,714 do hodnoty 12954,857 při intervalu
+1295,2143 hodnot pro každou skupinu.
+
 \begin{figure}[H]
 \centering
-
 \includegraphics[width=10cm]{histogram_new_cases_smoothed.pdf}
-\caption{Histogram zlog. klouzavý průměr nových případů}
+\caption{Histogram zlog. klouzavý průměr nových případů v ČR od 7. 3. 2020}
+\end{figure}
 
+\begin{figure}[H]
+\centering
 \includegraphics[width=10cm]{histogram_new_cases_per_million.pdf}
 \caption{Histogram zlog. nových případů na milión}
 
@@ -234,6 +302,7 @@ prumer & 2940.58 & 2936.89 & 274.19 & 273.85 & 2370.49 & 221.03 \\
 
 \subsection{Chernoff faces}
 \begin{figure}[H]
+\small
 \centering
 
 \begin{Schunk}
@@ -279,6 +348,9 @@ effect of variables:
 \section{Testování statistických hypotéz}
 
 \subsection{Jednovýběrový Studentův test vůči střední hodnotě}
+Následující test testuje zda se střední hodnota nových případů v ČR rovná
+hodnotě 3300 s hladinou významnosti $\alpha$ = 0.05. Testová statistika nabývá hodnoty -2.0168 při 575 stupních volnosti. Vzhledem k tomu, že hodnota p-value je nižší než hladina významnosti, tuto hypotézu zamítáme ve prospěch hypotézy alternativní, tudíž že se střední hodnota
+nových případů v ČR nerovná hodnotě 3300.
 \begin{Schunk}
 \begin{Soutput}
 	One Sample t-test
@@ -579,7 +651,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \section{Korelace}
 \subsection{Korelační matice}
 \begin{table}[H]
-
+\small
 \begin{Schunk}
 \begin{Soutput}
              [,1]        [,2]         [,3]         [,4]        [,5]        [,6]
@@ -818,7 +890,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \section{Kovariance}
 \subsection{Kovarianční matice}
 \begin{table}[H]
-
+\small
 \begin{Schunk}
 \begin{Soutput}
        V1                V2                V3                 V4         
