@@ -265,8 +265,7 @@ print(xtable(hospitalizedTableMatrix,
 \subsection{Histogram}
 
 Následující histogram zobrazuje četnost hodnot klouzavého průměru nových případů v ČR od 7. 3. 2020.
-Hodnoty jsou rozděleny do 10 skupin od hodnoty 2,714 do hodnoty 12954,857 při intervalu
-1295,2143 hodnot pro každou skupinu.
+Pro lepší přehlednost byla data zlogaritmována.
 
 \begin{figure}[H]
 \centering
@@ -580,6 +579,10 @@ faces(tabulka[,-1], labels = tabulka[,1])
 \clearpage
 
 \subsection{QQPlot}
+
+Na základě následujícího QQPlot grafu je možné dojít k závěru, že počty nových
+úmrtí a počty nových případů v ČR se řídí dle podobného rozdělení pravděpodobnosti.
+
 \begin{figure}[H]
 \centering
 
@@ -589,6 +592,14 @@ qqplot(data_czech$new_cases,data_czech$new_deaths, pch=4, main="Graf nových př
 @
 \includegraphics[width=10cm]{qqplot_graph_new_cases_new_deaths.pdf}
 \caption{QQPlot graf nových případů a nových úmrtí}
+\end{figure}
+\clearpage
+
+Na základě následujícího QQPlot grafu je možné dojít k závěru, že počty nových
+případů a počty nových testů v ČR se řídí dle podobného rozdělení pravděpodobnosti.
+
+\begin{figure}[H]
+\centering
 
 <<qqplot_graph_new_tests_new_cases, echo=FALSE>>=
 CairoPDF("qqplot_graph_new_tests_new_cases.pdf")
@@ -606,6 +617,9 @@ qqplot(data_czech$new_tests,data_czech$new_cases, pch=4, main="Graf nových test
 <<testHypVar, echo=FALSE,results=hide>>=
 p1 = data_czech$new_cases[1:288]
 p2 = data_czech$new_cases[289:576]
+
+new_cases_germany = data_germany$new_cases
+new_cases_czechia = data_czech$new_cases
 @
 \subsection{Jednovýběrový Studentův test vůči střední hodnotě}
 Následující test testuje zda se střední hodnota nových případů v ČR rovná
@@ -642,6 +656,16 @@ t.test(data_czech$hosp_patients_per_million)
 \subsection{Dvouvýběrový Studentův test}
 <<testDvouVyber_new_cases, echo=FALSE>>=
 t.test(p1,p2)
+@
+
+Následující dvouvýběrový t-test testuje hypotézu, že střední hodnota nových případů
+v ČR je rovna střední hodnotě nových případů v Německu. Testová statistika nabývá hodnoty
+-11,133 při 843,1 stupních volnosti. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů v Německu
+se nerovná střední hodnotě nových případů v ČR.
+<<testDvouVyber_czechia_germanynew_cases, echo=FALSE>>=
+t.test(new_cases_czechia,new_cases_germany)
 @
 
 <<testDvouVyber_czechia_slovakia_new_cases_per_million, echo=FALSE>>=
@@ -847,33 +871,23 @@ ggqqplot(data_czech$new_cases)
 chisq.test(data_czech$new_tests, data_czech$new_cases)
 @
 
-%% Páry
-\section{Pairs}
+%% Regrese
+\section{Regrese}
 
 \begin{figure}[H]
 \centering
-<<pairs_graph, echo=FALSE>>=
-df1 <- data.frame(data_czech[1],
-                 data_czech[6],
-                 data_czech[7],
-                 data_czech[9],
-                 data_czech[10],
-                 data_czech[12],
-                 data_czech[13],
-                 data_czech[15],
-                 data_czech[16],
-                 data_czech[18],
-                 data_czech[19],
-                 data_czech[20],
-                 data_czech[21],
-                 data_czech[27],
-                 data_czech[40])
-
-CairoPDF("pairs_graph.pdf")
-pairs(df1)
+<<linear_regresion_graph, echo=FALSE>>=
+CairoPDF("linear_regresion_graph.pdf")
+regrese = lm(data_czech$icu_patients_per_million~data_czech$hosp_patients_per_million)
+predikce = predict(regrese, interval = "prediction", level = 0.95)
+plot(data_czech$hosp_patients_per_million, data_czech$icu_patients_per_million, pch=4, main="Lineární regrese", xlab="Noví pacienti na milión", ylab="Noví pacienti na ICU na milión")
+abline(regrese)
+lines(data_czech$hosp_patients_per_million[1:569], predikce[,2], type = "l", col="red")
+lines(data_czech$hosp_patients_per_million[1:569], predikce[,3], type = "l", col="green")
 @
-\includegraphics[width=10cm]{pairs_graph.pdf}
-\caption{Grafy párů}
+\includegraphics[width=10cm]{linear_regresion_graph.pdf}
+\caption{Graf lineární regrese}
+
 \end{figure}
 
 \clearpage
@@ -916,6 +930,11 @@ Our World in Data
 \section*{Příloha~A}
 
 Příloha A zahrnuje ZIP soubor, který obsahuje: 
+
+\begin{itemize}
+    \item Zdrojové kódy
+    \item Zdrojová data použitá v práci
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Konec dokumentu

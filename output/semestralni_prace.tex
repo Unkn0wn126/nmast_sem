@@ -82,7 +82,7 @@ lépe zachycují tyto veličiny v rámci dlouhodobých trendů, jelikož je elim
 testů například během víkendů.
 
 % latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Thu Dec 02 15:32:12 2021
+% Fri Dec 03 12:50:43 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -103,7 +103,7 @@ průměr & 2940.58 & 2936.89 \\
 \caption{Části popisné statistiky aplikované na data nových případů a jejich 7denního klouzavého průměru v ČR od 7. 3. 2020} 
 \label{table:popisStat}
 \end{table}% latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Thu Dec 02 15:32:12 2021
+% Fri Dec 03 12:50:43 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -124,7 +124,7 @@ průměr & 274.19 & 273.85 \\
 \caption{Části popisné statistiky aplikované na data nových případů na milión a jejich 7denního klouzavého průměru v ČR od 7. 3. 2020} 
 \label{table:popisStat}
 \end{table}% latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Thu Dec 02 15:32:12 2021
+% Fri Dec 03 12:50:43 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -152,8 +152,7 @@ průměr & 2370.49 & 221.03 \\
 \subsection{Histogram}
 
 Následující histogram zobrazuje četnost hodnot klouzavého průměru nových případů v ČR od 7. 3. 2020.
-Hodnoty jsou rozděleny do 10 skupin od hodnoty 2,714 do hodnoty 12954,857 při intervalu
-1295,2143 hodnot pro každou skupinu.
+Pro lepší přehlednost byla data zlogaritmována.
 
 \begin{figure}[H]
 \centering
@@ -332,11 +331,23 @@ effect of variables:
 \clearpage
 
 \subsection{QQPlot}
+
+Na základě následujícího QQPlot grafu je možné dojít k závěru, že počty nových
+úmrtí a počty nových případů v ČR se řídí dle podobného rozdělení pravděpodobnosti.
+
 \begin{figure}[H]
 \centering
 
 \includegraphics[width=10cm]{qqplot_graph_new_cases_new_deaths.pdf}
 \caption{QQPlot graf nových případů a nových úmrtí}
+\end{figure}
+\clearpage
+
+Na základě následujícího QQPlot grafu je možné dojít k závěru, že počty nových
+případů a počty nových testů v ČR se řídí dle podobného rozdělení pravděpodobnosti.
+
+\begin{figure}[H]
+\centering
 
 \includegraphics[width=10cm]{qqplot_graph_new_tests_new_cases.pdf}
 \caption{QQPlot graf nových testů a nových případů}
@@ -458,6 +469,27 @@ alternative hypothesis: true difference in means is not equal to 0
 sample estimates:
 mean of x mean of y 
  2148.674  3732.479 
+\end{Soutput}
+\end{Schunk}
+
+Následující dvouvýběrový t-test testuje hypotézu, že střední hodnota nových případů
+v ČR je rovna střední hodnotě nových případů v Německu. Testová statistika nabývá hodnoty
+-11,133 při 843,1 stupních volnosti. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů v Německu
+se nerovná střední hodnotě nových případů v ČR.
+\begin{Schunk}
+\begin{Soutput}
+	Welch Two Sample t-test
+
+data:  new_cases_czechia and new_cases_germany
+t = -11.133, df = 843.1, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -5240.394 -3669.509
+sample estimates:
+mean of x mean of y 
+ 2940.576  7395.528 
 \end{Soutput}
 \end{Schunk}
 
@@ -969,13 +1001,14 @@ X-squared = 147356, df = 146982, p-value = 0.245
 \end{Soutput}
 \end{Schunk}
 
-%% Páry
-\section{Pairs}
+%% Regrese
+\section{Regrese}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm]{pairs_graph.pdf}
-\caption{Grafy párů}
+\includegraphics[width=10cm]{linear_regresion_graph.pdf}
+\caption{Graf lineární regrese}
+
 \end{figure}
 
 \clearpage
@@ -1018,6 +1051,11 @@ Our World in Data
 \section*{Příloha~A}
 
 Příloha A zahrnuje ZIP soubor, který obsahuje: 
+
+\begin{itemize}
+    \item Zdrojové kódy
+    \item Zdrojová data použitá v práci
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Konec dokumentu

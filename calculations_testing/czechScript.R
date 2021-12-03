@@ -192,6 +192,7 @@ faces(tabulka[,-1], labels = tabulka[,1])
 ?qqplot()
 qqplot(data_czech$new_cases,data_czech$new_deaths)
 qqplot(data_czech$new_tests,data_czech$new_cases)
+qqplot(data_czech$hosp_patients_per_million,data_czech$icu_patients_per_million)
 
 #TESTOVANI HYPOTEZ
 #TESTY
@@ -264,6 +265,25 @@ plot(corr)
 
 library("ggpubr")
 ggqqplot(data_czech$new_cases)
+
+#REGRESE
+
+length(data_czech$new_cases_per_million)
+length(data_czech$new_deaths_per_million[1:561])
+length(regrese)
+length(predikce[,2])
+length(data_czech$hosp_patients_per_million)
+length(data_czech$icu_patients_per_million)
+
+regrese = lm(data_czech$icu_patients_per_million~data_czech$hosp_patients_per_million)
+abline(regrese)
+summary(regrese)
+predikce = predict(regrese, interval = "prediction", level = 0.95)
+predikce
+plot(data_czech$hosp_patients_per_million, data_czech$icu_patients_per_million, pch=4, main="Lineární regrese", xlab="Noví pacienti na milión", ylab="Noví pacienti na ICU na milión")
+abline(regrese)
+lines(data_czech$hosp_patients_per_million[1:569], predikce[,2], type = "l", col="red")
+lines(data_czech$hosp_patients_per_million[1:569], predikce[,3], type = "l", col="green")
 
 #PAIRS
 df1 <- data.frame(data_czech[1],

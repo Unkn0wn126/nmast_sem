@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.2)  2 DEC 2021 15:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.2)  3 DEC 2021 12:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -546,44 +546,44 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 [9
 
 ] [10]
-<histogram_new_cases_smoothed.pdf, id=302, 433.62pt x 433.62pt>
+<histogram_new_cases_smoothed.pdf, id=303, 433.62pt x 433.62pt>
 File: histogram_new_cases_smoothed.pdf Graphic file (type pdf)
 <use histogram_new_cases_smoothed.pdf>
-Package pdftex.def Info: histogram_new_cases_smoothed.pdf  used on input line 160.
+Package pdftex.def Info: histogram_new_cases_smoothed.pdf  used on input line 159.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<histogram_new_cases_per_million.pdf, id=303, 433.62pt x 433.62pt>
+<histogram_new_cases_per_million.pdf, id=304, 433.62pt x 433.62pt>
 File: histogram_new_cases_per_million.pdf Graphic file (type pdf)
 <use histogram_new_cases_per_million.pdf>
-Package pdftex.def Info: histogram_new_cases_per_million.pdf  used on input line 166.
+Package pdftex.def Info: histogram_new_cases_per_million.pdf  used on input line 165.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<histogram_new_cases_smoothed_per_million.pdf, id=304, 433.62pt x 433.62pt>
+<histogram_new_cases_smoothed_per_million.pdf, id=305, 433.62pt x 433.62pt>
 File: histogram_new_cases_smoothed_per_million.pdf Graphic file (type pdf)
 <use histogram_new_cases_smoothed_per_million.pdf>
-Package pdftex.def Info: histogram_new_cases_smoothed_per_million.pdf  used on input line 173.
+Package pdftex.def Info: histogram_new_cases_smoothed_per_million.pdf  used on input line 172.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<histogram_hosp_patients.pdf, id=305, 433.62pt x 433.62pt>
+<histogram_hosp_patients.pdf, id=306, 433.62pt x 433.62pt>
 File: histogram_hosp_patients.pdf Graphic file (type pdf)
 <use histogram_hosp_patients.pdf>
-Package pdftex.def Info: histogram_hosp_patients.pdf  used on input line 176.
+Package pdftex.def Info: histogram_hosp_patients.pdf  used on input line 175.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [11
 
  <./histogram_new_cases_smoothed.pdf>]
-<histogram_new_tests.pdf, id=327, 433.62pt x 433.62pt>
+<histogram_new_tests.pdf, id=328, 433.62pt x 433.62pt>
 File: histogram_new_tests.pdf Graphic file (type pdf)
 <use histogram_new_tests.pdf>
-Package pdftex.def Info: histogram_new_tests.pdf  used on input line 183.
+Package pdftex.def Info: histogram_new_tests.pdf  used on input line 182.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<histogram_new_cases.pdf, id=328, 433.62pt x 433.62pt>
+<histogram_new_cases.pdf, id=329, 433.62pt x 433.62pt>
 File: histogram_new_cases.pdf Graphic file (type pdf)
 <use histogram_new_cases.pdf>
-Package pdftex.def Info: histogram_new_cases.pdf  used on input line 186.
+Package pdftex.def Info: histogram_new_cases.pdf  used on input line 185.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [12 <./histogram_new_cases_per_million.pdf>]
-<histogram_new_cases_cz_de.pdf, id=349, 433.62pt x 433.62pt>
+<histogram_new_cases_cz_de.pdf, id=350, 433.62pt x 433.62pt>
 File: histogram_new_cases_cz_de.pdf Graphic file (type pdf)
 <use histogram_new_cases_cz_de.pdf>
-Package pdftex.def Info: histogram_new_cases_cz_de.pdf  used on input line 193.
+Package pdftex.def Info: histogram_new_cases_cz_de.pdf  used on input line 192.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [13 <./histogram_new_cases_smoothed_per_million.pdf> <./histogram_hosp_patients.pdf
 
@@ -592,64 +592,64 @@ pdfTeX warning: pdflatex.exe (file ./histogram_hosp_patients.pdf): PDF inclusion
 
 pdfTeX warning: pdflatex.exe (file ./histogram_new_cases.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<bodovy_nove_pripady_log.pdf, id=421, 433.62pt x 433.62pt>
+<bodovy_nove_pripady_log.pdf, id=422, 433.62pt x 433.62pt>
 File: bodovy_nove_pripady_log.pdf Graphic file (type pdf)
 <use bodovy_nove_pripady_log.pdf>
-Package pdftex.def Info: bodovy_nove_pripady_log.pdf  used on input line 201.
+Package pdftex.def Info: bodovy_nove_pripady_log.pdf  used on input line 200.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<bodovy_nove_testy.pdf, id=422, 433.62pt x 433.62pt>
+<bodovy_nove_testy.pdf, id=423, 433.62pt x 433.62pt>
 File: bodovy_nove_testy.pdf Graphic file (type pdf)
 <use bodovy_nove_testy.pdf>
-Package pdftex.def Info: bodovy_nove_testy.pdf  used on input line 204.
+Package pdftex.def Info: bodovy_nove_testy.pdf  used on input line 203.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<bodovy_reprodukcni_cislo.pdf, id=423, 433.62pt x 433.62pt>
+<bodovy_reprodukcni_cislo.pdf, id=424, 433.62pt x 433.62pt>
 File: bodovy_reprodukcni_cislo.pdf Graphic file (type pdf)
 <use bodovy_reprodukcni_cislo.pdf>
-Package pdftex.def Info: bodovy_reprodukcni_cislo.pdf  used on input line 211.
+Package pdftex.def Info: bodovy_reprodukcni_cislo.pdf  used on input line 210.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<bodovy_icu_patients.pdf, id=424, 433.62pt x 433.62pt>
+<bodovy_icu_patients.pdf, id=425, 433.62pt x 433.62pt>
 File: bodovy_icu_patients.pdf Graphic file (type pdf)
 <use bodovy_icu_patients.pdf>
-Package pdftex.def Info: bodovy_icu_patients.pdf  used on input line 214.
+Package pdftex.def Info: bodovy_icu_patients.pdf  used on input line 213.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [15 <./histogram_new_cases_cz_de.pdf>]
-<bodovy_hosp_patients.pdf, id=445, 433.62pt x 433.62pt>
+<bodovy_hosp_patients.pdf, id=446, 433.62pt x 433.62pt>
 File: bodovy_hosp_patients.pdf Graphic file (type pdf)
 <use bodovy_hosp_patients.pdf>
-Package pdftex.def Info: bodovy_hosp_patients.pdf  used on input line 221.
+Package pdftex.def Info: bodovy_hosp_patients.pdf  used on input line 220.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<bodovy_weekly_icu_admissions.pdf, id=446, 433.62pt x 433.62pt>
+<bodovy_weekly_icu_admissions.pdf, id=447, 433.62pt x 433.62pt>
 File: bodovy_weekly_icu_admissions.pdf Graphic file (type pdf)
 <use bodovy_weekly_icu_admissions.pdf>
-Package pdftex.def Info: bodovy_weekly_icu_admissions.pdf  used on input line 224.
+Package pdftex.def Info: bodovy_weekly_icu_admissions.pdf  used on input line 223.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [16 <./bodovy_nove_pripady_log.pdf> <./bodovy_nove_testy.pdf
 
 pdfTeX warning: pdflatex.exe (file ./bodovy_nove_testy.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<bodovy_weekly_hosp_admissions.pdf, id=483, 433.62pt x 433.62pt>
+<bodovy_weekly_hosp_admissions.pdf, id=484, 433.62pt x 433.62pt>
 File: bodovy_weekly_hosp_admissions.pdf Graphic file (type pdf)
 <use bodovy_weekly_hosp_admissions.pdf>
-Package pdftex.def Info: bodovy_weekly_hosp_admissions.pdf  used on input line 231.
+Package pdftex.def Info: bodovy_weekly_hosp_admissions.pdf  used on input line 230.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<bodovy_positive_rate.pdf, id=484, 433.62pt x 433.62pt>
+<bodovy_positive_rate.pdf, id=485, 433.62pt x 433.62pt>
 File: bodovy_positive_rate.pdf Graphic file (type pdf)
 <use bodovy_positive_rate.pdf>
-Package pdftex.def Info: bodovy_positive_rate.pdf  used on input line 234.
+Package pdftex.def Info: bodovy_positive_rate.pdf  used on input line 233.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [17 <./bodovy_reprodukcni_cislo.pdf> <./bodovy_icu_patients.pdf
 
 pdfTeX warning: pdflatex.exe (file ./bodovy_icu_patients.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<bodovy_new_vaccinations.pdf, id=520, 433.62pt x 433.62pt>
+<bodovy_new_vaccinations.pdf, id=521, 433.62pt x 433.62pt>
 File: bodovy_new_vaccinations.pdf Graphic file (type pdf)
 <use bodovy_new_vaccinations.pdf>
-Package pdftex.def Info: bodovy_new_vaccinations.pdf  used on input line 241.
+Package pdftex.def Info: bodovy_new_vaccinations.pdf  used on input line 240.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<bodovy_excess_mortality.pdf, id=521, 433.62pt x 433.62pt>
+<bodovy_excess_mortality.pdf, id=522, 433.62pt x 433.62pt>
 File: bodovy_excess_mortality.pdf Graphic file (type pdf)
 <use bodovy_excess_mortality.pdf>
-Package pdftex.def Info: bodovy_excess_mortality.pdf  used on input line 244.
+Package pdftex.def Info: bodovy_excess_mortality.pdf  used on input line 243.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [18 <./bodovy_hosp_patients.pdf> <./bodovy_weekly_icu_admissions.pdf
 
@@ -658,54 +658,54 @@ pdfTeX warning: pdflatex.exe (file ./bodovy_weekly_icu_admissions.pdf): PDF incl
 
 pdfTeX warning: pdflatex.exe (file ./bodovy_positive_rate.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<boxplot_new_cases_per_million.pdf, id=594, 433.62pt x 433.62pt>
+<boxplot_new_cases_per_million.pdf, id=595, 433.62pt x 433.62pt>
 File: boxplot_new_cases_per_million.pdf Graphic file (type pdf)
 <use boxplot_new_cases_per_million.pdf>
-Package pdftex.def Info: boxplot_new_cases_per_million.pdf  used on input line 252.
+Package pdftex.def Info: boxplot_new_cases_per_million.pdf  used on input line 251.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<boxplot_reproduction_rate.pdf, id=595, 433.62pt x 433.62pt>
+<boxplot_reproduction_rate.pdf, id=596, 433.62pt x 433.62pt>
 File: boxplot_reproduction_rate.pdf Graphic file (type pdf)
 <use boxplot_reproduction_rate.pdf>
-Package pdftex.def Info: boxplot_reproduction_rate.pdf  used on input line 255.
+Package pdftex.def Info: boxplot_reproduction_rate.pdf  used on input line 254.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [20 <./bodovy_new_vaccinations.pdf> <./bodovy_excess_mortality.pdf
 
 pdfTeX warning: pdflatex.exe (file ./bodovy_excess_mortality.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<boxplot_log_new_deaths.pdf, id=631, 433.62pt x 433.62pt>
+<boxplot_log_new_deaths.pdf, id=632, 433.62pt x 433.62pt>
 File: boxplot_log_new_deaths.pdf Graphic file (type pdf)
 <use boxplot_log_new_deaths.pdf>
-Package pdftex.def Info: boxplot_log_new_deaths.pdf  used on input line 262.
+Package pdftex.def Info: boxplot_log_new_deaths.pdf  used on input line 261.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [21 <./boxplot_new_cases_per_million.pdf> <./boxplot_reproduction_rate.pdf
 
 pdfTeX warning: pdflatex.exe (file ./boxplot_reproduction_rate.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<3D_graf_new_cases_new_tests_total_cases.pdf, id=667, 433.62pt x 433.62pt>
+<3D_graf_new_cases_new_tests_total_cases.pdf, id=668, 433.62pt x 433.62pt>
 File: 3D_graf_new_cases_new_tests_total_cases.pdf Graphic file (type pdf)
 <use 3D_graf_new_cases_new_tests_total_cases.pdf>
-Package pdftex.def Info: 3D_graf_new_cases_new_tests_total_cases.pdf  used on input line 270.
+Package pdftex.def Info: 3D_graf_new_cases_new_tests_total_cases.pdf  used on input line 269.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<3D_graf_log_new_cases_new_tests_total_cases.pdf, id=668, 433.62pt x 433.62pt>
+<3D_graf_log_new_cases_new_tests_total_cases.pdf, id=669, 433.62pt x 433.62pt>
 File: 3D_graf_log_new_cases_new_tests_total_cases.pdf Graphic file (type pdf)
 <use 3D_graf_log_new_cases_new_tests_total_cases.pdf>
-Package pdftex.def Info: 3D_graf_log_new_cases_new_tests_total_cases.pdf  used on input line 273.
+Package pdftex.def Info: 3D_graf_log_new_cases_new_tests_total_cases.pdf  used on input line 272.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<3D_graf_new_cases_new_tests_new_vaccinations.pdf, id=669, 433.62pt x 433.62pt>
+<3D_graf_new_cases_new_tests_new_vaccinations.pdf, id=670, 433.62pt x 433.62pt>
 File: 3D_graf_new_cases_new_tests_new_vaccinations.pdf Graphic file (type pdf)
 <use 3D_graf_new_cases_new_tests_new_vaccinations.pdf>
-Package pdftex.def Info: 3D_graf_new_cases_new_tests_new_vaccinations.pdf  used on input line 279.
+Package pdftex.def Info: 3D_graf_new_cases_new_tests_new_vaccinations.pdf  used on input line 278.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<3D_graf_new_cases.pdf, id=670, 433.62pt x 433.62pt>
+<3D_graf_new_cases.pdf, id=671, 433.62pt x 433.62pt>
 File: 3D_graf_new_cases.pdf Graphic file (type pdf)
 <use 3D_graf_new_cases.pdf>
-Package pdftex.def Info: 3D_graf_new_cases.pdf  used on input line 282.
+Package pdftex.def Info: 3D_graf_new_cases.pdf  used on input line 281.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [22 <./boxplot_log_new_deaths.pdf>]
-<3D_graf_reproduction_rate.pdf, id=691, 433.62pt x 433.62pt>
+<3D_graf_reproduction_rate.pdf, id=692, 433.62pt x 433.62pt>
 File: 3D_graf_reproduction_rate.pdf Graphic file (type pdf)
 <use 3D_graf_reproduction_rate.pdf>
-Package pdftex.def Info: 3D_graf_reproduction_rate.pdf  used on input line 288.
+Package pdftex.def Info: 3D_graf_reproduction_rate.pdf  used on input line 287.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [23 <./3D_graf_new_cases_new_tests_total_cases.pdf> <./3D_graf_log_new_cases_new_tests_total_cases.pdf
 
@@ -714,23 +714,23 @@ pdfTeX warning: pdflatex.exe (file ./3D_graf_log_new_cases_new_tests_total_cases
 
 pdfTeX warning: pdflatex.exe (file ./3D_graf_new_cases.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<hexbin_graf_log_new_cases_new_deaths.pdf, id=763, 433.62pt x 433.62pt>
+<hexbin_graf_log_new_cases_new_deaths.pdf, id=764, 433.62pt x 433.62pt>
 File: hexbin_graf_log_new_cases_new_deaths.pdf Graphic file (type pdf)
 <use hexbin_graf_log_new_cases_new_deaths.pdf>
-Package pdftex.def Info: hexbin_graf_log_new_cases_new_deaths.pdf  used on input line 297.
+Package pdftex.def Info: hexbin_graf_log_new_cases_new_deaths.pdf  used on input line 296.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [25 <./3D_graf_reproduction_rate.pdf> <./hexbin_graf_log_new_cases_new_deaths.pdf
 
 pdfTeX warning: pdflatex.exe (file ./hexbin_graf_log_new_cases_new_deaths.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-LaTeX Font Info:    Trying to load font information for T1+aett on input line 309.
+LaTeX Font Info:    Trying to load font information for T1+aett on input line 308.
 (c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
-<faces_graf_covid.pdf, id=793, 433.62pt x 433.62pt>
+<faces_graf_covid.pdf, id=794, 433.62pt x 433.62pt>
 File: faces_graf_covid.pdf Graphic file (type pdf)
 <use faces_graf_covid.pdf>
-Package pdftex.def Info: faces_graf_covid.pdf  used on input line 329.
+Package pdftex.def Info: faces_graf_covid.pdf  used on input line 328.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [26
 
@@ -738,151 +738,158 @@ Package pdftex.def Info: faces_graf_covid.pdf  used on input line 329.
 Overfull \vbox (10.02905pt too high) has occurred while \output is active []
 
 [27 <./faces_graf_covid.pdf>]
-<qqplot_graph_new_cases_new_deaths.pdf, id=812, 433.62pt x 433.62pt>
+<qqplot_graph_new_cases_new_deaths.pdf, id=813, 433.62pt x 433.62pt>
 File: qqplot_graph_new_cases_new_deaths.pdf Graphic file (type pdf)
 <use qqplot_graph_new_cases_new_deaths.pdf>
-Package pdftex.def Info: qqplot_graph_new_cases_new_deaths.pdf  used on input line 338.
-(pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<qqplot_graph_new_tests_new_cases.pdf, id=813, 433.62pt x 433.62pt>
-File: qqplot_graph_new_tests_new_cases.pdf Graphic file (type pdf)
-<use qqplot_graph_new_tests_new_cases.pdf>
-Package pdftex.def Info: qqplot_graph_new_tests_new_cases.pdf  used on input line 341.
+Package pdftex.def Info: qqplot_graph_new_cases_new_deaths.pdf  used on input line 341.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
 [28
 
- <./qqplot_graph_new_cases_new_deaths.pdf> <./qqplot_graph_new_tests_new_cases.pdf
+ <./qqplot_graph_new_cases_new_deaths.pdf>]
+<qqplot_graph_new_tests_new_cases.pdf, id=834, 433.62pt x 433.62pt>
+File: qqplot_graph_new_tests_new_cases.pdf Graphic file (type pdf)
+<use qqplot_graph_new_tests_new_cases.pdf>
+Package pdftex.def Info: qqplot_graph_new_tests_new_cases.pdf  used on input line 352.
+(pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
+[29
 
-pdfTeX warning: pdflatex.exe (file ./qqplot_graph_new_tests_new_cases.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [29
+ <./qqplot_graph_new_tests_new_cases.pdf>] [30
 
 
-] [30] [31
-
-] [32
+] [31] [32
 
 ] [33
 
 ] [34] [35
 
+] [36] [37
+
 ]
-LaTeX Font Info:    Trying to load font information for TS1+aett on input line 597.
+LaTeX Font Info:    Trying to load font information for TS1+aett on input line 629.
 (c:/Users/Lukas/Documents/R/R-4.1.1/share/texmf/tex/latex/ts1aett.fd
 File: ts1aett.fd 
 )
-LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 597.
+LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 629.
 (c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `TS1/aett/m/n' in size <12> not available
-(Font)              Font shape `TS1/cmtt/m/n' tried instead on input line 597.
-<anova_graph_1.pdf, id=881, 433.62pt x 433.62pt>
+(Font)              Font shape `TS1/cmtt/m/n' tried instead on input line 629.
+<anova_graph_1.pdf, id=892, 433.62pt x 433.62pt>
 File: anova_graph_1.pdf Graphic file (type pdf)
 <use anova_graph_1.pdf>
-Package pdftex.def Info: anova_graph_1.pdf  used on input line 605.
+Package pdftex.def Info: anova_graph_1.pdf  used on input line 637.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<anova_graph_2.pdf, id=882, 433.62pt x 433.62pt>
+<anova_graph_2.pdf, id=893, 433.62pt x 433.62pt>
 File: anova_graph_2.pdf Graphic file (type pdf)
 <use anova_graph_2.pdf>
-Package pdftex.def Info: anova_graph_2.pdf  used on input line 613.
+Package pdftex.def Info: anova_graph_2.pdf  used on input line 645.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<anova_graph_3.pdf, id=883, 433.62pt x 433.62pt>
+<anova_graph_3.pdf, id=894, 433.62pt x 433.62pt>
 File: anova_graph_3.pdf Graphic file (type pdf)
 <use anova_graph_3.pdf>
-Package pdftex.def Info: anova_graph_3.pdf  used on input line 616.
+Package pdftex.def Info: anova_graph_3.pdf  used on input line 648.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-[36
+[38
 
  <./anova_graph_1.pdf>]
-<anova_graph_4.pdf, id=898, 433.62pt x 433.62pt>
+<anova_graph_4.pdf, id=909, 433.62pt x 433.62pt>
 File: anova_graph_4.pdf Graphic file (type pdf)
 <use anova_graph_4.pdf>
-Package pdftex.def Info: anova_graph_4.pdf  used on input line 624.
+Package pdftex.def Info: anova_graph_4.pdf  used on input line 656.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<anova_graph_5.pdf, id=899, 433.62pt x 433.62pt>
+<anova_graph_5.pdf, id=910, 433.62pt x 433.62pt>
 File: anova_graph_5.pdf Graphic file (type pdf)
 <use anova_graph_5.pdf>
-Package pdftex.def Info: anova_graph_5.pdf  used on input line 627.
+Package pdftex.def Info: anova_graph_5.pdf  used on input line 659.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-[37 <./anova_graph_2.pdf> <./anova_graph_3.pdf
+[39 <./anova_graph_2.pdf> <./anova_graph_3.pdf
 
 pdfTeX warning: pdflatex.exe (file ./anova_graph_3.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<anova_graph_6.pdf, id=922, 433.62pt x 433.62pt>
+<anova_graph_6.pdf, id=932, 433.62pt x 433.62pt>
 File: anova_graph_6.pdf Graphic file (type pdf)
 <use anova_graph_6.pdf>
-Package pdftex.def Info: anova_graph_6.pdf  used on input line 635.
+Package pdftex.def Info: anova_graph_6.pdf  used on input line 667.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-[38 <./anova_graph_4.pdf> <./anova_graph_5.pdf
+[40 <./anova_graph_4.pdf> <./anova_graph_5.pdf
 
 pdfTeX warning: pdflatex.exe (file ./anova_graph_5.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [39 <./anova_graph_6.pdf>] [40
+>] [41 <./anova_graph_6.pdf>] [42
 
 
-] [41
+] [43
 
 ]
 Overfull \vbox (3850.85764pt too high) has occurred while \output is active []
 
-[42]
-<cor_matrix.pdf, id=977, 433.62pt x 433.62pt>
+[44]
+<cor_matrix.pdf, id=989, 433.62pt x 433.62pt>
 File: cor_matrix.pdf Graphic file (type pdf)
 <use cor_matrix.pdf>
-Package pdftex.def Info: cor_matrix.pdf  used on input line 885.
+Package pdftex.def Info: cor_matrix.pdf  used on input line 917.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-[43 <./cor_matrix.pdf>] [44
+[45 <./cor_matrix.pdf>] [46
 
 ]
 Overfull \vbox (254.43628pt too high) has occurred while \output is active []
 
-[45]
-<cov_matrix_graph_heatmap.pdf, id=1002, 433.62pt x 433.62pt>
+[47]
+<cov_matrix_graph_heatmap.pdf, id=1012, 433.62pt x 433.62pt>
 File: cov_matrix_graph_heatmap.pdf Graphic file (type pdf)
 <use cov_matrix_graph_heatmap.pdf>
-Package pdftex.def Info: cov_matrix_graph_heatmap.pdf  used on input line 945.
+Package pdftex.def Info: cov_matrix_graph_heatmap.pdf  used on input line 977.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<cov_matrix_grap.pdf, id=1003, 433.62pt x 433.62pt>
+<cov_matrix_grap.pdf, id=1013, 433.62pt x 433.62pt>
 File: cov_matrix_grap.pdf Graphic file (type pdf)
 <use cov_matrix_grap.pdf>
-Package pdftex.def Info: cov_matrix_grap.pdf  used on input line 948.
+Package pdftex.def Info: cov_matrix_grap.pdf  used on input line 980.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<cov_matrix_graph_ggqqplot.pdf, id=1004, 433.62pt x 433.62pt>
+<cov_matrix_graph_ggqqplot.pdf, id=1014, 433.62pt x 433.62pt>
 File: cov_matrix_graph_ggqqplot.pdf Graphic file (type pdf)
 <use cov_matrix_graph_ggqqplot.pdf>
-Package pdftex.def Info: cov_matrix_graph_ggqqplot.pdf  used on input line 954.
+Package pdftex.def Info: cov_matrix_graph_ggqqplot.pdf  used on input line 986.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-[46 <./cov_matrix_graph_heatmap.pdf> <./cov_matrix_grap.pdf
+[48 <./cov_matrix_graph_heatmap.pdf> <./cov_matrix_grap.pdf
 
 pdfTeX warning: pdflatex.exe (file ./cov_matrix_grap.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [47 <./cov_matrix_graph_ggqqplot.pdf>] [48
+>] [49 <./cov_matrix_graph_ggqqplot.pdf>] [50
 
 ]
-<pairs_graph.pdf, id=1043, 433.62pt x 433.62pt>
-File: pairs_graph.pdf Graphic file (type pdf)
-<use pairs_graph.pdf>
-Package pdftex.def Info: pairs_graph.pdf  used on input line 977.
+<linear_regresion_graph.pdf, id=1054, 433.62pt x 433.62pt>
+File: linear_regresion_graph.pdf Graphic file (type pdf)
+<use linear_regresion_graph.pdf>
+Package pdftex.def Info: linear_regresion_graph.pdf  used on input line 1009.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-[49
+[51
 
- <./pairs_graph.pdf>] [50
+ <./linear_regresion_graph.pdf>] [52
 
 
 
 ]
-Underfull \hbox (badness 3302) in paragraph at lines 1001--1003
+Underfull \hbox (badness 3302) in paragraph at lines 1034--1036
 \T1/aer/m/n/12 11-18]. Dos-tupné z: []$\T1/aett/m/n/12 https : / / github . com / owid / covid-[]19-[]data / tree / master /
  []
 
-[51
+[53
 
 
 ]
 
-LaTeX Warning: Reference `1' on page 52 undefined on input line 1013.
+LaTeX Warning: Reference `1' on page 54 undefined on input line 1046.
 
-[52
+[54
 
 
-] [53
+]
+LaTeX Font Info:    Trying to load font information for TS1+aer on input line 1056.
+(c:/Users/Lukas/Documents/R/R-4.1.1/share/texmf/tex/latex/ts1aer.fd
+File: ts1aer.fd 
+)
+LaTeX Font Info:    Font shape `TS1/aer/m/n' in size <12> not available
+(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 1056.
+[55
 
 
 ] (./semestralni_prace.aux)
@@ -893,21 +900,21 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `semestralni_prace.out' has not changed.
-(rerunfilecheck)             Checksum: 46A83D6AA5BA6A7AFCA96EEE63F1DF5C;5098.
+(rerunfilecheck)             Checksum: 90BE44DBC2E3F7257FBFC7BFCF41B428;5108.
  ) 
 Here is how much of TeX's memory you used:
- 13470 strings out of 480313
- 229724 string characters out of 5895780
- 568419 words of memory out of 5000000
- 30886 multiletter control sequences out of 15000+600000
- 454735 words of font info for 97 fonts, out of 8000000 for 9000
+ 13499 strings out of 480313
+ 230290 string characters out of 5895780
+ 568420 words of memory out of 5000000
+ 30908 multiletter control sequences out of 15000+600000
+ 455072 words of font info for 98 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  75i,8n,77p,460b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
- <c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1200.600pk>{c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}<c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi12.pfb>
-Output written on semestralni_prace.pdf (53 pages, 3961990 bytes).
+ <c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk> <c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1200.600pk>{c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}<c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi12.pfb>
+Output written on semestralni_prace.pdf (55 pages, 1411205 bytes).
 PDF statistics:
- 1148 PDF objects out of 1200 (max. 8388607)
- 888 compressed objects within 9 object streams
- 122 named destinations out of 1000 (max. 500000)
+ 1172 PDF objects out of 1200 (max. 8388607)
+ 906 compressed objects within 10 object streams
+ 125 named destinations out of 1000 (max. 500000)
  485 words of extra memory for PDF output out of 10000 (max. 10000000)
 
