@@ -873,7 +873,7 @@ chisq.test(data_czech$new_tests, data_czech$new_cases)
 
 %% Regrese
 \section{Regrese}
-
+\subsection{Lineární regrese}
 \begin{figure}[H]
 \centering
 <<linear_regresion_graph, echo=FALSE>>=
@@ -887,6 +887,29 @@ lines(data_czech$hosp_patients_per_million[1:569], predikce[,3], type = "l", col
 @
 \includegraphics[width=10cm]{linear_regresion_graph.pdf}
 \caption{Graf lineární regrese}
+
+\end{figure}
+
+\subsection{Kvadratická regrese}
+\begin{figure}[H]
+\centering
+<<quadratic_regresion_graph, echo=FALSE>>=
+CairoPDF("quadratic_regresion_graph.pdf")
+hosp_patients_per_million_kvadrat = data_czech$hosp_patients_per_million * data_czech$hosp_patients_per_million
+
+regrese_kvadrat = lm(data_czech$icu_patients_per_million~data_czech$hosp_patients_per_million + hosp_patients_per_million_kvadrat)
+
+predikce2 = predict(regrese_kvadrat, interval = "prediction", level = 0.95)
+
+plot(data_czech$hosp_patients_per_million, data_czech$icu_patients_per_million, pch=4, main="Kvadratická regrese", xlab="Noví pacienti na milión", ylab="Noví pacienti na ICU na milión")
+lines(data_czech$hosp_patients_per_million[1:569], predikce2[,1], col="blue")
+par(new=TRUE)
+lines(data_czech$hosp_patients_per_million[1:569], predikce2[,2], col="red")
+lines(data_czech$hosp_patients_per_million[1:569], predikce2[,3], col="green")
+
+@
+\includegraphics[width=10cm]{quadratic_regresion_graph.pdf}
+\caption{Graf kvadraditcké regrese}
 
 \end{figure}
 

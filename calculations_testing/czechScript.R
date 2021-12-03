@@ -266,7 +266,7 @@ plot(corr)
 library("ggpubr")
 ggqqplot(data_czech$new_cases)
 
-#REGRESE
+#LINEARNI REGRESE
 
 length(data_czech$new_cases_per_million)
 length(data_czech$new_deaths_per_million[1:561])
@@ -276,6 +276,9 @@ length(data_czech$hosp_patients_per_million)
 length(data_czech$icu_patients_per_million)
 
 regrese = lm(data_czech$icu_patients_per_million~data_czech$hosp_patients_per_million)
+regrese
+#přímková regrese -> y = ax + b
+# y = -0.7746 + 0.1826*x
 abline(regrese)
 summary(regrese)
 predikce = predict(regrese, interval = "prediction", level = 0.95)
@@ -284,6 +287,33 @@ plot(data_czech$hosp_patients_per_million, data_czech$icu_patients_per_million, 
 abline(regrese)
 lines(data_czech$hosp_patients_per_million[1:569], predikce[,2], type = "l", col="red")
 lines(data_czech$hosp_patients_per_million[1:569], predikce[,3], type = "l", col="green")
+lines(var, -0.7746 - 0.1826*var)
+
+#KVADRATICKA REGRESE
+
+hosp_patients_per_million_kvadrat = data_czech$hosp_patients_per_million * data_czech$hosp_patients_per_million
+hosp_patients_per_million_kvadrat
+
+regrese_kvadrat = lm(data_czech$icu_patients_per_million~data_czech$hosp_patients_per_million + hosp_patients_per_million_kvadrat)
+regrese_kvadrat
+#kvadratická regrese -> y = ax^2 + bx + c
+# y = 1.9982244 + 0.1074610*x + 0.0001102*x^2
+
+predikce2 = predict(regrese_kvadrat, interval = "prediction", level = 0.95)
+predikce2
+
+plot(data_czech$hosp_patients_per_million, data_czech$icu_patients_per_million, pch=4)
+lines(data_czech$hosp_patients_per_million[1:569], predikce2[,1], col="blue")
+par(new=TRUE)
+lines(var, 1.9982244 - 0.10746102*var + 0.0001102*var^2)
+lines(data_czech$hosp_patients_per_million[1:569], predikce2[,2], col="red")
+lines(data_czech$hosp_patients_per_million[1:569], predikce2[,3], col="green")
+lines(c(50,50), c(200,500))
+
+var = seq(0,1000, by = 1)
+var
+
+
 
 #PAIRS
 df1 <- data.frame(data_czech[1],
