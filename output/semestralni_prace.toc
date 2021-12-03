@@ -8,30 +8,30 @@
 \contentsline {section}{\numberline {2}Popisná statistika}{9}{section.2}%
 \contentsline {section}{\numberline {3}Základní grafy}{11}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Histogram}{11}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Bodový graf}{16}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Boxplot}{21}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}3D graf}{23}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Hexbin}{25}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Chernoff faces}{27}{subsection.3.6}%
-\contentsline {subsection}{\numberline {3.7}QQPlot}{28}{subsection.3.7}%
-\contentsline {section}{\numberline {4}Testování statistických hypotéz}{30}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Jednovýběrový Studentův test vůči střední hodnotě}{30}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Dvouvýběrový Studentův test}{33}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Wilcox test}{35}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Fisherův test}{37}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Shapiro Wilk test}{37}{subsection.4.5}%
-\contentsline {section}{\numberline {5}ANOVA}{38}{section.5}%
-\contentsline {section}{\numberline {6}Variance}{42}{section.6}%
-\contentsline {section}{\numberline {7}Korelace}{44}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Korelační matice}{44}{subsection.7.1}%
-\contentsline {section}{\numberline {8}Kovariance}{47}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Kovarianční matice}{47}{subsection.8.1}%
-\contentsline {section}{\numberline {9}Testování v kontingenčních tabulkách}{50}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Pearsonův Chí-kvadrát test}{50}{subsection.9.1}%
-\contentsline {section}{\numberline {10}Regrese}{51}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Lineární regrese}{51}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Kvadratická regrese}{52}{subsection.10.2}%
-\contentsline {section}{Závěr}{53}{section*.39}%
-\contentsline {section}{Použitá literatura}{54}{section*.40}%
-\contentsline {section}{Seznam příloh}{55}{section*.41}%
-\contentsline {section}{Příloha~A}{56}{section*.42}%
+\contentsline {subsection}{\numberline {3.2}Bodový graf}{15}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Boxplot}{20}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}3D graf}{22}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Hexbin}{24}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Chernoff faces}{26}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}QQPlot}{27}{subsection.3.7}%
+\contentsline {section}{\numberline {4}Testování statistických hypotéz}{29}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Jednovýběrový Studentův test vůči střední hodnotě}{29}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Dvouvýběrový Studentův test}{32}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Wilcox test}{34}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Fisherův test}{36}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Shapiro Wilk test}{36}{subsection.4.5}%
+\contentsline {section}{\numberline {5}ANOVA}{37}{section.5}%
+\contentsline {section}{\numberline {6}Variance}{41}{section.6}%
+\contentsline {section}{\numberline {7}Korelace}{43}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Korelační matice}{43}{subsection.7.1}%
+\contentsline {section}{\numberline {8}Kovariance}{46}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Kovarianční matice}{46}{subsection.8.1}%
+\contentsline {section}{\numberline {9}Testování v kontingenčních tabulkách}{49}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Pearsonův Chí-kvadrát test}{49}{subsection.9.1}%
+\contentsline {section}{\numberline {10}Regrese}{50}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Lineární regrese}{50}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Kvadratická regrese}{51}{subsection.10.2}%
+\contentsline {section}{Závěr}{52}{section*.41}%
+\contentsline {section}{Použitá literatura}{53}{section*.42}%
+\contentsline {section}{Seznam příloh}{54}{section*.43}%
+\contentsline {section}{Příloha~A}{55}{section*.44}%

@@ -10,6 +10,7 @@
 \usepackage[czech]{babel}
 \selectlanguage{czech}
 \usepackage{vskpupa}
+\usepackage{subfig}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Údaje o práci
@@ -82,7 +83,7 @@ lépe zachycují tyto veličiny v rámci dlouhodobých trendů, jelikož je elim
 testů například během víkendů.
 
 % latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Fri Dec 03 14:10:03 2021
+% Fri Dec 03 15:53:32 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -103,7 +104,7 @@ průměr & 2940.58 & 2936.89 \\
 \caption{Části popisné statistiky aplikované na data nových případů a jejich 7denního klouzavého průměru v ČR od 7. 3. 2020} 
 \label{table:popisStat}
 \end{table}% latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Fri Dec 03 14:10:03 2021
+% Fri Dec 03 15:53:32 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -124,7 +125,7 @@ průměr & 274.19 & 273.85 \\
 \caption{Části popisné statistiky aplikované na data nových případů na milión a jejich 7denního klouzavého průměru v ČR od 7. 3. 2020} 
 \label{table:popisStat}
 \end{table}% latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Fri Dec 03 14:10:03 2021
+% Fri Dec 03 15:53:32 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -152,47 +153,112 @@ průměr & 2370.49 & 221.03 \\
 \subsection{Histogram}
 
 Následující histogram zobrazuje četnost hodnot klouzavého průměru nových případů v ČR od 7. 3. 2020.
-Pro lepší přehlednost byla data zlogaritmována.
+Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data zlogaritmována.
+
+%% histogram start
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm]{histogram_new_cases_smoothed.pdf}
-\caption{Histogram zlog. klouzavý průměr nových případů v ČR od 7. 3. 2020}
+\subfloat[\centering Klouzavý průměr nových případů]
+{\includegraphics[width=7cm]{histogram_new_cases_smoothed.pdf}}
+\qquad
+\subfloat[\centering Logaritmická transformace]
+{\includegraphics[width=7cm]{histogram_new_cases_smoothed_log.pdf}}
+\caption{Klouzavý průměr nových případů v ČR od 7. 3. 2020}
+\end{figure}
+
+\clearpage
+
+Následující histogram zobrazuje četnost hodnot nových případů na milión obyvatel v ČR od 7. 3. 2020.
+Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data opět zlogaritmována.
+
+%% histogram start
+
+\begin{figure}[H]
+\centering
+\subfloat[\centering Nové případy na milión]
+{\includegraphics[width=7cm]{histogram_new_cases_per_million.pdf}}
+\qquad
+\subfloat[\centering Logaritmická transformace]
+{\includegraphics[width=7cm]{histogram_new_cases_per_million_log.pdf}}
+\caption{Nové případy na milión v ČR od 7. 3. 2020}
+\end{figure}
+
+
+Následující histogram zobrazuje četnost hodnot 7denního klouzavého průměru nových případů na milión obyvatel v ČR od 7. 3. 2020.
+Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data opět zlogaritmována.
+
+%% histogram start
+
+\begin{figure}[H]
+\centering
+\subfloat[\centering Klouzavý průměr nových případů na milión]
+{\includegraphics[width=7cm]{histogram_new_cases_smoothed_per_million.pdf}}
+\qquad
+\subfloat[\centering Logaritmická transformace]
+{\includegraphics[width=7cm]{histogram_new_cases_smoothed_per_million_log.pdf}}
+\caption{Klouzavý průměr nových případů na milión v ČR od 7. 3. 2020}
+\end{figure}
+
+
+Následující histogram zobrazuje četnost hodnot hospitalizovaných pacientů v ČR od 7. 3. 2020.
+Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data opět zlogaritmována.
+
+
+%% histogram start
+
+\begin{figure}[H]
+\centering
+\subfloat[\centering Hospitalizovaní pacienti]
+{\includegraphics[width=7cm]{histogram_hosp_patients.pdf}}
+\qquad
+\subfloat[\centering Logaritmická transformace]
+{\includegraphics[width=7cm]{histogram_hosp_patients_log.pdf}}
+\caption{Hospitalizovaní pacienti v ČR od 7. 3. 2020}
+\end{figure}
+
+Následující histogram zobrazuje četnost hodnot nově testovaných v ČR od 7. 3. 2020.
+Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data opět zlogaritmována.
+
+%% histogram start
+
+\begin{figure}[H]
+\centering
+\subfloat[\centering Nově testovaní]
+{\includegraphics[width=7cm]{histogram_new_tests.pdf}}
+\qquad
+\subfloat[\centering Logaritmická transformace]
+{\includegraphics[width=7cm]{histogram_new_tests_log.pdf}}
+\caption{Nově testovaní v ČR od 7. 3. 2020}
+\end{figure}
+
+
+Následující histogram zobrazuje četnost hodnot nových případů v ČR od 7. 3. 2020.
+Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data opět zlogaritmována.
+
+%% histogram start
+
+\begin{figure}[H]
+\centering
+\subfloat[\centering Nové případy]
+{\includegraphics[width=7cm]{histogram_new_cases.pdf}}
+\qquad
+\subfloat[\centering Logaritmická transformace]
+{\includegraphics[width=7cm]{histogram_new_cases_log.pdf}}
+\caption{Nové případy v ČR od 7. 3. 2020}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=10cm]{histogram_new_cases_per_million.pdf}
-\caption{Histogram zlog. nových případů na milión}
-
+\subfloat[\centering Logaritmická transformace]
+{\includegraphics[width=7cm]{histogram_new_cases_cz_au}}
+\qquad
+\subfloat[\centering Logaritmická transformace]
+{\includegraphics[width=7cm]{histogram_new_cases_cz_au_log.pdf}}
+\caption{Nové testy pro Česko a Rakousko}
 \end{figure}
-\begin{figure}[H]
-\centering
 
-\includegraphics[width=10cm]{histogram_new_cases_smoothed_per_million.pdf}
-\caption{Histogram zlog. klouzavého průměru nových případů na milión}
 
-\includegraphics[width=10cm]{histogram_hosp_patients.pdf}
-\caption{Histogram hospitalizovaných pacientů v ČR}
-
-\end{figure}
-\begin{figure}[H]
-\centering
-
-\includegraphics[width=10cm]{histogram_new_tests.pdf}
-\caption{Nove testovani v Cesku}
-
-\includegraphics[width=10cm]{histogram_new_cases.pdf}
-\caption{Nove pripady v Cesku}
-
-\end{figure}
-\begin{figure}[H]
-\centering
-
-\includegraphics[width=10cm]{histogram_new_cases_cz_de.pdf}
-\caption{Nové testy pro Česko a Německo}
-
-\end{figure}
 \subsection{Bodový graf}
 \begin{figure}[H]
 \centering

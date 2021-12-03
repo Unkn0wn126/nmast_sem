@@ -10,6 +10,7 @@
 \usepackage[czech]{babel}
 \selectlanguage{czech}
 \usepackage{vskpupa}
+\usepackage{subfig}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Údaje o práci
@@ -265,101 +266,219 @@ print(xtable(hospitalizedTableMatrix,
 \subsection{Histogram}
 
 Následující histogram zobrazuje četnost hodnot klouzavého průměru nových případů v ČR od 7. 3. 2020.
-Pro lepší přehlednost byla data zlogaritmována.
+Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data zlogaritmována.
+
+%% histogram start
 
 \begin{figure}[H]
 \centering
+\subfloat[\centering Klouzavý průměr nových případů]
 <<histogram_new_cases_smoothed, echo=FALSE,results=hide>>=
 CairoPDF("histogram_new_cases_smoothed.pdf")
-hist(log1p(data_czech$new_cases_smoothed), main = "Histogram zlog. klouzavého průměru nových případů", xlab="Zlog. klouzavý průměr nových případů", ylab="Frekvence", xlim = c(0,10), ylim = c(0,200), col = "#57ADC3", border = "black")
+hist(data_czech$new_cases_smoothed, main = "Klouzavý průměr nových případů", xlab="Klouzavý průměr nových případů", ylab="Frekvence", col = "#57ADC3", border = "black")
 @
-\includegraphics[width=10cm]{histogram_new_cases_smoothed.pdf}
-\caption{Histogram zlog. klouzavý průměr nových případů v ČR od 7. 3. 2020}
+{\includegraphics[width=7cm]{histogram_new_cases_smoothed.pdf}}
+\qquad
+\subfloat[\centering Logaritmická transformace]
+<<histogram_new_cases_smoothed_log, echo=FALSE,results=hide>>=
+CairoPDF("histogram_new_cases_smoothed_log.pdf")
+hist(log1p(data_czech$new_cases_smoothed), main = "Zlog. klouzavý průměr nových případů", xlab="Zlog. klouzavý průměr nových případů", ylab="Frekvence", xlim = c(0,10), ylim = c(0,200), col = "#57ADC3", border = "black")
+@
+{\includegraphics[width=7cm]{histogram_new_cases_smoothed_log.pdf}}
+\caption{Klouzavý průměr nových případů v ČR od 7. 3. 2020}
 \end{figure}
+
+\clearpage
+
+Následující histogram zobrazuje četnost hodnot nových případů na milión obyvatel v ČR od 7. 3. 2020.
+Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data opět zlogaritmována.
+
+%% histogram start
 
 \begin{figure}[H]
 \centering
+\subfloat[\centering Nové případy na milión]
 <<histogram_new_cases_per_million, echo=FALSE,results=hide>>=
 CairoPDF("histogram_new_cases_per_million.pdf")
-hist(log1p(data_czech$new_cases_smoothed), main = "Histogram zlog. nových případů na milión", xlab="Zlog. nové případy na milión", ylab="Frekvence", xlim = c(0,10), ylim = c(0,200), col = "#57ADC3", border = "black")
+hist(data_czech$new_cases_per_million, main = "Nové případy na milión", xlab="Nové případy na milión", ylab="Frekvence", col = "#57ADC3", border = "black")
 @
-\includegraphics[width=10cm]{histogram_new_cases_per_million.pdf}
-\caption{Histogram zlog. nových případů na milión}
-
+{\includegraphics[width=7cm]{histogram_new_cases_per_million.pdf}}
+\qquad
+\subfloat[\centering Logaritmická transformace]
+<<histogram_new_cases_per_million_log, echo=FALSE,results=hide>>=
+CairoPDF("histogram_new_cases_per_million_log.pdf")
+hist(log1p(data_czech$new_cases_per_million), main = "Zlog. nové případy na milión", xlab="Zlog. nové případy na milión", ylab="Frekvence", xlim = c(0,10), ylim = c(0,100), col = "#57ADC3", border = "black")
+@
+{\includegraphics[width=7cm]{histogram_new_cases_per_million_log.pdf}}
+\caption{Nové případy na milión v ČR od 7. 3. 2020}
 \end{figure}
+
+
+Následující histogram zobrazuje četnost hodnot 7denního klouzavého průměru nových případů na milión obyvatel v ČR od 7. 3. 2020.
+Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data opět zlogaritmována.
+
+%% histogram start
+
 \begin{figure}[H]
 \centering
-
+\subfloat[\centering Klouzavý průměr nových případů na milión]
 <<histogram_new_cases_smoothed_per_million, echo=FALSE,results=hide>>=
 CairoPDF("histogram_new_cases_smoothed_per_million.pdf")
-hist(log1p(data_czech$new_cases_smoothed_per_million), main = "Histogram zlog. klouzavého průměru nových případů na milión", xlab="Zlog. klouzavý průměr nových případů na milión", ylab="Frekvence", xlim = c(0,10), ylim = c(0,150), col = "#57ADC3", border = "black")
+hist(data_czech$new_cases_smoothed_per_million, main = "Klouzavý průměr nových případů na milión", xlab="Klouzavý průměr nových případů na milión", ylab="Frekvence", col = "#57ADC3", border = "black")
 @
-\includegraphics[width=10cm]{histogram_new_cases_smoothed_per_million.pdf}
-\caption{Histogram zlog. klouzavého průměru nových případů na milión}
-
-<<histogram_new_cases, echo=FALSE,results=hide>>=
-CairoPDF("histogram_hosp_patients.pdf")
-hist(log1p(data_czech$hosp_patients), main = "Histogram hospitalizovaných pacientů v ČR", xlab="Hospitalizovaní pacienti v ČR", ylab="Frekvence", col = "#57ADC3", border = "black", xlim = c(0,10), ylim = c(0,200),, las = 1, breaks = 8)
+{\includegraphics[width=7cm]{histogram_new_cases_smoothed_per_million.pdf}}
+\qquad
+\subfloat[\centering Logaritmická transformace]
+<<histogram_new_cases_smoothed_per_million_log, echo=FALSE,results=hide>>=
+CairoPDF("histogram_new_cases_smoothed_per_million_log.pdf")
+hist(log1p(data_czech$new_cases_smoothed_per_million), main = "Zlog. klouzavý průměr nových případů na milión", xlab="Zlog. klouzavý průměr nových případů na milión", ylab="Frekvence", xlim = c(0,10), ylim = c(0,150), col = "#57ADC3", border = "black")
 @
-\includegraphics[width=10cm]{histogram_hosp_patients.pdf}
-\caption{Histogram hospitalizovaných pacientů v ČR}
-
+{\includegraphics[width=7cm]{histogram_new_cases_smoothed_per_million_log.pdf}}
+\caption{Klouzavý průměr nových případů na milión v ČR od 7. 3. 2020}
 \end{figure}
+
+
+Následující histogram zobrazuje četnost hodnot hospitalizovaných pacientů v ČR od 7. 3. 2020.
+Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data opět zlogaritmována.
+
+
+%% histogram start
+
 \begin{figure}[H]
 \centering
+\subfloat[\centering Hospitalizovaní pacienti]
+<<histogram_new_cases, echo=FALSE,results=hide>>=
+CairoPDF("histogram_hosp_patients.pdf")
+hist(data_czech$hosp_patients, main = "Hospitalizovaní pacientů v ČR", xlab="Hospitalizovaní pacienti v ČR", ylab="Frekvence", col = "#57ADC3", border = "black", las = 1, breaks = 8)
+@
+{\includegraphics[width=7cm]{histogram_hosp_patients.pdf}}
+\qquad
+\subfloat[\centering Logaritmická transformace]
+<<histogram_new_cases_log, echo=FALSE,results=hide>>=
+CairoPDF("histogram_hosp_patients_log.pdf")
+hist(log1p(data_czech$hosp_patients), main = "Zlog. hospitalizovaných pacientů v ČR", xlab="Zlog. ospitalizovaní pacienti v ČR", ylab="Frekvence", col = "#57ADC3", border = "black", xlim = c(0,10), ylim = c(0,200), las = 1, breaks = 8)
+@
+{\includegraphics[width=7cm]{histogram_hosp_patients_log.pdf}}
+\caption{Hospitalizovaní pacienti v ČR od 7. 3. 2020}
+\end{figure}
 
+Následující histogram zobrazuje četnost hodnot nově testovaných v ČR od 7. 3. 2020.
+Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data opět zlogaritmována.
+
+%% histogram start
+
+\begin{figure}[H]
+\centering
+\subfloat[\centering Nově testovaní]
 <<histogram_new_tests, echo=FALSE,results=hide>>=
 CairoPDF("histogram_new_tests.pdf")
-hist(log1p(data_czech$new_tests),
-                     main = "Nove testovani v Cesku",
-                     xlab = "Logaritmus z poctu nove testovanych",
+hist(data_czech$new_tests,
+                     main = "Nově testovaní v ČR",
+                     xlab = "Počet nově testovaných",
                      col = "#57ADC3",
                      border = "black",
                      breaks = 10)
 @
-\includegraphics[width=10cm]{histogram_new_tests.pdf}
-\caption{Nove testovani v Cesku}
+{\includegraphics[width=7cm]{histogram_new_tests.pdf}}
+\qquad
+\subfloat[\centering Logaritmická transformace]
+<<histogram_new_tests_log, echo=FALSE,results=hide>>=
+CairoPDF("histogram_new_tests_log.pdf")
+hist(log1p(data_czech$new_tests),
+                     main = "Zlog. nově testovaní v ČR",
+                     xlab = "Zlog. počet nově testovaných",
+                     col = "#57ADC3",
+                     border = "black",
+                     breaks = 10)
+@
+{\includegraphics[width=7cm]{histogram_new_tests_log.pdf}}
+\caption{Nově testovaní v ČR od 7. 3. 2020}
+\end{figure}
 
+
+Následující histogram zobrazuje četnost hodnot nových případů v ČR od 7. 3. 2020.
+Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data opět zlogaritmována.
+
+%% histogram start
+
+\begin{figure}[H]
+\centering
+\subfloat[\centering Nové případy]
 <<histogram_new_tests, echo=FALSE,results=hide>>=
 CairoPDF("histogram_new_cases.pdf")
+hist(data_czech$new_cases,
+                     main = "Nové případy v ČR",
+                     xlab = "Počet nových případů",
+                     col = "#57ADC3",
+                     border = "black",
+                     breaks = 10)
+@
+{\includegraphics[width=7cm]{histogram_new_cases.pdf}}
+\qquad
+\subfloat[\centering Logaritmická transformace]
+<<histogram_new_tests_log, echo=FALSE,results=hide>>=
+CairoPDF("histogram_new_cases_log.pdf")
 hist(log1p(data_czech$new_cases),
-                     main = "Nove pripady v Cesku",
-                     xlab = "Logaritmus z poctu novych pripadu",
+                     main = "Zlog. nové případy v ČR",
+                     xlab = "Log. počtu nových případů",
                      ylim = c(0,150),
                      col = "#57ADC3",
                      border = "black",
                      breaks = 10)
 @
-\includegraphics[width=10cm]{histogram_new_cases.pdf}
-\caption{Nove pripady v Cesku}
-
+{\includegraphics[width=7cm]{histogram_new_cases_log.pdf}}
+\caption{Nové případy v ČR od 7. 3. 2020}
 \end{figure}
+
 \begin{figure}[H]
 \centering
-
-<<histogram_new_tests, echo=FALSE,results=hide>>=
-histCzNewCases <- hist(log1p(data_czech$new_tests),
+\subfloat[\centering Logaritmická transformace]
+<<histogram_new_tests_cz_au, echo=FALSE,results=hide>>=
+histCzNewCases <- hist(data_czech$new_cases_per_million,
                        main = "Cesko: nove testy",
                        col = "limegreen",
                        xlab = "Logaritmus z poctu novych testu")
 
-histGerNewCases <- hist(log1p(data_austria$new_tests),
-                        main = "Nemecko: nove testy",
+histGerNewCases <- hist(data_austria$new_cases_per_million,
+                        main = "Rakousko: nove testy",
                         col = "lightblue",
                         xlab = "Logaritmus z poctu novych testu")
-CairoPDF("histogram_new_cases_cz_de.pdf")
+CairoPDF("histogram_new_cases_cz_au.pdf")
 
-plot(histCzNewCases, main = "Nové testy: Česko vs Německo", xlab = "Logaritmus z počtu nových testů", ylab = "Frekvence", col = rgb(0,0,1,1/4), ylim = c(0,220), xlim = c(7,16))  # first histogram
-plot(histGerNewCases, col = rgb(1,0,0,1/4),ylim = c(0,220), xlim = c(7,16), add = TRUE)
+plot(histCzNewCases, main = "Nové testy: Česko vs Rakousko", xlab = "Počet nových testů", ylab = "Frekvence", col = rgb(0,0,1,1/4))  # first histogram
+plot(histGerNewCases, col = rgb(1,0,0,1/4), add = TRUE)
 legend("topright",
-       legend = c("Česko", "Německo"),
+       legend = c("Česko", "Rakousko"),
        fill = c(rgb(0,0,1,1/4),rgb(1,0,0,1/4)),       # Color of the squares
        border = "black") # Color of the border of the squares
 @
-\includegraphics[width=10cm]{histogram_new_cases_cz_de.pdf}
-\caption{Nové testy pro Česko a Německo}
+{\includegraphics[width=7cm]{histogram_new_cases_cz_au}}
+\qquad
+\subfloat[\centering Logaritmická transformace]
+<<histogram_new_tests_cz_au_log, echo=FALSE,results=hide>>=
+histCzNewCases <- hist(log1p(data_czech$new_cases_per_million),
+                       main = "Cesko: nove testy",
+                       col = "limegreen",
+                       xlab = "Logaritmus z počtu nových testů")
 
+histGerNewCases <- hist(log1p(data_austria$new_cases_per_million),
+                        main = "Rakousko: nove testy",
+                        col = "lightblue",
+                        xlab = "Logaritmus z počtu nových testů")
+CairoPDF("histogram_new_cases_cz_au_log.pdf")
+
+plot(histCzNewCases, main = "Zlog. nové testy: Česko vs Rakousko", xlab = "Logaritmus z počtu nových testů", ylab = "Frekvence", col = rgb(0,0,1,1/4))  # first histogram
+plot(histGerNewCases, col = rgb(1,0,0,1/4),ylim = c(0,220), xlim = c(7,16), add = TRUE)
+legend("topright",
+       legend = c("Česko", "Rakousko"),
+       fill = c(rgb(0,0,1,1/4),rgb(1,0,0,1/4)),       # Color of the squares
+       border = "black") # Color of the border of the squares
+@
+{\includegraphics[width=7cm]{histogram_new_cases_cz_au_log.pdf}}
+\caption{Nové testy pro Česko a Rakousko}
 \end{figure}
+
+
 \subsection{Bodový graf}
 \begin{figure}[H]
 \centering
@@ -902,7 +1021,7 @@ regrese_kvadrat = lm(data_czech$icu_patients_per_million~data_czech$hosp_patient
 predikce2 = predict(regrese_kvadrat, interval = "prediction", level = 0.95)
 
 plot(data_czech$hosp_patients_per_million, data_czech$icu_patients_per_million, pch=4, main="Kvadratická regrese", xlab="Noví pacienti na milión", ylab="Noví pacienti na ICU na milión")
-lines(data_czech$hosp_patients_per_million[1:569], predikce2[,1], col="blue")
+lines(data_czech$hosp_patients_per_million[1:569], predikce2[,1])
 par(new=TRUE)
 lines(data_czech$hosp_patients_per_million[1:569], predikce2[,2], col="red")
 lines(data_czech$hosp_patients_per_million[1:569], predikce2[,3], col="green")
