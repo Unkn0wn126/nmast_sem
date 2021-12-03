@@ -56,6 +56,7 @@ nemoci Covid-19. Použitá data čerpají ze zdroje~\cite{1}.
 %% Načítání dat start
 
 
+
 %% Načítání dat end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -83,7 +84,7 @@ lépe zachycují tyto veličiny v rámci dlouhodobých trendů, jelikož je elim
 testů například během víkendů.
 
 % latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Fri Dec 03 15:53:32 2021
+% Fri Dec 03 17:28:28 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -104,7 +105,7 @@ průměr & 2940.58 & 2936.89 \\
 \caption{Části popisné statistiky aplikované na data nových případů a jejich 7denního klouzavého průměru v ČR od 7. 3. 2020} 
 \label{table:popisStat}
 \end{table}% latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Fri Dec 03 15:53:32 2021
+% Fri Dec 03 17:28:28 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -125,7 +126,7 @@ průměr & 274.19 & 273.85 \\
 \caption{Části popisné statistiky aplikované na data nových případů na milión a jejich 7denního klouzavého průměru v ČR od 7. 3. 2020} 
 \label{table:popisStat}
 \end{table}% latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Fri Dec 03 15:53:32 2021
+% Fri Dec 03 17:28:28 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -248,14 +249,21 @@ Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data
 \caption{Nové případy v ČR od 7. 3. 2020}
 \end{figure}
 
+
+
+Následující histogram zobrazuje srovnání četnosti hodnot klouzavého průměru nových případů v ČR a Rakousku od 7. 3. 2020.
+Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data opět zlogaritmována.
+
+%% histogram start
+
 \begin{figure}[H]
 \centering
-\subfloat[\centering Logaritmická transformace]
+\subfloat[\centering Nové případy na milión pro ČR a Rakousko]
 {\includegraphics[width=7cm]{histogram_new_cases_cz_au}}
 \qquad
 \subfloat[\centering Logaritmická transformace]
 {\includegraphics[width=7cm]{histogram_new_cases_cz_au_log.pdf}}
-\caption{Nové testy pro Česko a Rakousko}
+\caption{Klouzavý průměr nových případů na milión pro Česko a Rakousko od 7. 3. 2020}
 \end{figure}
 
 
@@ -428,11 +436,12 @@ případů a počty nových testů v ČR se řídí dle podobného rozdělení p
 Následující test testuje zda se střední hodnota nových případů v ČR rovná
 hodnotě 3300 s hladinou významnosti $\alpha$ = 0.05. Testová statistika nabývá hodnoty -2.0168 při 575 stupních volnosti. Vzhledem k tomu, že hodnota p-value je nižší než hladina významnosti, tuto hypotézu zamítáme ve prospěch hypotézy alternativní, tudíž že se střední hodnota
 nových případů v ČR nerovná hodnotě 3300.
+
 \begin{Schunk}
 \begin{Soutput}
 	One Sample t-test
 
-data:  data_czech$new_cases
+data:  new_cases_czechia
 t = -2.0168, df = 575, p-value = 0.04418
 alternative hypothesis: true mean is not equal to 3300
 95 percent confidence interval:
@@ -443,13 +452,18 @@ mean of x
 \end{Soutput}
 \end{Schunk}
 
+\clearpage
+
+Následující test testuje zda se střední hodnota 7denního klouzavého průměru nových případů v ČR rovná
+hodnotě 3300 s hladinou významnosti $\alpha$ = 0.05. Testová statistika nabývá hodnoty -2.2482 při 575 stupních volnosti. Vzhledem k tomu, že hodnota p-value je nižší než hladina významnosti, tuto hypotézu zamítáme ve prospěch hypotézy alternativní, tudíž že se střední hodnota
+nových případů v ČR nerovná hodnotě 3300.
 \begin{Schunk}
 \begin{Soutput}
 	One Sample t-test
 
-data:  data_czech$new_cases_smoothed
-t = 18.184, df = 575, p-value < 2.2e-16
-alternative hypothesis: true mean is not equal to 0
+data:  new_cases_smoothed_czechia
+t = -2.2482, df = 575, p-value = 0.02494
+alternative hypothesis: true mean is not equal to 3300
 95 percent confidence interval:
  2619.672 3254.109
 sample estimates:
@@ -458,13 +472,15 @@ mean of x
 \end{Soutput}
 \end{Schunk}
 
+Následující test testuje zda se střední hodnota nových případů na milión v ČR rovná
+hodnotě 300 s hladinou významnosti $\alpha$ = 0.05. Testová statistika nabývá hodnoty -1.5531 při 575 stupních volnosti. Vzhledem k tomu, že hodnota p-value je vyšší než hladina významnosti, tuto hypotézu nemůžeme zamítnout ve prospěch hypotézy alternativní.
 \begin{Schunk}
 \begin{Soutput}
 	One Sample t-test
 
-data:  data_czech$new_cases_per_million
-t = 16.5, df = 575, p-value < 2.2e-16
-alternative hypothesis: true mean is not equal to 0
+data:  new_cases_per_million_czechia
+t = -1.5531, df = 575, p-value = 0.1209
+alternative hypothesis: true mean is not equal to 300
 95 percent confidence interval:
  241.5531 306.8289
 sample estimates:
@@ -475,13 +491,15 @@ mean of x
 
 \clearpage
 
+Následující test testuje zda se střední hodnota 7denního klouzavého průměru nových případů na milión v ČR rovná
+hodnotě 300 s hladinou významnosti $\alpha$ = 0.05. Testová statistika nabývá hodnoty -1.7366 při 575 stupních volnosti. Vzhledem k tomu, že hodnota p-value je vyšší než hladina významnosti, tuto hypotézu nemůžeme zamítnout ve prospěch hypotézy alternativní.
 \begin{Schunk}
 \begin{Soutput}
 	One Sample t-test
 
-data:  data_czech$new_cases_smoothed_per_million
-t = 18.184, df = 575, p-value < 2.2e-16
-alternative hypothesis: true mean is not equal to 0
+data:  new_cases_smoothed_per_million_czechia
+t = -1.7366, df = 575, p-value = 0.08299
+alternative hypothesis: true mean is not equal to 300
 95 percent confidence interval:
  244.2687 303.4260
 sample estimates:
@@ -490,13 +508,17 @@ mean of x
 \end{Soutput}
 \end{Schunk}
 
+
+Následující test testuje zda se střední hodnota nových hospitalizovaných pacientů v ČR rovná
+hodnotě 2000 s hladinou významnosti $\alpha$ = 0.05. Testová statistika nabývá hodnoty 2.9726 při 568 stupních volnosti. Vzhledem k tomu, že hodnota p-value je nižší než hladina významnosti, tuto hypotézu zamítáme ve prospěch hypotézy alternativní, tudíž že se střední hodnota
+nových hospitalizovaných pacientů v ČR nerovná hodnotě 2000.
 \begin{Schunk}
 \begin{Soutput}
 	One Sample t-test
 
-data:  data_czech$hosp_patients
-t = 19.019, df = 568, p-value < 2.2e-16
-alternative hypothesis: true mean is not equal to 0
+data:  hosp_patients_czechia
+t = 2.9726, df = 568, p-value = 0.003078
+alternative hypothesis: true mean is not equal to 2000
 95 percent confidence interval:
  2125.690 2615.294
 sample estimates:
@@ -505,13 +527,17 @@ mean of x
 \end{Soutput}
 \end{Schunk}
 
+\clearpage
+
+Následující test testuje zda se střední hodnota nových hospitalizovaných pacientů na milión v ČR rovná
+hodnotě 200 s hladinou významnosti $\alpha$ = 0.05. Testová statistika nabývá hodnoty 1.8099 při 568 stupních volnosti. Vzhledem k tomu, že hodnota p-value je vyšší než hladina významnosti, tuto hypotézu nemůžeme zamítnout ve prospěch hypotézy alternativní.
 \begin{Schunk}
 \begin{Soutput}
 	One Sample t-test
 
-data:  data_czech$hosp_patients_per_million
-t = 19.019, df = 568, p-value < 2.2e-16
-alternative hypothesis: true mean is not equal to 0
+data:  hosp_patients_per_million_czechia
+t = 1.8099, df = 568, p-value = 0.07083
+alternative hypothesis: true mean is not equal to 200
 95 percent confidence interval:
  198.2078 243.8604
 sample estimates:
@@ -523,11 +549,18 @@ mean of x
 \clearpage
 
 \subsection{Dvouvýběrový Studentův test}
+
+Následující dvouvýběrový t-test testuje hypotézu, že střední hodnota nových případů v
+první části dat z ČR je rovna střední hodnotě v druhé části. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů v první
+části dat z ČR se nerovná střední hodnotě z druhé části.
+
 \begin{Schunk}
 \begin{Soutput}
 	Welch Two Sample t-test
 
-data:  p1 and p2
+data:  new_cases_czechia_p1 and new_cases_czechia_p2
 t = -4.518, df = 537.03, p-value = 7.683e-06
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
@@ -537,6 +570,8 @@ mean of x mean of y
  2148.674  3732.479 
 \end{Soutput}
 \end{Schunk}
+
+\clearpage
 
 Následující dvouvýběrový t-test testuje hypotézu, že střední hodnota nových případů
 v ČR je rovna střední hodnotě nových případů v Německu. Testová statistika nabývá hodnoty
@@ -559,11 +594,17 @@ mean of x mean of y
 \end{Soutput}
 \end{Schunk}
 
+Následující dvouvýběrový t-test testuje hypotézu, že střední hodnota nových případů na milión
+v ČR je rovna střední hodnotě nových případů na milión na Slovensku. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů na milión na Slovensku
+se nerovná střední hodnotě nových případů na milión v ČR.
+
 \begin{Schunk}
 \begin{Soutput}
 	Welch Two Sample t-test
 
-data:  data_czech$new_cases_per_million and data_slovakia$new_cases_per_million
+data:  new_cases_per_million_czechia and new_cases_per_million_slovakia
 t = 7.7283, df = 817.84, p-value = 3.194e-14
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
@@ -574,11 +615,19 @@ mean of x mean of y
 \end{Soutput}
 \end{Schunk}
 
+\clearpage
+
+Následující dvouvýběrový t-test testuje hypotézu, že střední hodnota nových případů na milión
+v ČR je rovna střední hodnotě nových případů na milión v Německu. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů na milión v Německu
+se nerovná střední hodnotě nových případů na milión v ČR.
+
 \begin{Schunk}
 \begin{Soutput}
 	Two Sample t-test
 
-data:  data_czech$new_cases_per_million and data_germany$new_cases_per_million
+data:  new_cases_per_million_czechia and new_cases_per_million_germany
 t = 10.844, df = 1150, p-value < 2.2e-16
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
@@ -591,11 +640,17 @@ mean of x mean of y
 
 \clearpage
 
+Následující dvouvýběrový t-test testuje hypotézu, že střední hodnota nových případů na milión
+v ČR je rovna střední hodnotě nových případů na milión v Polsku. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů na milión v Polsku
+se nerovná střední hodnotě nových případů na milión v ČR.
+
 \begin{Schunk}
 \begin{Soutput}
 	Two Sample t-test
 
-data:  data_czech$new_cases_per_million and data_poland$new_cases_per_million
+data:  new_cases_per_million_czechia and new_cases_per_million_poland
 t = 7.5404, df = 1150, p-value = 9.477e-14
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
@@ -606,11 +661,17 @@ mean of x mean of y
 \end{Soutput}
 \end{Schunk}
 
+Následující dvouvýběrový t-test testuje hypotézu, že střední hodnota nových případů na milión
+v ČR je rovna střední hodnotě nových případů na milión v Rakousku. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů na milión v Rakousku
+se nerovná střední hodnotě nových případů na milión v ČR.
+
 \begin{Schunk}
 \begin{Soutput}
 	Two Sample t-test
 
-data:  data_czech$new_cases_per_million and data_austria$new_cases_per_million
+data:  new_cases_per_million_czechia and new_cases_per_million_austria
 t = 7.2242, df = 1150, p-value = 9.157e-13
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
@@ -623,21 +684,35 @@ mean of x mean of y
 
 \subsection{Wilcox test}
 
+Následující Wilcoxonův testuje hypotézu, že střední hodnota nových případů na milión
+v ČR je rovna střední hodnotě nových případů na milión na Slovensku. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů na milión na Slovensku
+se nerovná střední hodnotě nových případů na milión v ČR. Vzhledem k zešikmení dat poskytuje tento test přesnější
+výsledky oproti dvouvýběrovému t-testu.
+
 \begin{Schunk}
 \begin{Soutput}
 	Wilcoxon rank sum test with continuity correction
 
-data:  data_czech$new_cases_per_million and data_slovakia$new_cases_per_million
+data:  new_cases_per_million_czechia and new_cases_per_million_slovakia
 W = 205293, p-value = 2.97e-12
 alternative hypothesis: true location shift is not equal to 0
 \end{Soutput}
 \end{Schunk}
 
+Následující Wilcoxonův testuje hypotézu, že střední hodnota nových případů na milión
+v ČR je rovna střední hodnotě nových případů na milión v Německu. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů na milión v Německu
+se nerovná střední hodnotě nových případů na milión v ČR. Vzhledem k zešikmení dat poskytuje tento test přesnější
+výsledky oproti dvouvýběrovému t-testu.
+
 \begin{Schunk}
 \begin{Soutput}
 	Wilcoxon rank sum test with continuity correction
 
-data:  data_czech$new_cases_per_million and data_germany$new_cases_per_million
+data:  new_cases_per_million_czechia and new_cases_per_million_germany
 W = 188720, p-value = 5.261e-05
 alternative hypothesis: true location shift is not equal to 0
 \end{Soutput}
@@ -647,11 +722,16 @@ alternative hypothesis: true location shift is not equal to 0
 
 \subsection{Fisherův test}
 
+Následující Fisherův test zkoumá zda jsou rozptyly hodnot nových případů na milión
+v ČR a na Slovensku stejné. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní,
+tudíž že jsou rozptyly těchto dat různé.
+
 \begin{Schunk}
 \begin{Soutput}
 	F test to compare two variances
 
-data:  lm(data_czech$new_cases_per_million ~ 1) and lm(data_slovakia$new_cases_per_million ~ 1)
+data:  new_cases_per_million_czechia and new_cases_per_million_slovakia
 F = 4.5141, num df = 575, denom df = 575, p-value < 2.2e-16
 alternative hypothesis: true ratio of variances is not equal to 1
 95 percent confidence interval:
@@ -664,20 +744,32 @@ ratio of variances
 
 \subsection{Shapiro Wilk test}
 
+Následující Shapiro Wilk test testuje zda je veličina nových případů v ČR nabývá
+normálního rozdělení. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní,
+tudíž že tato veličina nenabývá normálního rozdělení.
+
 \begin{Schunk}
 \begin{Soutput}
 	Shapiro-Wilk normality test
 
-data:  data_czech$new_cases
+data:  new_cases_czechia
 W = 0.72003, p-value < 2.2e-16
 \end{Soutput}
 \end{Schunk}
 
+\clearpage
+
+Následující Shapiro Wilk test testuje zda je veličina nových testů v ČR nabývá
+normálního rozdělení. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní,
+tudíž že tato veličina nenabývá normálního rozdělení.
+
 \begin{Schunk}
 \begin{Soutput}
 	Shapiro-Wilk normality test
 
-data:  data_czech$new_tests
+data:  new_tests_czechia
 W = 0.82915, p-value < 2.2e-16
 \end{Soutput}
 \end{Schunk}
@@ -687,10 +779,10 @@ W = 0.82915, p-value < 2.2e-16
 
 \begin{Schunk}
 \begin{Soutput}
-                       Df    Sum Sq   Mean Sq F value   Pr(>F)    
-data_czech$new_cases    1 6.973e+10 6.973e+10   10.81   0.0011 ** 
-data_czech$new_deaths   1 1.218e+11 1.218e+11   18.88 1.78e-05 ***
-Residuals             391 2.522e+12 6.451e+09                     
+                    Df    Sum Sq   Mean Sq F value   Pr(>F)    
+new_cases_czechia    1 6.973e+10 6.973e+10   10.81   0.0011 ** 
+new_deaths_czechia   1 1.218e+11 1.218e+11   18.88 1.78e-05 ***
+Residuals          391 2.522e+12 6.451e+09                     
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 182 observations deleted due to missingness
@@ -738,6 +830,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \clearpage
 %% Variance
 \section{Variance}
+
+Níže jsou popsány střední hodnoty kvadrátů odchylek od střední hodnoty nových testů
+a nových případů v ČR.
 \begin{Schunk}
 \begin{Soutput}
      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
@@ -1058,11 +1153,15 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \section{Testování v kontingenčních tabulkách}
 \subsection{Pearsonův Chí-kvadrát test}
 
+Následující chí-kvadrát test zkoumá zda má veličina nových případů v ČR stejné
+rozdělení jako veličina nových případů v ČR. Vzhledem ke skutečnosti, že p-value je vyšší
+než hladina významnosti ($\alpha$ = 0,05), tuto hypotézu nemůžeme zamítnout.
+
 \begin{Schunk}
 \begin{Soutput}
 	Pearson's Chi-squared test
 
-data:  data_czech$new_tests and data_czech$new_cases
+data:  new_tests_czechia and new_cases_czechia
 X-squared = 147356, df = 146982, p-value = 0.245
 \end{Soutput}
 \end{Schunk}
@@ -1070,6 +1169,11 @@ X-squared = 147356, df = 146982, p-value = 0.245
 %% Regrese
 \section{Regrese}
 \subsection{Lineární regrese}
+
+Následující graf zobrazuje jakých hodnot bude s 95\% pravděpodobností nabývat
+hodnota pacientů na ICU na milión v ČR v závislosti na počtu nově hospitalizovaných
+pacientů na milión v ČR. Tato závislost je zde vyjádřena jako lineární funkce $y = -0.7746 + 0.1826x$.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm]{linear_regresion_graph.pdf}
@@ -1077,7 +1181,14 @@ X-squared = 147356, df = 146982, p-value = 0.245
 
 \end{figure}
 
+\clearpage
+
 \subsection{Kvadratická regrese}
+
+Následující graf zobrazuje jakých hodnot bude s 95\% pravděpodobností nabývat
+hodnota pacientů na ICU na milión v ČR v závislosti na počtu nově hospitalizovaných
+pacientů na milión v ČR. Tato závislost je zde vyjádřena jako kvadratická funkce $y = 1.9982244 + 0.1074610x + 0.0001102x^2$.
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=10cm]{quadratic_regresion_graph.pdf}

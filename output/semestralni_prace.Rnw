@@ -81,6 +81,31 @@ pocetSloupcu = 66
 pocetZaznamu = 576
 @
 
+<<testHypVar, echo=FALSE,results=hide>>=
+new_cases_czechia_p1 = data_czech$new_cases[1:288]
+new_cases_czechia_p2 = data_czech$new_cases[289:576]
+
+new_cases_germany = data_germany$new_cases
+
+new_cases_per_million_slovakia = data_slovakia$new_cases_per_million
+new_cases_per_million_germany = data_germany$new_cases_per_million
+new_cases_per_million_poland = data_poland$new_cases_per_million
+new_cases_per_million_austria = data_austria$new_cases_per_million
+
+new_cases_czechia = data_czech$new_cases
+new_cases_smoothed_czechia = data_czech$new_cases_smoothed
+
+new_cases_per_million_czechia = data_czech$new_cases_per_million
+new_cases_smoothed_per_million_czechia = data_czech$new_cases_smoothed_per_million
+
+hosp_patients_czechia = data_czech$hosp_patients
+hosp_patients_per_million_czechia = data_czech$hosp_patients_per_million
+
+new_tests_czechia = data_czech$new_tests
+
+new_deaths_czechia = data_czech$new_deaths
+@
+
 %% Načítání dat end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -430,23 +455,30 @@ hist(log1p(data_czech$new_cases),
 \caption{Nové případy v ČR od 7. 3. 2020}
 \end{figure}
 
+
+
+Následující histogram zobrazuje srovnání četnosti hodnot klouzavého průměru nových případů v ČR a Rakousku od 7. 3. 2020.
+Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data opět zlogaritmována.
+
+%% histogram start
+
 \begin{figure}[H]
 \centering
-\subfloat[\centering Logaritmická transformace]
-<<histogram_new_tests_cz_au, echo=FALSE,results=hide>>=
-histCzNewCases <- hist(data_czech$new_cases_per_million,
-                       main = "Cesko: nove testy",
+\subfloat[\centering Nové případy na milión pro ČR a Rakousko]
+<<histogram_new_cases_cz_au, echo=FALSE,results=hide>>=
+histCzNewCases <- hist(data_czech$new_cases_smoothed_per_million,
+                       main = "ČR: klouzavý průměr nových případů na milión",
                        col = "limegreen",
-                       xlab = "Logaritmus z poctu novych testu")
+                       xlab = "Klouzavý průměr nových případů na milión")
 
-histGerNewCases <- hist(data_austria$new_cases_per_million,
-                        main = "Rakousko: nove testy",
+histAuNewCases <- hist(data_austria$new_cases_smoothed_per_million,
+                        main = "Rakousko: klouzavý průměr nových případů na milión",
                         col = "lightblue",
-                        xlab = "Logaritmus z poctu novych testu")
+                        xlab = "Klouzavý průměr nových případů na milión")
 CairoPDF("histogram_new_cases_cz_au.pdf")
 
-plot(histCzNewCases, main = "Nové testy: Česko vs Rakousko", xlab = "Počet nových testů", ylab = "Frekvence", col = rgb(0,0,1,1/4))  # first histogram
-plot(histGerNewCases, col = rgb(1,0,0,1/4), add = TRUE)
+plot(histCzNewCases, main = "Klouzavý průměr nových případů na milión", xlab = "Klouzavý průměr nových případů na milión", ylab = "Frekvence", col = rgb(0,0,1,1/4))  # first histogram
+plot(histAuNewCases, col = rgb(1,0,0,1/4), add = TRUE)
 legend("topright",
        legend = c("Česko", "Rakousko"),
        fill = c(rgb(0,0,1,1/4),rgb(1,0,0,1/4)),       # Color of the squares
@@ -455,27 +487,27 @@ legend("topright",
 {\includegraphics[width=7cm]{histogram_new_cases_cz_au}}
 \qquad
 \subfloat[\centering Logaritmická transformace]
-<<histogram_new_tests_cz_au_log, echo=FALSE,results=hide>>=
-histCzNewCases <- hist(log1p(data_czech$new_cases_per_million),
-                       main = "Cesko: nove testy",
+<<histogram_new_cases_cz_au_log, echo=FALSE,results=hide>>=
+histCzNewCasesLog <- hist(log1p(data_czech$new_cases_smoothed_per_million),
+                       main = "ČR: nové případy na milión",
                        col = "limegreen",
-                       xlab = "Logaritmus z počtu nových testů")
+                       xlab = "Logaritmus z klouzavého průměru nových případů na milión")
 
-histGerNewCases <- hist(log1p(data_austria$new_cases_per_million),
-                        main = "Rakousko: nove testy",
+histAuNewCasesLog <- hist(log1p(data_austria$new_cases_smoothed_per_million),
+                        main = "Rakousko: nové případy na milión",
                         col = "lightblue",
-                        xlab = "Logaritmus z počtu nových testů")
+                        xlab = "Logaritmus z klouzavého průměru nových případů na milión")
 CairoPDF("histogram_new_cases_cz_au_log.pdf")
 
-plot(histCzNewCases, main = "Zlog. nové testy: Česko vs Rakousko", xlab = "Logaritmus z počtu nových testů", ylab = "Frekvence", col = rgb(0,0,1,1/4))  # first histogram
-plot(histGerNewCases, col = rgb(1,0,0,1/4),ylim = c(0,220), xlim = c(7,16), add = TRUE)
+plot(histCzNewCasesLog, main = "Zlog. klouzavý průměr nových případů na milión", xlab = "Zlog. klouzavý průměr nových případů na milión", ylab = "Frekvence", col = rgb(0,0,1,1/4), ylim = c(0,150))  # first histogram
+plot(histAuNewCasesLog, col = rgb(1,0,0,1/4), ylim = c(0,150), add = TRUE)
 legend("topright",
        legend = c("Česko", "Rakousko"),
        fill = c(rgb(0,0,1,1/4),rgb(1,0,0,1/4)),       # Color of the squares
        border = "black") # Color of the border of the squares
 @
 {\includegraphics[width=7cm]{histogram_new_cases_cz_au_log.pdf}}
-\caption{Nové testy pro Česko a Rakousko}
+\caption{Klouzavý průměr nových případů na milión pro Česko a Rakousko od 7. 3. 2020}
 \end{figure}
 
 
@@ -733,49 +765,69 @@ qqplot(data_czech$new_tests,data_czech$new_cases, pch=4, main="Graf nových test
 %% Testování statistických hypotéz
 \section{Testování statistických hypotéz}
 
-<<testHypVar, echo=FALSE,results=hide>>=
-p1 = data_czech$new_cases[1:288]
-p2 = data_czech$new_cases[289:576]
-
-new_cases_germany = data_germany$new_cases
-new_cases_czechia = data_czech$new_cases
-@
 \subsection{Jednovýběrový Studentův test vůči střední hodnotě}
 Následující test testuje zda se střední hodnota nových případů v ČR rovná
 hodnotě 3300 s hladinou významnosti $\alpha$ = 0.05. Testová statistika nabývá hodnoty -2.0168 při 575 stupních volnosti. Vzhledem k tomu, že hodnota p-value je nižší než hladina významnosti, tuto hypotézu zamítáme ve prospěch hypotézy alternativní, tudíž že se střední hodnota
 nových případů v ČR nerovná hodnotě 3300.
+
 <<testStrH_new_cases, size="huge", echo=FALSE>>=
-t.test(data_czech$new_cases, mu = 3300, conf.level = 0.95)
-@
-
-<<testStrH_new_cases_smoothed, echo=FALSE>>=
-t.test(data_czech$new_cases_smoothed)
-@
-
-<<testStrH_new_cases_per_million, echo=FALSE>>=
-t.test(data_czech$new_cases_per_million)
+t.test(new_cases_czechia, mu = 3300, conf.level = 0.95)
 @
 
 \clearpage
 
+Následující test testuje zda se střední hodnota 7denního klouzavého průměru nových případů v ČR rovná
+hodnotě 3300 s hladinou významnosti $\alpha$ = 0.05. Testová statistika nabývá hodnoty -2.2482 při 575 stupních volnosti. Vzhledem k tomu, že hodnota p-value je nižší než hladina významnosti, tuto hypotézu zamítáme ve prospěch hypotézy alternativní, tudíž že se střední hodnota
+nových případů v ČR nerovná hodnotě 3300.
+<<testStrH_new_cases_smoothed, echo=FALSE>>=
+t.test(new_cases_smoothed_czechia, mu = 3300)
+@
+
+Následující test testuje zda se střední hodnota nových případů na milión v ČR rovná
+hodnotě 300 s hladinou významnosti $\alpha$ = 0.05. Testová statistika nabývá hodnoty -1.5531 při 575 stupních volnosti. Vzhledem k tomu, že hodnota p-value je vyšší než hladina významnosti, tuto hypotézu nemůžeme zamítnout ve prospěch hypotézy alternativní.
+<<testStrH_new_cases_per_million, echo=FALSE>>=
+t.test(new_cases_per_million_czechia, mu = 300)
+@
+
+\clearpage
+
+Následující test testuje zda se střední hodnota 7denního klouzavého průměru nových případů na milión v ČR rovná
+hodnotě 300 s hladinou významnosti $\alpha$ = 0.05. Testová statistika nabývá hodnoty -1.7366 při 575 stupních volnosti. Vzhledem k tomu, že hodnota p-value je vyšší než hladina významnosti, tuto hypotézu nemůžeme zamítnout ve prospěch hypotézy alternativní.
 <<testStrH_new_cases_smoothed_per_million, echo=FALSE>>=
-t.test(data_czech$new_cases_smoothed_per_million)
+t.test(new_cases_smoothed_per_million_czechia, mu = 300)
 @
 
+
+Následující test testuje zda se střední hodnota nových hospitalizovaných pacientů v ČR rovná
+hodnotě 2000 s hladinou významnosti $\alpha$ = 0.05. Testová statistika nabývá hodnoty 2.9726 při 568 stupních volnosti. Vzhledem k tomu, že hodnota p-value je nižší než hladina významnosti, tuto hypotézu zamítáme ve prospěch hypotézy alternativní, tudíž že se střední hodnota
+nových hospitalizovaných pacientů v ČR nerovná hodnotě 2000.
 <<testStrH_hosp_patients, echo=FALSE>>=
-t.test(data_czech$hosp_patients)
+t.test(hosp_patients_czechia, mu = 2000)
 @
 
+\clearpage
+
+Následující test testuje zda se střední hodnota nových hospitalizovaných pacientů na milión v ČR rovná
+hodnotě 200 s hladinou významnosti $\alpha$ = 0.05. Testová statistika nabývá hodnoty 1.8099 při 568 stupních volnosti. Vzhledem k tomu, že hodnota p-value je vyšší než hladina významnosti, tuto hypotézu nemůžeme zamítnout ve prospěch hypotézy alternativní.
 <<testStrH_hosp_patients_per_million, echo=FALSE>>=
-t.test(data_czech$hosp_patients_per_million)
+t.test(hosp_patients_per_million_czechia, mu = 200)
 @
 
 \clearpage
 
 \subsection{Dvouvýběrový Studentův test}
+
+Následující dvouvýběrový t-test testuje hypotézu, že střední hodnota nových případů v
+první části dat z ČR je rovna střední hodnotě v druhé části. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů v první
+části dat z ČR se nerovná střední hodnotě z druhé části.
+
 <<testDvouVyber_new_cases, echo=FALSE>>=
-t.test(p1,p2)
+t.test(new_cases_czechia_p1, new_cases_czechia_p2)
 @
+
+\clearpage
 
 Následující dvouvýběrový t-test testuje hypotézu, že střední hodnota nových případů
 v ČR je rovna střední hodnotě nových případů v Německu. Testová statistika nabývá hodnoty
@@ -787,57 +839,114 @@ se nerovná střední hodnotě nových případů v ČR.
 t.test(new_cases_czechia,new_cases_germany)
 @
 
-<<testDvouVyber_czechia_slovakia_new_cases_per_million, echo=FALSE>>=
-t.test(data_czech$new_cases_per_million, data_slovakia$new_cases_per_million, var.equal = FALSE)
-@
+Následující dvouvýběrový t-test testuje hypotézu, že střední hodnota nových případů na milión
+v ČR je rovna střední hodnotě nových případů na milión na Slovensku. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů na milión na Slovensku
+se nerovná střední hodnotě nových případů na milión v ČR.
 
-<<testDvouVyber_czechia_germany_new_cases_per_million, echo=FALSE>>=
-t.test(data_czech$new_cases_per_million, data_germany$new_cases_per_million, var.equal = TRUE)
+<<testDvouVyber_czechia_slovakia_new_cases_per_million, echo=FALSE>>=
+t.test(new_cases_per_million_czechia, new_cases_per_million_slovakia, var.equal = FALSE)
 @
 
 \clearpage
 
-<<testDvouVyber_czechia_poland_new_cases_per_million, echo=FALSE>>=
-t.test(data_czech$new_cases_per_million, data_poland$new_cases_per_million, var.equal = TRUE)
+Následující dvouvýběrový t-test testuje hypotézu, že střední hodnota nových případů na milión
+v ČR je rovna střední hodnotě nových případů na milión v Německu. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů na milión v Německu
+se nerovná střední hodnotě nových případů na milión v ČR.
+
+<<testDvouVyber_czechia_germany_new_cases_per_million, echo=FALSE>>=
+t.test(new_cases_per_million_czechia, new_cases_per_million_germany, var.equal = TRUE)
 @
 
+\clearpage
+
+Následující dvouvýběrový t-test testuje hypotézu, že střední hodnota nových případů na milión
+v ČR je rovna střední hodnotě nových případů na milión v Polsku. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů na milión v Polsku
+se nerovná střední hodnotě nových případů na milión v ČR.
+
+<<testDvouVyber_czechia_poland_new_cases_per_million, echo=FALSE>>=
+t.test(new_cases_per_million_czechia, new_cases_per_million_poland, var.equal = TRUE)
+@
+
+Následující dvouvýběrový t-test testuje hypotézu, že střední hodnota nových případů na milión
+v ČR je rovna střední hodnotě nových případů na milión v Rakousku. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů na milión v Rakousku
+se nerovná střední hodnotě nových případů na milión v ČR.
+
 <<testDvouVyber_czechia_austria_new_cases_per_million, echo=FALSE>>=
-t.test(data_czech$new_cases_per_million, data_austria$new_cases_per_million, var.equal = TRUE)
+t.test(new_cases_per_million_czechia, new_cases_per_million_austria, var.equal = TRUE)
 @
 
 \subsection{Wilcox test}
 
+Následující Wilcoxonův testuje hypotézu, že střední hodnota nových případů na milión
+v ČR je rovna střední hodnotě nových případů na milión na Slovensku. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů na milión na Slovensku
+se nerovná střední hodnotě nových případů na milión v ČR. Vzhledem k zešikmení dat poskytuje tento test přesnější
+výsledky oproti dvouvýběrovému t-testu.
+
 <<testWilcox_czechia_slovakia_new_cases_per_million, echo=FALSE>>=
-wilcox.test(data_czech$new_cases_per_million, data_slovakia$new_cases_per_million)
+wilcox.test(new_cases_per_million_czechia, new_cases_per_million_slovakia)
 @
 
+Následující Wilcoxonův testuje hypotézu, že střední hodnota nových případů na milión
+v ČR je rovna střední hodnotě nových případů na milión v Německu. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní.
+Při této hladině významnosti tudíž můžeme tvrdit, že střední hodnota nových případů na milión v Německu
+se nerovná střední hodnotě nových případů na milión v ČR. Vzhledem k zešikmení dat poskytuje tento test přesnější
+výsledky oproti dvouvýběrovému t-testu.
+
 <<testWilcox_czechia_germany_new_cases_per_million, echo=FALSE>>=
-wilcox.test(data_czech$new_cases_per_million, data_germany$new_cases_per_million)
+wilcox.test(new_cases_per_million_czechia, new_cases_per_million_germany)
 @
 
 \clearpage
 
 \subsection{Fisherův test}
 
+Následující Fisherův test zkoumá zda jsou rozptyly hodnot nových případů na milión
+v ČR a na Slovensku stejné. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní,
+tudíž že jsou rozptyly těchto dat různé.
+
 <<testFis_czechia_slovakia_new_cases_per_million, echo=FALSE>>=
-var.test(lm(data_czech$new_cases_per_million ~ 1), lm(data_slovakia$new_cases_per_million ~ 1))
+var.test(new_cases_per_million_czechia, new_cases_per_million_slovakia)
 @
 
 \subsection{Shapiro Wilk test}
 
+Následující Shapiro Wilk test testuje zda je veličina nových případů v ČR nabývá
+normálního rozdělení. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní,
+tudíž že tato veličina nenabývá normálního rozdělení.
+
 <<testShapiroWilk_new_cases, echo=FALSE>>=
-shapiro.test(data_czech$new_cases)
+shapiro.test(new_cases_czechia)
 @
 
+\clearpage
+
+Následující Shapiro Wilk test testuje zda je veličina nových testů v ČR nabývá
+normálního rozdělení. Vzhledem ke skutečnosti, že p-value je menší
+než hladina významnosti ($\alpha$ = 0,05), zamítáme tuto hypotézu ve prospěch alternativní,
+tudíž že tato veličina nenabývá normálního rozdělení.
+
 <<testShapiroWilk_new_tests, echo=FALSE>>=
-shapiro.test(data_czech$new_tests)
+shapiro.test(new_tests_czechia)
 @
 
 %% ANOVA
 \section{ANOVA}
 
 <<anova, echo=FALSE>>=
-anova <- aov(data_czech$new_tests~data_czech$new_cases+data_czech$new_deaths)
+anova <- aov(new_tests_czechia~new_cases_czechia+new_deaths_czechia)
 summary(anova)
 @
 
@@ -906,6 +1015,9 @@ plot(anova, 6, pch=4)
 \clearpage
 %% Variance
 \section{Variance}
+
+Níže jsou popsány střední hodnoty kvadrátů odchylek od střední hodnoty nových testů
+a nových případů v ČR.
 <<variance, echo=FALSE>>=
 varr <- var(data_czech$new_tests, data_czech$new_cases, na.rm = TRUE)
 summary(varr)
@@ -986,13 +1098,22 @@ ggqqplot(data_czech$new_cases)
 \section{Testování v kontingenčních tabulkách}
 \subsection{Pearsonův Chí-kvadrát test}
 
+Následující chí-kvadrát test zkoumá zda má veličina nových případů v ČR stejné
+rozdělení jako veličina nových případů v ČR. Vzhledem ke skutečnosti, že p-value je vyšší
+než hladina významnosti ($\alpha$ = 0,05), tuto hypotézu nemůžeme zamítnout.
+
 <<testPearsonChiSquared_new_tests_new_cases, echo=FALSE>>=
-chisq.test(data_czech$new_tests, data_czech$new_cases)
+chisq.test(new_tests_czechia, new_cases_czechia)
 @
 
 %% Regrese
 \section{Regrese}
 \subsection{Lineární regrese}
+
+Následující graf zobrazuje jakých hodnot bude s 95\% pravděpodobností nabývat
+hodnota pacientů na ICU na milión v ČR v závislosti na počtu nově hospitalizovaných
+pacientů na milión v ČR. Tato závislost je zde vyjádřena jako lineární funkce $y = -0.7746 + 0.1826x$.
+
 \begin{figure}[H]
 \centering
 <<linear_regresion_graph, echo=FALSE>>=
@@ -1009,7 +1130,14 @@ lines(data_czech$hosp_patients_per_million[1:569], predikce[,3], type = "l", col
 
 \end{figure}
 
+\clearpage
+
 \subsection{Kvadratická regrese}
+
+Následující graf zobrazuje jakých hodnot bude s 95\% pravděpodobností nabývat
+hodnota pacientů na ICU na milión v ČR v závislosti na počtu nově hospitalizovaných
+pacientů na milión v ČR. Tato závislost je zde vyjádřena jako kvadratická funkce $y = 1.9982244 + 0.1074610x + 0.0001102x^2$.
+
 \begin{figure}[H]
 \centering
 <<quadratic_regresion_graph, echo=FALSE>>=

@@ -19,8 +19,8 @@
 \contentsline {figure}{\numberline {6}{\ignorespaces Nové případy v ČR od 7. 3. 2020\relax }}{14}{figure.caption.14}%
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Nové případy}}}{14}{subfigure.6.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Logaritmická transformace}}}{14}{subfigure.6.2}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Nové testy pro Česko a Rakousko\relax }}{14}{figure.caption.15}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Logaritmická transformace}}}{14}{subfigure.7.1}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Klouzavý průměr nových případů na milión pro Česko a Rakousko od 7. 3. 2020\relax }}{14}{figure.caption.15}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\centering Nové případy na milión pro ČR a Rakousko}}}{14}{subfigure.7.1}%
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\centering Logaritmická transformace}}}{14}{subfigure.7.2}%
 \contentsline {figure}{\numberline {8}{\ignorespaces Bodový graf zlogaritmovaných nových případů\relax }}{15}{figure.caption.16}%
 \contentsline {figure}{\numberline {9}{\ignorespaces Bodový graf nových testů\relax }}{15}{figure.caption.16}%
@@ -44,15 +44,15 @@
 \contentsline {figure}{\numberline {27}{\ignorespaces Chernoff faces graf tabulky popisné statistiky\relax }}{26}{figure.caption.27}%
 \contentsline {figure}{\numberline {28}{\ignorespaces QQPlot graf nových případů a nových úmrtí\relax }}{27}{figure.caption.28}%
 \contentsline {figure}{\numberline {29}{\ignorespaces QQPlot graf nových testů a nových případů\relax }}{28}{figure.caption.29}%
-\contentsline {figure}{\numberline {30}{\ignorespaces Anova graf nových testů, případů a úmrtí\relax }}{37}{figure.caption.30}%
-\contentsline {figure}{\numberline {31}{\ignorespaces Anova graf nových testů, případů a úmrtí\relax }}{38}{figure.caption.31}%
-\contentsline {figure}{\numberline {32}{\ignorespaces Anova graf nových testů, případů a úmrtí\relax }}{38}{figure.caption.31}%
-\contentsline {figure}{\numberline {33}{\ignorespaces Anova graf nových testů, případů a úmrtí\relax }}{39}{figure.caption.32}%
-\contentsline {figure}{\numberline {34}{\ignorespaces Anova graf nových testů, případů a úmrtí\relax }}{39}{figure.caption.32}%
-\contentsline {figure}{\numberline {35}{\ignorespaces Anova graf nových testů, případů a úmrtí\relax }}{40}{figure.caption.33}%
-\contentsline {figure}{\numberline {36}{\ignorespaces Heatmap graf korelační matice\relax }}{44}{figure.caption.35}%
-\contentsline {figure}{\numberline {37}{\ignorespaces Heatmap graf korelační matice\relax }}{47}{figure.caption.37}%
-\contentsline {figure}{\numberline {38}{\ignorespaces Graf korelační matice\relax }}{47}{figure.caption.37}%
-\contentsline {figure}{\numberline {39}{\ignorespaces GGQQPlot graf korelační matice\relax }}{48}{figure.caption.38}%
-\contentsline {figure}{\numberline {40}{\ignorespaces Graf lineární regrese\relax }}{50}{figure.caption.39}%
-\contentsline {figure}{\numberline {41}{\ignorespaces Graf kvadraditcké regrese\relax }}{51}{figure.caption.40}%
+\contentsline {figure}{\numberline {30}{\ignorespaces Anova graf nových testů, případů a úmrtí\relax }}{40}{figure.caption.30}%
+\contentsline {figure}{\numberline {31}{\ignorespaces Anova graf nových testů, případů a úmrtí\relax }}{41}{figure.caption.31}%
+\contentsline {figure}{\numberline {32}{\ignorespaces Anova graf nových testů, případů a úmrtí\relax }}{41}{figure.caption.31}%
+\contentsline {figure}{\numberline {33}{\ignorespaces Anova graf nových testů, případů a úmrtí\relax }}{42}{figure.caption.32}%
+\contentsline {figure}{\numberline {34}{\ignorespaces Anova graf nových testů, případů a úmrtí\relax }}{42}{figure.caption.32}%
+\contentsline {figure}{\numberline {35}{\ignorespaces Anova graf nových testů, případů a úmrtí\relax }}{43}{figure.caption.33}%
+\contentsline {figure}{\numberline {36}{\ignorespaces Heatmap graf korelační matice\relax }}{47}{figure.caption.35}%
+\contentsline {figure}{\numberline {37}{\ignorespaces Heatmap graf korelační matice\relax }}{50}{figure.caption.37}%
+\contentsline {figure}{\numberline {38}{\ignorespaces Graf korelační matice\relax }}{50}{figure.caption.37}%
+\contentsline {figure}{\numberline {39}{\ignorespaces GGQQPlot graf korelační matice\relax }}{51}{figure.caption.38}%
+\contentsline {figure}{\numberline {40}{\ignorespaces Graf lineární regrese\relax }}{53}{figure.caption.39}%
+\contentsline {figure}{\numberline {41}{\ignorespaces Graf kvadraditcké regrese\relax }}{54}{figure.caption.40}%
