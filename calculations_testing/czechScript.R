@@ -286,9 +286,18 @@ shapiro.test(data_czech$new_cases)
 shapiro.test(data_czech$new_tests)
 
 #ANOVA
-anova <- aov(data_czech$new_tests~data_czech$new_cases+data_czech$new_deaths+data_czech$new_vaccinations)
-anova <- aov(data_czech$new_tests~data_czech$new_cases)
-anova <- aov(data_czech ~ data_czech$new_cases+data_czech$new_deaths)
+#anova <- aov(data_czech$new_tests~data_czech$new_cases+data_czech$new_deaths+data_czech$new_vaccinations)
+#anova <- aov(data_czech$new_tests~data_czech$new_cases)
+#anova <- aov(data_czech ~ data_czech$new_cases+data_czech$new_deaths)
+anova <- aov(data_czech$new_cases_per_million ~
+                     data_slovakia$new_cases_per_million+
+                     data_austria$new_cases_per_million)
+
+anova <- aov(data_czech$new_cases_per_million ~ data_germany$new_cases_per_million
+             + data_slovakia$new_cases_per_million
+             + data_poland$new_cases_per_million
+             + data_austria$new_cases_per_million)
+
 summary(anova)
 plot(anova, 1)
 plot(anova, 2)
