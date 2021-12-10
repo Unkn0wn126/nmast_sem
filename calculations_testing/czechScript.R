@@ -164,9 +164,9 @@ my_colors = colorRampPalette(rev(brewer.pal(11,'Spectral')))
 plot(bin, main = "" , colramp=my_colors , legend = F )
 
 #CHERNOFF FACES
-#Pomocí chernoff faces jsou vyobrazeny oblièeje na základì hodnot pro Èesko. Hodnoty, které jsou pouity jsou
-#new_cases, new_deaths, new_tests, new_vaccinations, icu_patiens. Kadı oblièej reprezentuje jednu funkci, která
-#je aplikována na zvolené hodnoty.
+#PomocÃ­ chernoff faces jsou vyobrazeny obliÄeje na zÃ¡kladÄ› hodnot pro ÄŒesko. Hodnoty, kterÃ© jsou pouÅ¾ity jsou
+#new_cases, new_deaths, new_tests, new_vaccinations, icu_patiens. KaÅ¾dÃ½ obliÄej reprezentuje jednu funkci, kterÃ¡
+#je aplikovÃ¡na na zvolenÃ© hodnoty.
 
 #"height of face   " "data_czech$new_cases"
 #"width of face    " "data_czech$new_deaths"
@@ -185,6 +185,7 @@ plot(bin, main = "" , colramp=my_colors , legend = F )
 #"height of ear   "  "data_czech$icu_patients"
 
 library(aplpack)
+library(e1071)
 countries <- c("Czech", "Slovakia", "Germany", "Poland", "Austria")
 
 prumer <- c(mean(data_czech$new_cases, na.rm = TRUE),
@@ -240,12 +241,33 @@ var <- c(var(data_czech$new_cases, na.rm = TRUE),
             var(data_czech$new_tests, na.rm = TRUE),
             var(data_czech$new_vaccinations, na.rm = TRUE),
             var(data_czech$icu_patients, na.rm = TRUE))
-
 tabulka <- data.frame(prumer, sd, maximum, minumum, sikmost, spicatost, iqr, median)
+tabulka
 tabulka_transpose <- t(tabulka)
+colnames(tabulka_transpose) = c("new_cases", "new_deaths", "new_tests", "new_vaccinations", "icu_patients")
 tabulka_transpose
 #faces(tabulka[])
-faces(tabulka_transpose)
+?faces()
+faces(tabulka_transpose, plot.faces = FALSE)
+faces(tabulka_transpose, print.info = FALSE)
+
+# modified item       Var   
+# "height of face   " "Var1"
+# "width of face    " "Var2"
+# "structure of face" "Var3"
+# "height of mouth  " "Var4"
+# "width of mouth   " "Var5"
+# "smiling          " "Var1"
+# "height of eyes   " "Var2"
+# "width of eyes    " "Var3"
+# "height of hair   " "Var4"
+# "width of hair   "  "Var5"
+# "style of hair   "  "Var1"
+# "height of nose  "  "Var2"
+# "width of nose   "  "Var3"
+# "width of ear    "  "Var4"
+# "height of ear   "  "Var5"
+
 ##QQPLOT
 ?qqplot()
 qqplot(data_czech$new_cases,data_czech$new_deaths)

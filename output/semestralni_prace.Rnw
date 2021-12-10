@@ -11,6 +11,7 @@
 \selectlanguage{czech}
 \usepackage{vskpupa}
 \usepackage{subfig}
+\usepackage{longtable}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Údaje o práci
@@ -65,8 +66,9 @@ library("ggpubr")
 @
 \label{uvod}
 
-V této semestrální práci jsou analyzována data týkající se vývoje pandemie
-nemoci Covid-19. Použitá data čerpají ze zdroje~\cite{1}.
+Tato semestrální práce se zabývá analýzou vývoje epidemie nemoci Covid-19 v ČR. Za tímto účelem
+jsou srovnány přírůstky nových případů s našimi sousedy, efektivita testů při odhalování nových případů, úmrtnost nakažených, střední hodnota hospitalizovaných a vývoj střední hodnoty nových případů v čase. Dále je provedeno srovnání středních hodnot nových případů na milión s našimi sousedy a zkoumáno jaké rozdělení pravděpodobnosti data následují. Nakonec je pomocí regrese analyzováno
+podle jaké funkce se řídí přírůstek nových padientů na ICU v závislosti na nových hospitalizacích. Použitá data čerpají ze zdroje~\cite{1}.
 
 %% Načítání dat start
 
@@ -119,6 +121,16 @@ od společnosti Our World in Data. Tato data jsou denně aktualizována a obsahu
 například informace o očkování, testech, hospitalizacích, nových případech,
 nových úmrtích či reprodukčním čísle. Veškeré hodnoty jsou pozorovány napříč
 mnoha státy. Pro bližší popis těchto dat vizte zdroj~\cite{1}.
+
+Covid-19 (též COVID-19; z anglického spojení coronavirus disease 2019, což česky znamená koronavirové onemocnění 2019; výslovnost: [kovid devatenáct]; podle ICD-11 označené XN109) je vysoce infekční onemocnění, které je způsobeno koronavirem SARS-CoV-2. První případ byl identifikován v čínském Wu-chanu v prosinci 2019. Od té doby se virus rozšířil po celém světě, což způsobilo přetrvávající pandemii.
+
+Příznaky nemoci covid-19 jsou různé, od bezpříznakového stavu až po závažné onemocnění, ale často zahrnují horečku, kašel, únavu, dýchací potíže a ztrátu čichu a chuti. Příznaky začínají jeden až čtrnáct dní po vystavení viru. U přibližně jednoho z pěti infikovaných jedinců se neobjeví žádné příznaky. Zatímco většina lidí má mírné příznaky, u některých lidí se vyvine syndrom akutní dechové tísně. Tento syndrom může být přivoděn cytokinovými bouřemi, víceorgánovým selháním, septickým šokem a krevními sraženinami. Bylo pozorováno dlouhodobější poškození orgánů (zejména plic a srdce). Existuje obava z významného počtu pacientů, kteří se zotavili z akutní fáze onemocnění, ale nadále pociťují řadu následků – známých jako dlouhodobý covid-19 – i několik měsíců poté. Mezi tyto účinky patří silná únava, ztráta paměti a další kognitivní problémy, slabá horečka, svalová slabost a dušnost.
+
+Virus, který způsobuje covid-19, se šíří hlavně vzdušným přenosem, když je infikovaná osoba v blízkém kontaktu s jinou osobou. Malé kapičky a aerosoly obsahující virus se mohou šířit z nosu a úst infikované osoby při dýchání, kašlání, kýchání, zpěvu nebo mluvení. Ostatní lidé se mohou nakazit, pokud se virus dostane do jejich úst, nosu nebo očí. Virus se může šířit také kontaminovaným povrchem, i když to není považováno za hlavní cestu přenosu. Přesná cesta přenosu je zřídkakdy přesvědčivě prokázána, ale k infekci dochází hlavně tehdy, když jsou lidé dostatečně blízko sebe. Virus se může šířit až dva dny předtím, než infikované osoby projeví příznaky, a od jedinců, kteří nikdy nepociťují příznaky. Lidé zůstávají infekční po dobu až deseti dnů při středně závažných případech a dva týdny ve vážných případech. Virus se šíří snadněji ve vnitřních prostorách a v davu. Pro diagnózu onemocnění byly vyvinuty různé testovací metody. Standardní diagnostickou metodou je reverzní transkripční polymerázová řetězová reakce v reálném čase (PCR test) výtěrem z nosohltanu.
+
+Preventivní opatření zahrnují fyzický či společenský odstup, umístění ohrožených osob do karantény, větrání vnitřních prostor, zakrývání úst a nosu při kašli a kýchání, mytí rukou a udržování neumytých rukou pryč od obličeje. Aby se minimalizovalo riziko přenosu, bylo na veřejnosti doporučeno použití roušek, obličejových masek nebo jiného zakrytí dýchacích cest. Bylo vyvinuto několik vakcín proti covidu-19, načež většina států světa zahájila očkovací kampaně a samotné očkování, jehož rozsah je ovšem závislý na přístupnosti dostatečného množství vakcín.
+
+Ačkoli probíhají práce na vývoji léků, které zpomalují a zastavují virus, primární léčba je v současnosti symptomatická. Zahrnuje léčbu příznaků, podpůrnou péči, izolaci a některá experimentální opatření.
 
 Vzhledem k velkému množství dat jsou v této práci použity zpravidla údaje pro
 Českou republiku, ze kterých je dále využit užší výčet dostupných veličin.
@@ -696,33 +708,96 @@ plot(bin, main = "Graf zlog. nových případů a nových úmrtí", colramp=my_c
 \clearpage
 
 \subsection{Chernoff faces}
+
+Pomocí chernoff faces jsou vyobrazeny obličeje na základě hodnot pro Česko. Hodnoty, které jsou použity jsou
+$new_cases$, $new_deaths$, $new_tests$, $new_vaccinations$, $icu_patiens$. Každý obličej reprezentuje jednu funkci, která
+je aplikována na zvolené hodnoty. Z grafu je zřejmé zešikmení dat vzhledem k velkým rozdílům mezi hodnotami průměru
+a mediánu zobrazovaných veličin.
+
+<<faces_graf_covid_preparation, echo=FALSE,results=tex>>=
+countries <- c("Czechia", "Slovakia", "Germany", "Poland", "Austria")
+prumer <- c(mean(data_czech$new_cases, na.rm = TRUE),
+            mean(data_czech$new_deaths, na.rm = TRUE),
+            mean(data_czech$new_tests, na.rm = TRUE),
+            mean(data_czech$new_vaccinations, na.rm = TRUE),
+            mean(data_czech$icu_patients, na.rm = TRUE))
+
+sd <- c(sd(data_czech$new_cases, na.rm = TRUE),
+            sd(data_czech$new_deaths, na.rm = TRUE),
+            sd(data_czech$new_tests, na.rm = TRUE),
+            sd(data_czech$new_vaccinations, na.rm = TRUE),
+            sd(data_czech$icu_patients, na.rm = TRUE))
+
+maximum <- c(max(data_czech$new_cases, na.rm = TRUE),
+             max(data_czech$new_deaths, na.rm = TRUE),
+             max(data_czech$new_tests, na.rm = TRUE),
+             max(data_czech$new_vaccinations, na.rm = TRUE),
+             max(data_czech$icu_patients, na.rm = TRUE))
+
+minumum <- c(min(data_czech$new_cases, na.rm = TRUE),
+            min(data_czech$new_deaths, na.rm = TRUE),
+            min(data_czech$new_tests, na.rm = TRUE),
+            min(data_czech$new_vaccinations, na.rm = TRUE),
+            min(data_czech$icu_patients, na.rm = TRUE))
+
+sikmost <- c(skewness(data_czech$new_cases, na.rm = TRUE),
+             skewness(data_czech$new_deaths, na.rm = TRUE),
+             skewness(data_czech$new_tests, na.rm = TRUE),
+             skewness(data_czech$new_vaccinations, na.rm = TRUE),
+             skewness(data_czech$icu_patients, na.rm = TRUE))
+
+spicatost <- c(kurtosis(data_czech$new_cases, na.rm = TRUE),
+               kurtosis(data_czech$new_deaths, na.rm = TRUE),
+               kurtosis(data_czech$new_tests, na.rm = TRUE),
+               kurtosis(data_czech$new_vaccinations, na.rm = TRUE),
+               kurtosis(data_czech$icu_patients, na.rm = TRUE))
+
+iqr <- c(IQR(data_czech$new_cases, na.rm = TRUE),
+         IQR(data_czech$new_deaths, na.rm = TRUE),
+         IQR(data_czech$new_tests, na.rm = TRUE),
+         IQR(data_czech$new_vaccinations, na.rm = TRUE),
+         IQR(data_czech$icu_patients, na.rm = TRUE))
+
+median <- c(median(data_czech$new_cases, na.rm = TRUE),
+             median(data_czech$new_deaths, na.rm = TRUE),
+             median(data_czech$new_tests, na.rm = TRUE),
+             median(data_czech$new_vaccinations, na.rm = TRUE),
+             median(data_czech$icu_patients, na.rm = TRUE))
+
+var <- c(var(data_czech$new_cases, na.rm = TRUE),
+            var(data_czech$new_deaths, na.rm = TRUE),
+            var(data_czech$new_tests, na.rm = TRUE),
+            var(data_czech$new_vaccinations, na.rm = TRUE),
+            var(data_czech$icu_patients, na.rm = TRUE))
+
+tabulka <- data.frame(prumer, sd, maximum, minumum, sikmost, spicatost, iqr, median)
+tabulka_transpose <- t(tabulka)
+colnames(tabulka_transpose) = c("new_cases", "new_deaths", "new_tests", "new_vaccinations", "icu_patients")
+print(xtable(tabulka_transpose,
+             caption="Hodnoty dat znázorněných pomocí Chernoffových obličejů",
+             label="table:popisStat"),
+      include.rownames=TRUE,
+      caption.placement="bottom"
+      )
+@
+
+\begin{figure}[H]
+\small
+\centering
+
+<<faces_graf_covid_description, echo=FALSE>>=
+faces(tabulka_transpose, plot.faces = FALSE)
+@
+\caption{Legenda Chernoff faces grafu tabulky popisné statistiky}
+\end{figure}
+
 \begin{figure}[H]
 \small
 \centering
 
 <<faces_graf_covid, echo=FALSE>>=
-countries <- c("Czechia", "Slovakia", "Germany", "Poland", "Austria")
-countriesMeanNewCases <- c(mean(data_czech$new_cases),
-                             mean(data_slovakia$new_cases),
-                             mean(data_germany$new_cases),
-                             mean(data_poland$new_cases),
-                             mean(data_austria$new_cases))
-
-countriesMeanTotalCases <- c(mean(data_czech$total_cases),
-                             mean(data_slovakia$total_cases),
-                             mean(data_germany$total_cases),
-                             mean(data_poland$total_cases),
-                             mean(data_austria$total_cases))
-
-countriesPopulation <- c(mean(data_czech$population),
-                             mean(data_slovakia$population),
-                             mean(data_germany$population),
-                             mean(data_poland$population),
-                             mean(data_austria$population))
 CairoPDF("faces_graf_covid.pdf")
-tabulka <- data.frame(countries, countriesMeanNewCases, countriesMeanTotalCases, countriesPopulation)
-
-faces(tabulka[,-1], labels = tabulka[,1])
+faces(tabulka_transpose, print.info = FALSE)
 @
 \includegraphics[width=10cm]{faces_graf_covid.pdf}
 \caption{Chernoff faces graf tabulky popisné statistiky}
@@ -946,7 +1021,10 @@ shapiro.test(new_tests_czechia)
 \section{ANOVA}
 
 <<anova, echo=FALSE>>=
-anova <- aov(new_tests_czechia~new_cases_czechia+new_deaths_czechia)
+anova <- aov(new_cases_per_million_czechia ~ new_cases_per_million_germany
+             + new_cases_per_million_slovakia
+             + new_cases_per_million_poland
+             + new_cases_per_million_austria)
 summary(anova)
 @
 
@@ -1027,7 +1105,7 @@ summary(varr)
 \section{Korelace}
 \subsection{Korelační matice}
 \begin{table}[H]
-\small
+\footnotesize
 <<cor_matrix, echo=FALSE>>=
 matice <- matrix(data_czech$new_cases, ncol = 24)
 corr <- cor(matice, method = "pearson")
@@ -1055,13 +1133,12 @@ heatmap(x = corr, col = col, symm = TRUE)
 \section{Kovariance}
 \subsection{Kovarianční matice}
 \begin{table}[H]
-\small
+\footnotesize
 <<cov_matrix, echo=FALSE>>=
 covv <- cov(matice, method = "pearson")
 covv <- cov(matice, method = "kendall")
 covv <- cov(matice, method = "spearman")
 summary(covv)
-col <- colorRampPalette(c("blue", "white", "red"))(20)
 @
 \end{table}
 
@@ -1069,18 +1146,19 @@ col <- colorRampPalette(c("blue", "white", "red"))(20)
 \centering
 
 <<cov_matrix_graph_heatmap, echo=FALSE>>=
+col <- colorRampPalette(c("blue", "white", "red"))(20)
 CairoPDF("cov_matrix_graph_heatmap.pdf")
 heatmap(x = covv, col = col, symm = TRUE)
 @
 \includegraphics[width=10cm]{cov_matrix_graph_heatmap.pdf}
-\caption{Heatmap graf korelační matice}
+\caption{Heatmap graf kovarianční matice}
 
 <<cov_matrix_graph, echo=FALSE>>=
 CairoPDF("cov_matrix_grap.pdf")
 plot(corr, pch=4)
 @
 \includegraphics[width=10cm]{cov_matrix_grap.pdf}
-\caption{Graf korelační matice}
+\caption{Graf kovarianční matice}
 \end{figure}
 
 \begin{figure}[H]
@@ -1168,6 +1246,22 @@ lines(data_czech$hosp_patients_per_million[1:569], predikce2[,3], col="green")
 
 \clearpage \phantomsection \addcontentsline{toc}{section}{Závěr}
 \section*{Závěr}
+
+V této semestrální práci byl analyzován vývoj epidemie nemoci Covid-19 v ČR.
+Jak je zřejmé z grafů, zkoumaná data se neřídí dle normálního rozdělení pravděpodobnosti
+a zpravidla jsou výrazně zešikmena vlevo. Pomocí grafů byly porovnány sedmidenní klouzavé
+průměry nových případů na milión v Rakousku a České republice. Pomocí grafů byly
+také vizualizovány další veličiny jako například počet nových hospitalizací, počet nových testů,
+reprodukční číslo, počet pacientů na ICU či pozitivita testů. Pomocí testů bylo otestováno například
+zda se střední hodnota nových případů rovná konkrétní hodnotě či zda se střední hodnota
+nových případů výrazněji v průběhu času změnila. Tyto analýzy byly proté vzhledem k sešikmení dat
+provedeny kromě t-testu také pomocí Wilcox testu, jelikož by jeho výsledky zešikmení dat nemělo
+případně tolik ovlivnit. Pro řádné srovnání nových případů na milión je poté na data aplikován
+test ANOVA, který tuto veličinu porovnává mezi ČR, Německem, Slovenskem, Polskem a Rakouskem.
+Nakonec je pomocí regrese navržena lineární a kvadratická funkce popisující možnou závislost
+přírůstku nových pacientů na ICU na milión na přírustku nově hospitalizovaných pacientů na milión.
+Těmito operacemi práce jistě poskytuje bližší pohled na vývoj současné epidemie v naší zemi
+jakož i nebezpečí, které tento virus představuje.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Použitá literatura

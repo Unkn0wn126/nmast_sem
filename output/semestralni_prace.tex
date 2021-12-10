@@ -11,6 +11,7 @@
 \selectlanguage{czech}
 \usepackage{vskpupa}
 \usepackage{subfig}
+\usepackage{longtable}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Údaje o práci
@@ -50,8 +51,9 @@
 \section*{Úvod}
 \label{uvod}
 
-V této semestrální práci jsou analyzována data týkající se vývoje pandemie
-nemoci Covid-19. Použitá data čerpají ze zdroje~\cite{1}.
+Tato semestrální práce se zabývá analýzou vývoje epidemie nemoci Covid-19 v ČR. Za tímto účelem
+jsou srovnány přírůstky nových případů s našimi sousedy, efektivita testů při odhalování nových případů, úmrtnost nakažených, střední hodnota hospitalizovaných a vývoj střední hodnoty nových případů v čase. Dále je provedeno srovnání středních hodnot nových případů na milión s našimi sousedy a zkoumáno jaké rozdělení pravděpodobnosti data následují. Nakonec je pomocí regrese analyzováno
+podle jaké funkce se řídí přírůstek nových padientů na ICU v závislosti na nových hospitalizacích. Použitá data čerpají ze zdroje~\cite{1}.
 
 %% Načítání dat start
 
@@ -71,6 +73,16 @@ například informace o očkování, testech, hospitalizacích, nových případ
 nových úmrtích či reprodukčním čísle. Veškeré hodnoty jsou pozorovány napříč
 mnoha státy. Pro bližší popis těchto dat vizte zdroj~\cite{1}.
 
+Covid-19 (též COVID-19; z anglického spojení coronavirus disease 2019, což česky znamená koronavirové onemocnění 2019; výslovnost: [kovid devatenáct]; podle ICD-11 označené XN109) je vysoce infekční onemocnění, které je způsobeno koronavirem SARS-CoV-2. První případ byl identifikován v čínském Wu-chanu v prosinci 2019. Od té doby se virus rozšířil po celém světě, což způsobilo přetrvávající pandemii.
+
+Příznaky nemoci covid-19 jsou různé, od bezpříznakového stavu až po závažné onemocnění, ale často zahrnují horečku, kašel, únavu, dýchací potíže a ztrátu čichu a chuti. Příznaky začínají jeden až čtrnáct dní po vystavení viru. U přibližně jednoho z pěti infikovaných jedinců se neobjeví žádné příznaky. Zatímco většina lidí má mírné příznaky, u některých lidí se vyvine syndrom akutní dechové tísně. Tento syndrom může být přivoděn cytokinovými bouřemi, víceorgánovým selháním, septickým šokem a krevními sraženinami. Bylo pozorováno dlouhodobější poškození orgánů (zejména plic a srdce). Existuje obava z významného počtu pacientů, kteří se zotavili z akutní fáze onemocnění, ale nadále pociťují řadu následků – známých jako dlouhodobý covid-19 – i několik měsíců poté. Mezi tyto účinky patří silná únava, ztráta paměti a další kognitivní problémy, slabá horečka, svalová slabost a dušnost.
+
+Virus, který způsobuje covid-19, se šíří hlavně vzdušným přenosem, když je infikovaná osoba v blízkém kontaktu s jinou osobou. Malé kapičky a aerosoly obsahující virus se mohou šířit z nosu a úst infikované osoby při dýchání, kašlání, kýchání, zpěvu nebo mluvení. Ostatní lidé se mohou nakazit, pokud se virus dostane do jejich úst, nosu nebo očí. Virus se může šířit také kontaminovaným povrchem, i když to není považováno za hlavní cestu přenosu. Přesná cesta přenosu je zřídkakdy přesvědčivě prokázána, ale k infekci dochází hlavně tehdy, když jsou lidé dostatečně blízko sebe. Virus se může šířit až dva dny předtím, než infikované osoby projeví příznaky, a od jedinců, kteří nikdy nepociťují příznaky. Lidé zůstávají infekční po dobu až deseti dnů při středně závažných případech a dva týdny ve vážných případech. Virus se šíří snadněji ve vnitřních prostorách a v davu. Pro diagnózu onemocnění byly vyvinuty různé testovací metody. Standardní diagnostickou metodou je reverzní transkripční polymerázová řetězová reakce v reálném čase (PCR test) výtěrem z nosohltanu.
+
+Preventivní opatření zahrnují fyzický či společenský odstup, umístění ohrožených osob do karantény, větrání vnitřních prostor, zakrývání úst a nosu při kašli a kýchání, mytí rukou a udržování neumytých rukou pryč od obličeje. Aby se minimalizovalo riziko přenosu, bylo na veřejnosti doporučeno použití roušek, obličejových masek nebo jiného zakrytí dýchacích cest. Bylo vyvinuto několik vakcín proti covidu-19, načež většina států světa zahájila očkovací kampaně a samotné očkování, jehož rozsah je ovšem závislý na přístupnosti dostatečného množství vakcín.
+
+Ačkoli probíhají práce na vývoji léků, které zpomalují a zastavují virus, primární léčba je v současnosti symptomatická. Zahrnuje léčbu příznaků, podpůrnou péči, izolaci a některá experimentální opatření.
+
 Vzhledem k velkému množství dat jsou v této práci použity zpravidla údaje pro
 Českou republiku, ze kterých je dále využit užší výčet dostupných veličin.
 
@@ -84,7 +96,7 @@ lépe zachycují tyto veličiny v rámci dlouhodobých trendů, jelikož je elim
 testů například během víkendů.
 
 % latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Fri Dec 03 17:28:28 2021
+% Fri Dec 10 17:31:43 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -105,7 +117,7 @@ průměr & 2940.58 & 2936.89 \\
 \caption{Části popisné statistiky aplikované na data nových případů a jejich 7denního klouzavého průměru v ČR od 7. 3. 2020} 
 \label{table:popisStat}
 \end{table}% latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Fri Dec 03 17:28:28 2021
+% Fri Dec 10 17:31:43 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -126,7 +138,7 @@ průměr & 274.19 & 273.85 \\
 \caption{Části popisné statistiky aplikované na data nových případů na milión a jejich 7denního klouzavého průměru v ČR od 7. 3. 2020} 
 \label{table:popisStat}
 \end{table}% latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Fri Dec 03 17:28:28 2021
+% Fri Dec 10 17:31:43 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -374,6 +386,33 @@ Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data
 \clearpage
 
 \subsection{Chernoff faces}
+
+Pomocí chernoff faces jsou vyobrazeny obličeje na základě hodnot pro Česko. Hodnoty, které jsou použity jsou
+$new_cases$, $new_deaths$, $new_tests$, $new_vaccinations$, $icu_patiens$. Každý obličej reprezentuje jednu funkci, která
+je aplikována na zvolené hodnoty. Z grafu je zřejmé zešikmení dat vzhledem k velkým rozdílům mezi hodnotami průměru
+a mediánu zobrazovaných veličin.
+
+% latex table generated in R 4.1.1 by xtable 1.8-4 package
+% Fri Dec 10 17:31:43 2021
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrrr}
+  \hline
+ & new\_cases & new\_deaths & new\_tests & new\_vaccinations & icu\_patients \\ 
+  \hline
+prumer & 2940.58 & 54.33 & 94464.09 & 42220.25 & 424.51 \\ 
+  sd & 4277.10 & 72.32 & 83099.10 & 35340.13 & 558.31 \\ 
+  maximum & 17773.00 & 295.00 & 416333.00 & 121742.00 & 2062.00 \\ 
+  minumum & -2214.00 & -6.00 & 4537.00 & 266.00 & 0.00 \\ 
+  sikmost & 1.55 & 1.11 & 1.39 & 0.79 & 1.23 \\ 
+  spicatost & 1.38 & -0.06 & 1.22 & -0.57 & 0.43 \\ 
+  iqr & 4275.75 & 107.00 & 82303.50 & 49771.00 & 799.00 \\ 
+  median & 416.00 & 7.00 & 65211.00 & 33315.00 & 74.00 \\ 
+   \hline
+\end{tabular}
+\caption{Hodnoty dat znázorněných pomocí Chernoffových obličejů} 
+\label{table:popisStat}
+\end{table}
 \begin{figure}[H]
 \small
 \centering
@@ -381,24 +420,31 @@ Vzhledem k očividnému zešikmení dat vlevo byla pro lepší přehlednost data
 \begin{Schunk}
 \begin{Soutput}
 effect of variables:
- modified item       Var                      
- "height of face   " "countriesMeanNewCases"  
- "width of face    " "countriesMeanTotalCases"
- "structure of face" "countriesPopulation"    
- "height of mouth  " "countriesMeanNewCases"  
- "width of mouth   " "countriesMeanTotalCases"
- "smiling          " "countriesPopulation"    
- "height of eyes   " "countriesMeanNewCases"  
- "width of eyes    " "countriesMeanTotalCases"
- "height of hair   " "countriesPopulation"    
- "width of hair   "  "countriesMeanNewCases"  
- "style of hair   "  "countriesMeanTotalCases"
- "height of nose  "  "countriesPopulation"    
- "width of nose   "  "countriesMeanNewCases"  
- "width of ear    "  "countriesMeanTotalCases"
- "height of ear   "  "countriesPopulation"    
+ modified item       Var               
+ "height of face   " "new_cases"       
+ "width of face    " "new_deaths"      
+ "structure of face" "new_tests"       
+ "height of mouth  " "new_vaccinations"
+ "width of mouth   " "icu_patients"    
+ "smiling          " "new_cases"       
+ "height of eyes   " "new_deaths"      
+ "width of eyes    " "new_tests"       
+ "height of hair   " "new_vaccinations"
+ "width of hair   "  "icu_patients"    
+ "style of hair   "  "new_cases"       
+ "height of nose  "  "new_deaths"      
+ "width of nose   "  "new_tests"       
+ "width of ear    "  "new_vaccinations"
+ "height of ear   "  "icu_patients"    
 \end{Soutput}
 \end{Schunk}
+\caption{Legenda Chernoff faces grafu tabulky popisné statistiky}
+\end{figure}
+
+\begin{figure}[H]
+\small
+\centering
+
 \includegraphics[width=10cm]{faces_graf_covid.pdf}
 \caption{Chernoff faces graf tabulky popisné statistiky}
 \end{figure}
@@ -779,13 +825,14 @@ W = 0.82915, p-value < 2.2e-16
 
 \begin{Schunk}
 \begin{Soutput}
-                    Df    Sum Sq   Mean Sq F value   Pr(>F)    
-new_cases_czechia    1 6.973e+10 6.973e+10   10.81   0.0011 ** 
-new_deaths_czechia   1 1.218e+11 1.218e+11   18.88 1.78e-05 ***
-Residuals          391 2.522e+12 6.451e+09                     
+                                Df   Sum Sq  Mean Sq F value   Pr(>F)    
+new_cases_per_million_germany    1 32058325 32058325 1020.43  < 2e-16 ***
+new_cases_per_million_slovakia   1 37842394 37842394 1204.54  < 2e-16 ***
+new_cases_per_million_poland     1  2637470  2637470   83.95  < 2e-16 ***
+new_cases_per_million_austria    1   978148   978148   31.14 3.72e-08 ***
+Residuals                      571 17938795    31416                     
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-182 observations deleted due to missingness
 \end{Soutput}
 \end{Schunk}
 
@@ -844,7 +891,7 @@ a nových případů v ČR.
 \section{Korelace}
 \subsection{Korelační matice}
 \begin{table}[H]
-\small
+\footnotesize
 \begin{Schunk}
 \begin{Soutput}
              [,1]        [,2]         [,3]         [,4]        [,5]        [,6]
@@ -1083,7 +1130,7 @@ a nových případů v ČR.
 \section{Kovariance}
 \subsection{Kovarianční matice}
 \begin{table}[H]
-\small
+\footnotesize
 \begin{Schunk}
 \begin{Soutput}
        V1                V2                V3                 V4         
@@ -1136,10 +1183,10 @@ a nových případů v ČR.
 \centering
 
 \includegraphics[width=10cm]{cov_matrix_graph_heatmap.pdf}
-\caption{Heatmap graf korelační matice}
+\caption{Heatmap graf kovarianční matice}
 
 \includegraphics[width=10cm]{cov_matrix_grap.pdf}
-\caption{Graf korelační matice}
+\caption{Graf kovarianční matice}
 \end{figure}
 
 \begin{figure}[H]
@@ -1204,6 +1251,22 @@ pacientů na milión v ČR. Tato závislost je zde vyjádřena jako kvadratická
 
 \clearpage \phantomsection \addcontentsline{toc}{section}{Závěr}
 \section*{Závěr}
+
+V této semestrální práci byl analyzován vývoj epidemie nemoci Covid-19 v ČR.
+Jak je zřejmé z grafů, zkoumaná data se neřídí dle normálního rozdělení pravděpodobnosti
+a zpravidla jsou výrazně zešikmena vlevo. Pomocí grafů byly porovnány sedmidenní klouzavé
+průměry nových případů na milión v Rakousku a České republice. Pomocí grafů byly
+také vizualizovány další veličiny jako například počet nových hospitalizací, počet nových testů,
+reprodukční číslo, počet pacientů na ICU či pozitivita testů. Pomocí testů bylo otestováno například
+zda se střední hodnota nových případů rovná konkrétní hodnotě či zda se střední hodnota
+nových případů výrazněji v průběhu času změnila. Tyto analýzy byly proté vzhledem k sešikmení dat
+provedeny kromě t-testu také pomocí Wilcox testu, jelikož by jeho výsledky zešikmení dat nemělo
+případně tolik ovlivnit. Pro řádné srovnání nových případů na milión je poté na data aplikován
+test ANOVA, který tuto veličinu porovnává mezi ČR, Německem, Slovenskem, Polskem a Rakouskem.
+Nakonec je pomocí regrese navržena lineární a kvadratická funkce popisující možnou závislost
+přírůstku nových pacientů na ICU na milión na přírustku nově hospitalizovaných pacientů na milión.
+Těmito operacemi práce jistě poskytuje bližší pohled na vývoj současné epidemie v naší zemi
+jakož i nebezpečí, které tento virus představuje.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Použitá literatura
