@@ -1104,19 +1104,17 @@ summary(varr)
 %% Korelace
 \section{Korelace}
 \subsection{Korelační matice}
-\begin{table}[H]
-\footnotesize
 <<cor_matrix, echo=FALSE>>=
 matice <- matrix(data_czech$new_cases, ncol = 24)
 corr <- cor(matice, method = "pearson")
 corr <- cor(matice, method = "kendall")
 corr <- cor(matice, method = "spearman")
-corr
-summary(corr)
+# print(corr)
+cor(matice)
+# summary(corr)
 col <- colorRampPalette(c("blue", "white", "red"))(20)
-print(matice)
+# print(matice)
 @
-\end{table}
 
 \begin{figure}[H]
 \centering
@@ -1125,22 +1123,20 @@ print(matice)
 CairoPDF("cor_matrix_gaph_heatmap.pdf")
 heatmap(x = corr, col = col, symm = TRUE)
 @
-\includegraphics[width=10cm]{cor_matrix.pdf}
+\includegraphics[width=10cm]{cor_matrix_gaph_heatmap.pdf}
 \caption{Heatmap graf korelační matice}
 \end{figure}
 
 %% Kovariance
 \section{Kovariance}
 \subsection{Kovarianční matice}
-\begin{table}[H]
-\footnotesize
 <<cov_matrix, echo=FALSE>>=
 covv <- cov(matice, method = "pearson")
 covv <- cov(matice, method = "kendall")
 covv <- cov(matice, method = "spearman")
-summary(covv)
+#summary(covv)
+cov(matice)
 @
-\end{table}
 
 \begin{figure}[H]
 \centering

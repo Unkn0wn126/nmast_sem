@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.10)  10 DEC 2021 17:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.12.12)  12 DEC 2021 22:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**E:/Projects/nmast/nmast_sem/output/semestralni_prace.tex
-(e:/Projects/nmast/nmast_sem/output/semestralni_prace.tex
+**D:/stuff/Projects/nmast/nmast_sem/output/semestralni_prace.tex
+(d:/stuff/Projects/nmast/nmast_sem/output/semestralni_prace.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2021-11-22> (c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
@@ -934,84 +934,78 @@ pdfTeX warning: pdflatex.exe (file ./anova_graph_5.pdf): PDF inclusion: multiple
 
 ] [47
 
-]
-Overfull \vbox (3322.66528pt too high) has occurred while \output is active []
-
-[48]
-<cor_matrix.pdf, id=1150, 433.62pt x 433.62pt>
-File: cor_matrix.pdf Graphic file (type pdf)
-<use cor_matrix.pdf>
-Package pdftex.def Info: cor_matrix.pdf  used on input line 1125.
+] [48] [49] [50]
+<cor_matrix_gaph_heatmap.pdf, id=1158, 433.62pt x 433.62pt>
+File: cor_matrix_gaph_heatmap.pdf Graphic file (type pdf)
+<use cor_matrix_gaph_heatmap.pdf>
+Package pdftex.def Info: cor_matrix_gaph_heatmap.pdf  used on input line 1026.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-[49 <./cor_matrix.pdf>] [50
+[51 <./cor_matrix_gaph_heatmap.pdf>] [52
 
-]
-Overfull \vbox (152.45546pt too high) has occurred while \output is active []
-
-[51]
-<cov_matrix_graph_heatmap.pdf, id=1174, 433.62pt x 433.62pt>
+] [53] [54] [55]
+<cov_matrix_graph_heatmap.pdf, id=1189, 433.62pt x 433.62pt>
 File: cov_matrix_graph_heatmap.pdf Graphic file (type pdf)
 <use cov_matrix_graph_heatmap.pdf>
-Package pdftex.def Info: cov_matrix_graph_heatmap.pdf  used on input line 1185.
+Package pdftex.def Info: cov_matrix_graph_heatmap.pdf  used on input line 1166.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<cov_matrix_grap.pdf, id=1175, 433.62pt x 433.62pt>
+<cov_matrix_grap.pdf, id=1190, 433.62pt x 433.62pt>
 File: cov_matrix_grap.pdf Graphic file (type pdf)
 <use cov_matrix_grap.pdf>
-Package pdftex.def Info: cov_matrix_grap.pdf  used on input line 1188.
+Package pdftex.def Info: cov_matrix_grap.pdf  used on input line 1169.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-<cov_matrix_graph_ggqqplot.pdf, id=1176, 433.62pt x 433.62pt>
+<cov_matrix_graph_ggqqplot.pdf, id=1191, 433.62pt x 433.62pt>
 File: cov_matrix_graph_ggqqplot.pdf Graphic file (type pdf)
 <use cov_matrix_graph_ggqqplot.pdf>
-Package pdftex.def Info: cov_matrix_graph_ggqqplot.pdf  used on input line 1194.
+Package pdftex.def Info: cov_matrix_graph_ggqqplot.pdf  used on input line 1175.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-[52 <./cov_matrix_graph_heatmap.pdf> <./cov_matrix_grap.pdf
+[56 <./cov_matrix_graph_heatmap.pdf> <./cov_matrix_grap.pdf
 
 pdfTeX warning: pdflatex.exe (file ./cov_matrix_grap.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [53 <./cov_matrix_graph_ggqqplot.pdf>] [54
+>] [57 <./cov_matrix_graph_ggqqplot.pdf>] [58
 
 ]
-<linear_regresion_graph.pdf, id=1215, 433.62pt x 433.62pt>
+<linear_regresion_graph.pdf, id=1230, 433.62pt x 433.62pt>
 File: linear_regresion_graph.pdf Graphic file (type pdf)
 <use linear_regresion_graph.pdf>
-Package pdftex.def Info: linear_regresion_graph.pdf  used on input line 1226.
+Package pdftex.def Info: linear_regresion_graph.pdf  used on input line 1207.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-[55
+[59
 
  <./linear_regresion_graph.pdf>]
-<quadratic_regresion_graph.pdf, id=1239, 433.62pt x 433.62pt>
+<quadratic_regresion_graph.pdf, id=1254, 433.62pt x 433.62pt>
 File: quadratic_regresion_graph.pdf Graphic file (type pdf)
 <use quadratic_regresion_graph.pdf>
-Package pdftex.def Info: quadratic_regresion_graph.pdf  used on input line 1241.
+Package pdftex.def Info: quadratic_regresion_graph.pdf  used on input line 1222.
 (pdftex.def)             Requested size: 284.52756pt x 284.54257pt.
-[56
+[60
 
- <./quadratic_regresion_graph.pdf>] [57
+ <./quadratic_regresion_graph.pdf>] [61
 
 
 
 ]
-Underfull \hbox (badness 3302) in paragraph at lines 1282--1284
+Underfull \hbox (badness 3302) in paragraph at lines 1263--1265
 \T1/aer/m/n/12 11-18]. Dos-tupné z: []$\T1/aett/m/n/12 https : / / github . com / owid / covid-[]19-[]data / tree / master /
  []
 
-[58
+[62
 
 
 ]
 
-LaTeX Warning: Reference `1' on page 59 undefined on input line 1294.
+LaTeX Warning: Reference `1' on page 63 undefined on input line 1275.
 
-[59
+[63
 
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+aer on input line 1304.
+LaTeX Font Info:    Trying to load font information for TS1+aer on input line 1285.
 (c:/Users/Lukas/Documents/R/R-4.1.1/share/texmf/tex/latex/ts1aer.fd
 File: ts1aer.fd 
 )
 LaTeX Font Info:    Font shape `TS1/aer/m/n' in size <12> not available
-(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 1304.
-[60
+(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 1285.
+[64
 
 
 ] (./semestralni_prace.aux)
@@ -1022,21 +1016,21 @@ LaTeX Warning: There were undefined references.
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `semestralni_prace.out' has not changed.
-(rerunfilecheck)             Checksum: 79223F3DE4918494E7470A21BB86AD5D;5474.
+(rerunfilecheck)             Checksum: ED381D19AAFF087BD2F8E3AC3D8BF2B4;5474.
  ) 
 Here is how much of TeX's memory you used:
- 13909 strings out of 480313
- 238768 string characters out of 5895779
- 575273 words of memory out of 5000000
- 31272 multiletter control sequences out of 15000+600000
- 455919 words of font info for 101 fonts, out of 8000000 for 9000
+ 13906 strings out of 480313
+ 238827 string characters out of 5895779
+ 537273 words of memory out of 5000000
+ 31270 multiletter control sequences out of 15000+600000
+ 455072 words of font info for 98 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,10n,77p,1292b,453s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 75i,10n,77p,1298b,488s stack positions out of 5000i,500n,10000p,200000b,80000s
  <c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk>{c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc} <c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1200.600pk>{c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}<c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmb10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi12.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi8.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr12.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/Users/Lukas/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
-Output written on semestralni_prace.pdf (60 pages, 1769867 bytes).
+Output written on semestralni_prace.pdf (64 pages, 1772699 bytes).
 PDF statistics:
- 1379 PDF objects out of 1440 (max. 8388607)
- 1061 compressed objects within 11 object streams
- 151 named destinations out of 1000 (max. 500000)
+ 1394 PDF objects out of 1440 (max. 8388607)
+ 1072 compressed objects within 11 object streams
+ 153 named destinations out of 1000 (max. 500000)
  541 words of extra memory for PDF output out of 10000 (max. 10000000)
 

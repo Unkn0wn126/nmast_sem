@@ -22,16 +22,16 @@
 \contentsline {subsection}{\numberline {4.5}Shapiro Wilk test}{40}{subsection.4.5}%
 \contentsline {section}{\numberline {5}ANOVA}{42}{section.5}%
 \contentsline {section}{\numberline {6}Variance}{46}{section.6}%
-\contentsline {section}{\numberline {7}Korelace}{48}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Korelační matice}{48}{subsection.7.1}%
-\contentsline {section}{\numberline {8}Kovariance}{51}{section.8}%
-\contentsline {subsection}{\numberline {8.1}Kovarianční matice}{51}{subsection.8.1}%
-\contentsline {section}{\numberline {9}Testování v kontingenčních tabulkách}{54}{section.9}%
-\contentsline {subsection}{\numberline {9.1}Pearsonův Chí-kvadrát test}{54}{subsection.9.1}%
-\contentsline {section}{\numberline {10}Regrese}{55}{section.10}%
-\contentsline {subsection}{\numberline {10.1}Lineární regrese}{55}{subsection.10.1}%
-\contentsline {subsection}{\numberline {10.2}Kvadratická regrese}{56}{subsection.10.2}%
-\contentsline {section}{Závěr}{57}{section*.43}%
-\contentsline {section}{Použitá literatura}{58}{section*.44}%
-\contentsline {section}{Seznam příloh}{59}{section*.45}%
-\contentsline {section}{Příloha~A}{60}{section*.46}%
+\contentsline {section}{\numberline {7}Korelace}{47}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Korelační matice}{47}{subsection.7.1}%
+\contentsline {section}{\numberline {8}Kovariance}{52}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Kovarianční matice}{52}{subsection.8.1}%
+\contentsline {section}{\numberline {9}Testování v kontingenčních tabulkách}{58}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Pearsonův Chí-kvadrát test}{58}{subsection.9.1}%
+\contentsline {section}{\numberline {10}Regrese}{59}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Lineární regrese}{59}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Kvadratická regrese}{60}{subsection.10.2}%
+\contentsline {section}{Závěr}{61}{section*.41}%
+\contentsline {section}{Použitá literatura}{62}{section*.42}%
+\contentsline {section}{Seznam příloh}{63}{section*.43}%
+\contentsline {section}{Příloha~A}{64}{section*.44}%
