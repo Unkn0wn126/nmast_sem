@@ -251,7 +251,7 @@ tabulka_transpose
 faces(tabulka_transpose, plot.faces = FALSE)
 faces(tabulka_transpose, print.info = FALSE)
 
-# modified item       Var   
+# modified item       Var
 # "height of face   " "Var1"
 # "width of face    " "Var2"
 # "structure of face" "Var3"
@@ -429,3 +429,49 @@ df1 <- data.frame(data_czech[1],
                  data_czech[40],)
 
 pairs(df)
+
+#KontigencniTabulka
+#<10
+cz10 <- subset(data_czech, data_czech$new_cases_per_million<10)
+#<100
+cz100 <- subset(data_czech,data_czech$new_cases_per_million>10 & data_czech$new_cases_per_million<100)
+#>100+
+cz100plus <- subset(data_czech, data_czech$new_cases_per_million > 100)
+czv <- c(nrow(cz10),nrow(cz100),nrow(cz100plus))
+
+de10 <- subset(data_germany, data_germany$new_cases_per_million<10)
+#<100
+de100 <- subset(data_germany,data_germany$new_cases_per_million>10 & data_germany$new_cases_per_million<100)
+#>100+
+de100plus <- subset(data_germany, data_germany$new_cases_per_million > 100)
+dev <- c(nrow(de10),nrow(de100),nrow(de100plus))
+
+pl10 <- subset(data_poland, data_poland$new_cases_per_million<10)
+#<100
+pl100 <- subset(data_poland,data_poland$new_cases_per_million>10 & data_poland$new_cases_per_million<100)
+#>100+
+pl100plus <- subset(data_poland, data_poland$new_cases_per_million > 100)
+plv <- c(nrow(pl10),nrow(pl100),nrow(pl100plus))
+
+sk10 <- subset(data_slovakia, data_slovakia$new_cases_per_million<10)
+#<100
+sk100 <- subset(data_slovakia,data_slovakia$new_cases_per_million>10 & data_slovakia$new_cases_per_million<100)
+#>100+
+sk100plus <- subset(data_slovakia, data_slovakia$new_cases_per_million > 100)
+skv <- c(nrow(sk10),nrow(sk100),nrow(sk100plus))
+
+
+au10 <- subset(data_austria, data_austria$new_cases_per_million<10)
+#<100
+au100 <- subset(data_austria,data_austria$new_cases_per_million>10 & data_austria$new_cases_per_million<100)
+#>100+
+au100plus <- subset(data_austria, data_austria$new_cases_per_million > 100)
+auv <- c(nrow(au10),nrow(au100),nrow(au100plus))
+
+vector <-c(czv, skv, plv, dev, auv)
+table <- matrix(vector, ncol = 3, byrow = TRUE)
+colnames(table) <- c("x<10", "10-100", "100>x") #Mozna by to slo nìjak pøejmenovat, ale nevím teï moc jak .. Ještì by to šlo asi rozdìlit podle toho PSA co tøeby byl, ale takhle to nìjak sedìlo na +- stejný poèty
+rownames(table) <- c("Czech", "Slovakia", "Poland", "Germany", "Austria")
+table <- as.table(table)
+table
+chisq.test(table)
