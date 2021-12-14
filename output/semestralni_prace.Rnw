@@ -1172,6 +1172,66 @@ ggqqplot(data_czech$new_cases)
 \section{Testování v kontingenčních tabulkách}
 \subsection{Pearsonův Chí-kvadrát test}
 
+Následující kontingenční tabulka zobrazuje četnost výskytu hodnot nových případů na milión
+pro ČR, Slovensko, Polsko, Německo a Rakousko v rámci skupin. Pomocí chí-kvadrát testu,
+který poté následuje zamítáme hypotézu, že se tato veličina napříč zmíněnými zeměmi
+řídí stejným rozdělením pravděpodobnosti.
+
+<<pivot_table, echo=FALSE, results=tex>>=
+#<10
+cz10 <- subset(data_czech, data_czech$new_cases_per_million<10)
+#<100
+cz100 <- subset(data_czech,data_czech$new_cases_per_million>10 & data_czech$new_cases_per_million<100)
+#>100+
+cz100plus <- subset(data_czech, data_czech$new_cases_per_million > 100)
+czv <- c(nrow(cz10),nrow(cz100),nrow(cz100plus))
+
+de10 <- subset(data_germany, data_germany$new_cases_per_million<10)
+#<100
+de100 <- subset(data_germany,data_germany$new_cases_per_million>10 & data_germany$new_cases_per_million<100)
+#>100+
+de100plus <- subset(data_germany, data_germany$new_cases_per_million > 100)
+dev <- c(nrow(de10),nrow(de100),nrow(de100plus))
+
+pl10 <- subset(data_poland, data_poland$new_cases_per_million<10)
+#<100
+pl100 <- subset(data_poland,data_poland$new_cases_per_million>10 & data_poland$new_cases_per_million<100)
+#>100+
+pl100plus <- subset(data_poland, data_poland$new_cases_per_million > 100)
+plv <- c(nrow(pl10),nrow(pl100),nrow(pl100plus))
+
+sk10 <- subset(data_slovakia, data_slovakia$new_cases_per_million<10)
+#<100
+sk100 <- subset(data_slovakia,data_slovakia$new_cases_per_million>10 & data_slovakia$new_cases_per_million<100)
+#>100+
+sk100plus <- subset(data_slovakia, data_slovakia$new_cases_per_million > 100)
+skv <- c(nrow(sk10),nrow(sk100),nrow(sk100plus))
+
+
+au10 <- subset(data_austria, data_austria$new_cases_per_million<10)
+#<100
+au100 <- subset(data_austria,data_austria$new_cases_per_million>10 & data_austria$new_cases_per_million<100)
+#>100+
+au100plus <- subset(data_austria, data_austria$new_cases_per_million > 100)
+auv <- c(nrow(au10),nrow(au100),nrow(au100plus))
+
+vector <-c(czv, skv, plv, dev, auv)
+table <- matrix(vector, ncol = 3, byrow = TRUE)
+colnames(table) <- c("x<10", "10-100", "100>x")
+rownames(table) <- c("Czech", "Slovakia", "Poland", "Germany", "Austria")
+table <- as.table(table)
+print(xtable(table,
+             caption="Kontingenční tabulka nových případů na milión",
+             label="table:popisStat"),
+      include.rownames=TRUE,
+      caption.placement="bottom"
+      )
+@
+
+<<testPearsonChiSquared_new_cases_per_million, echo=FALSE>>=
+chisq.test(table)
+@
+
 Následující chí-kvadrát test zkoumá zda má veličina nových případů v ČR stejné
 rozdělení jako veličina nových případů v ČR. Vzhledem ke skutečnosti, že p-value je vyšší
 než hladina významnosti ($\alpha$ = 0,05), tuto hypotézu nemůžeme zamítnout.

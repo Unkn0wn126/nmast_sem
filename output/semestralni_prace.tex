@@ -96,7 +96,7 @@ lépe zachycují tyto veličiny v rámci dlouhodobých trendů, jelikož je elim
 testů například během víkendů.
 
 % latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Sun Dec 12 22:13:29 2021
+% Tue Dec 14 23:21:46 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -117,7 +117,7 @@ průměr & 2940.58 & 2936.89 \\
 \caption{Části popisné statistiky aplikované na data nových případů a jejich 7denního klouzavého průměru v ČR od 7. 3. 2020} 
 \label{table:popisStat}
 \end{table}% latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Sun Dec 12 22:13:29 2021
+% Tue Dec 14 23:21:46 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -138,7 +138,7 @@ průměr & 274.19 & 273.85 \\
 \caption{Části popisné statistiky aplikované na data nových případů na milión a jejich 7denního klouzavého průměru v ČR od 7. 3. 2020} 
 \label{table:popisStat}
 \end{table}% latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Sun Dec 12 22:13:29 2021
+% Tue Dec 14 23:21:46 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrr}
@@ -393,7 +393,7 @@ je aplikována na zvolené hodnoty. Z grafu je zřejmé zešikmení dat vzhledem
 a mediánu zobrazovaných veličin.
 
 % latex table generated in R 4.1.1 by xtable 1.8-4 package
-% Sun Dec 12 22:13:29 2021
+% Tue Dec 14 23:21:46 2021
 \begin{table}[ht]
 \centering
 \begin{tabular}{rrrrrr}
@@ -1180,6 +1180,38 @@ a nových případů v ČR.
 %% Testování v kontingenčních tabulkách
 \section{Testování v kontingenčních tabulkách}
 \subsection{Pearsonův Chí-kvadrát test}
+
+Následující kontingenční tabulka zobrazuje četnost výskytu hodnot nových případů na milión
+pro ČR, Slovensko, Polsko, Německo a Rakousko v rámci skupin. Pomocí chí-kvadrát testu,
+který poté následuje zamítáme hypotézu, že se tato veličina napříč zmíněnými zeměmi
+řídí stejným rozdělením pravděpodobnosti.
+
+% latex table generated in R 4.1.1 by xtable 1.8-4 package
+% Tue Dec 14 23:21:47 2021
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrr}
+  \hline
+ & x$<$10 & 10-100 & 100$>$x \\ 
+  \hline
+Czech & 104 & 232 & 240 \\ 
+  Slovakia & 219 & 149 & 208 \\ 
+  Poland & 198 & 172 & 206 \\ 
+  Germany & 122 & 272 & 181 \\ 
+  Austria & 104 & 205 & 267 \\ 
+   \hline
+\end{tabular}
+\caption{Kontingenční tabulka nových případů na milión} 
+\label{table:popisStat}
+\end{table}
+\begin{Schunk}
+\begin{Soutput}
+	Pearson's Chi-squared test
+
+data:  table
+X-squared = 146.95, df = 8, p-value < 2.2e-16
+\end{Soutput}
+\end{Schunk}
 
 Následující chí-kvadrát test zkoumá zda má veličina nových případů v ČR stejné
 rozdělení jako veličina nových případů v ČR. Vzhledem ke skutečnosti, že p-value je vyšší

@@ -31,7 +31,7 @@
 \contentsline {section}{\numberline {10}Regrese}{59}{section.10}%
 \contentsline {subsection}{\numberline {10.1}Lineární regrese}{59}{subsection.10.1}%
 \contentsline {subsection}{\numberline {10.2}Kvadratická regrese}{60}{subsection.10.2}%
-\contentsline {section}{Závěr}{61}{section*.41}%
-\contentsline {section}{Použitá literatura}{62}{section*.42}%
-\contentsline {section}{Seznam příloh}{63}{section*.43}%
-\contentsline {section}{Příloha~A}{64}{section*.44}%
+\contentsline {section}{Závěr}{61}{section*.42}%
+\contentsline {section}{Použitá literatura}{62}{section*.43}%
+\contentsline {section}{Seznam příloh}{63}{section*.44}%
+\contentsline {section}{Příloha~A}{64}{section*.45}%
